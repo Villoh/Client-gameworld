@@ -4,7 +4,6 @@
  */
 package com.mj.cliente.controller;
 
-//import com.sun.tools.javac.Main;
 import com.mj.cliente.App;
 import java.io.IOException;
 import java.net.URL;
@@ -14,6 +13,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+
 /**
  * FXML Controller class
  *
@@ -40,24 +40,22 @@ public class PantallaCambiarContraseñaController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-    }   
+    }
 
     @FXML
     private void cambiarContraseña(ActionEvent event) {
         //Comprobamos el alias y el email y cambiamos la contraseña
-        
+
     }
 
     @FXML
     private void volverCrearCuenta(ActionEvent event) throws IOException {
-        App m = new App();
-        m.changeScene("view/PantallaCrearUsuario.fxml");
+        App.setRoot("PantallaCrearUsuario");
     }
 
     @FXML
     private void volverInicio(ActionEvent event) throws IOException {
-        App m = new App();
-        m.changeScene("view/PantallaLogin.fxml");
+        App.setRoot("PantallaLogin");
     }
-    
+
 }

@@ -5,17 +5,15 @@
 package com.mj.cliente.controller;
 
 import com.mj.cliente.App;
-import static com.mj.cliente.App.stg;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Parent;
 import javafx.scene.control.Button;
-
+import javafx.scene.image.ImageView;
 
 /**
  * FXML Controller class
@@ -25,13 +23,19 @@ import javafx.scene.control.Button;
 public class PantallaStoreController implements Initializable {
 
     @FXML
-    private Button biblioteca;
+    private ImageView btn_Store;
     @FXML
-    private Button tienda;
+    private ImageView btn_Library;
     @FXML
-    private Button perfil;
+    private ImageView btn_UserProfile;
     @FXML
-    private Button logout;
+    private Button btn_Exit;
+    @FXML
+    private Button btn_Tienda;
+    @FXML
+    private Button btn_Biblioteca;
+    @FXML
+    private Button btn_perfil;
 
     /**
      * Initializes the controller class.
@@ -39,35 +43,29 @@ public class PantallaStoreController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-    }    
-
-    @FXML
-    private void abrirBiblioteca(ActionEvent event) {
     }
 
     @FXML
-    private void abrirTienda(ActionEvent event) {
-        
+    private void abrirBiblioteca(ActionEvent event) throws IOException {
+        App.setRoot("PantallaBiblioteca");
+
     }
 
     @FXML
-    private void abrirPerfil(ActionEvent event) {
-        //Abre el perfil
-        
+    private void abrirTienda(ActionEvent event) throws IOException {
+        App.setRoot("PantallaStore");
+
+    }
+
+    @FXML
+    private void abrirPerfil(ActionEvent event) throws IOException {
+        App.setRoot("PantallaPerfil");
+
     }
 
     @FXML
     private void cerrarSesion(ActionEvent event) throws IOException {
-        App m = new App();
-        PantallaLoginController p = new PantallaLoginController();
-        p.closeScene();
-        m.changeScene("view/PantallaLogin.fxml");
-        m.openScene();
-        
+        App.setRoot("PantallaLogin");
     }
-     public void changeScene(String fxml) throws IOException {
-        Parent pane = FXMLLoader.load(getClass().getResource(fxml));
-        stg.getScene().setRoot(pane);
-    }
-    
+
 }

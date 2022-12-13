@@ -16,7 +16,7 @@
             <ImageView fitHeight="116.0" fitWidth="175.0" layoutX="38.0" layoutY="125.0" pickOnBounds="true" preserveRatio="true" />
             <ImageView fitHeight="150.0" fitWidth="231.0" layoutX="50.0" layoutY="125.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../img/Logo%20M3J2%20-%20Transparente%20-%202.png" />
+                  <Image url="@../images/Logo%20M3J2%20-%20Transparente%20-%202.png" />
                </image>
             </ImageView>
          </children>

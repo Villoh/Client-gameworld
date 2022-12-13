@@ -13,9 +13,9 @@
    <left>
       <AnchorPane prefHeight="400.0" prefWidth="250.0" style="-fx-background-color: #961e30;" BorderPane.alignment="CENTER">
          <children>
-            <ImageView fitHeight="150.0" fitWidth="231.0" layoutX="50.0" layoutY="125.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="50.0" layoutY="125.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../img/Logo%20M3J2%20-%20Transparente%20-%202.png" />
+                  <Image url="@../images/Logo%20M3J2%20-%20Transparente%20-%202.png" />
                </image>
             </ImageView>
          </children>
@@ -28,12 +28,12 @@
             <PasswordField fx:id="passwordID" focusTraversable="false" layoutX="100.0" layoutY="200.0" prefHeight="27.0" prefWidth="170.0" promptText="Password" style="-fx-background-color: transparent; -fx-border-color: #961e30; -fx-border-width: 0px 0px 2px 0px;" />
             <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="40.0" layoutY="150.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../img/persona.png" />
+                  <Image url="@../images/persona.png" />
                </image>
             </ImageView>
             <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="40.0" layoutY="200.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../img/alfiler.png" />
+                  <Image url="@../images/alfiler.png" />
                </image>
             </ImageView>
             <Button fx:id="login" layoutX="140.0" layoutY="264.0" mnemonicParsing="false" onAction="#userLogin" prefHeight="30.0" prefWidth="75.0" style="-fx-background-color: #961e30;" text="Login" textFill="WHITE">

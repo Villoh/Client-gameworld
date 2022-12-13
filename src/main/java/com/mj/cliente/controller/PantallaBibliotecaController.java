@@ -4,9 +4,15 @@
  */
 package com.mj.cliente.controller;
 
+import com.mj.cliente.App;
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
+import javafx.scene.image.ImageView;
 
 /**
  * FXML Controller class
@@ -15,6 +21,22 @@ import javafx.fxml.Initializable;
  */
 public class PantallaBibliotecaController implements Initializable {
 
+    @FXML
+    private Button btn_Tienda;
+    @FXML
+    private ImageView btn_Store;
+    @FXML
+    private Button btn_Biblioteca;
+    @FXML
+    private ImageView btn_Library;
+    @FXML
+    private Button btn_perfil;
+    @FXML
+    private ImageView btn_UserProfile;
+    @FXML
+    private Button btn_Exit;
+
+
     /**
      * Initializes the controller class.
      */
@@ -22,5 +44,29 @@ public class PantallaBibliotecaController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
     }    
+
+       @FXML
+    private void abrirBiblioteca(ActionEvent event) throws IOException {
+        App.setRoot("PantallaBiblioteca");
+
+    }
+
+    @FXML
+    private void abrirTienda(ActionEvent event) throws IOException {
+        App.setRoot("PantallaStore");
+
+    }
+
+    @FXML
+    private void abrirPerfil(ActionEvent event) throws IOException {
+        App.setRoot("PantallaPerfil");
+
+    }
+
+    @FXML
+    private void cerrarSesion(ActionEvent event) throws IOException {
+        App.setRoot("PantallaLogin");
+    }
+
     
 }

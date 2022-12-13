@@ -32,7 +32,7 @@ import javafx.stage.Stage;
  */
 public class PantallaCrearUsuarioController implements Initializable {
 
-        @FXML
+    @FXML
     private PasswordField pass;
     @FXML
     private PasswordField confirmarpass;
@@ -62,41 +62,39 @@ public class PantallaCrearUsuarioController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-       rol.getItems().addAll("Jugador","Creador","Admin");
-    }    
+        rol.getItems().addAll("Jugador", "Creador", "Admin");
+    }
+
     /**
      * Metodo que te pide una imagen y la pinta en pantall
+     *
      * @param event
-     * @throws FileNotFoundException 
+     * @throws FileNotFoundException
      */
     @FXML
     private void escogerAvatar(ActionEvent event) throws FileNotFoundException {
-        
+
         FileChooser avatar = new FileChooser();
-        File file =  avatar.showOpenDialog(new Stage());
-        if(file.getName().endsWith(".png")||file.getName().endsWith(".jpg")){
+        File file = avatar.showOpenDialog(new Stage());
+        if (file.getName().endsWith(".png") || file.getName().endsWith(".jpg")) {
             avatar.setTitle("¡Escoge tu avatar!");
             Image image = new Image(new FileInputStream(file));
             imagen.setImage(image);
-        }else{
+        } else {
             //JOptionPane.showMessageDialog(null, "Los formatos validos son: JPG y PNG", "No es un archivo valido", 2);
         }
-        
-        
-        
+
     }
 
     @FXML
     private void crearCuenta(ActionEvent event) {
         //Hacemos las comprobaciones necesarias para crear la cuenta
-        
+
         //Si todo es correcto guardamos la info en la base de datos y volvemos al Login donde inciara sesion
-        
     }
 
     @FXML
     private void volverLogin(ActionEvent event) throws IOException {
-        App m = new App();
-        m.changeScene("view/PantallaLogin.fxml");
+        App.setRoot("PantallaLogin");
     }
 }
