@@ -11,7 +11,9 @@ import javafx.scene.image.Image;
 
 public class App extends Application {
 
-    //public static Stage stg;
+    /**
+     * Stage Principal
+     */
     private static Scene scene;
 
     @Override
@@ -22,9 +24,13 @@ public class App extends Application {
         stage.setResizable(false);
         stage.setScene(scene);
         stage.show();
-
     }
 
+    /**
+     * Metodo para cambiar la escena actual por otra escena
+     * @param fxml
+     * @throws IOException 
+     */
     public static void setRoot(String fxml) throws IOException {
         scene.setRoot(loadFXML(fxml));
     }

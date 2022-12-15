@@ -1,7 +1,6 @@
 com\mj\cliente\dao\Pegi.class
 com\mj\cliente\dao\Coleccion.class
 com\mj\cliente\dao\Perfil.class
-com\mj\cliente\Main.class
 com\mj\cliente\controller\PantallaLoginController.class
 com\mj\cliente\dao\Nivel.class
 module-info.class
