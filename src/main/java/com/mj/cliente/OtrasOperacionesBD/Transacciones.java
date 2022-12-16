@@ -7,6 +7,7 @@ import com.mj.cliente.dao.Biblioteca;
 import com.mj.cliente.dao.Descarga;
 import com.mj.cliente.dao.Juego;
 import com.mj.cliente.dao.Usuario;
+import java.time.LocalDate;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 import javax.persistence.NoResultException;
@@ -38,6 +39,7 @@ public class Transacciones {
                 Descarga descarga = new Descarga();
                 descarga.setAkbiblioteca(biblioUser);
                 descarga.setAkjuego(juego);
+                descarga.setFecha(java.sql.Date.valueOf(LocalDate.now()));
                 DescargasCRUD.nuevaDescarga(descarga);
                 tx.commit();
             }
