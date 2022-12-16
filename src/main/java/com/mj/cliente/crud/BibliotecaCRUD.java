@@ -2,6 +2,7 @@ package com.mj.cliente.crud;
 
 import com.mj.cliente.conexion.Conexion;
 import com.mj.cliente.dao.Biblioteca;
+import com.mj.cliente.dao.Usuario;
 
 import javax.persistence.*;
 import java.util.List;
@@ -27,16 +28,16 @@ public class BibliotecaCRUD {
 
     /**
      *
-     * @param pkbiblioteca
+     * @param akusuario
      * @return
      */
-    public static Biblioteca verBiblioteca(int pkbiblioteca) {
+    public static Biblioteca verBiblioteca(Usuario akusuario) {
         Conexion con = new Conexion();
         EntityManager em = con.conecta();
         Biblioteca biblioteca = null;
         try {
-            Query query = em.createNamedQuery("Biblioteca.findByPkbiblioteca");
-            query.setParameter("pkbiblioteca", pkbiblioteca);
+            Query query = em.createNamedQuery("Biblioteca.findByAkusuario");
+            query.setParameter("akusuario", akusuario);
             biblioteca = (Biblioteca) query.getSingleResult();
         } catch (NoResultException | IllegalArgumentException ex) {
             System.err.println("Excepciones en metodo verBiblioteca" + ex.getLocalizedMessage());

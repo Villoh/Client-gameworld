@@ -5,13 +5,14 @@
 package com.mj.cliente.controller;
 
 import com.mj.cliente.App;
+import com.mj.cliente.OtrasOperacionesBD.Transacciones;
+import com.mj.cliente.crud.JuegoCRUD;
+import com.mj.cliente.dao.Biblioteca;
 import com.mj.cliente.dao.Juego;
+import com.mj.cliente.dao.Usuario;
 import java.io.IOException;
 import java.net.URL;
-import java.util.List;
 import java.util.ResourceBundle;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -106,15 +107,14 @@ public class PantallaStoreController implements Initializable {
     
     @FXML
     private void descargar(ActionEvent event) throws IOException {
-//        List<Juego> juego =PantallaLoginController.lista;
-//        String titulo = "";
-//        Juego adescargar =null;
-//        for(Juego j: juego){
-//            if(titulo.equals(j.getTitulo())){
-//                adescargar =j;
-//            }
-//        }
-        
+        //Esto va en el boton de descargar del juego en la store
+        //Recogo la bibliteca y el juego que quieres descargar
+        Biblioteca biblio = PantallaLoginController.biblioUsuarioActual;//<--Lo recogemos al iniciar sesion
+        String titulo= "";//<--Esto deberia recoger el titulo del juego al hacer click pero no se como se va a guardar 
+        Juego juego =JuegoCRUD.verJuego(titulo);//Buscariamos los datos del juego a través del titulo
+     
+        //Una vez recogido lo que queremos insertar se lo pasamos al metodo
+        Transacciones.descargarJuego(juego, biblio);
     }
 
 }

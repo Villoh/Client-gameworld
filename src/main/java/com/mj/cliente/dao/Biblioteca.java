@@ -39,7 +39,9 @@ import javax.xml.bind.annotation.XmlTransient;
 @NamedQueries({
     @NamedQuery(name = "Biblioteca.findAll", query = "SELECT b FROM Biblioteca b"),
     @NamedQuery(name = "Biblioteca.findByPkbiblioteca", query = "SELECT b FROM Biblioteca b WHERE b.pkbiblioteca = :pkbiblioteca"),
+    @NamedQuery(name = "Biblioteca.findByAkusuario", query = "SELECT b FROM Biblioteca b WHERE b.akusuario=:akusuario"),//Esta la he creado uo
     @NamedQuery(name = "Biblioteca.findByFecha", query = "SELECT b FROM Biblioteca b WHERE b.fecha = :fecha")})
+
 public class Biblioteca implements Serializable {
 
     private static final long serialVersionUID = 1L;

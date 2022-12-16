@@ -7,9 +7,10 @@ package com.mj.cliente.controller;
 import com.mj.cliente.App;
 
 import com.mj.cliente.conexion.Conexion;
-import com.mj.cliente.crud.Consulta;
+import com.mj.cliente.crud.BibliotecaCRUD;
 import com.mj.cliente.crud.JuegoCRUD;
 import com.mj.cliente.crud.UsuarioCRUD;
+import com.mj.cliente.dao.Biblioteca;
 import com.mj.cliente.dao.Juego;
 import com.mj.cliente.dao.Usuario;
 import java.io.IOException;
@@ -45,8 +46,10 @@ public class PantallaLoginController implements Initializable {
     private Button recuperarPass;
     @FXML
     private Button login;
-    public static List<Juego> lista;
     
+    public static List<Juego> lista;
+    public static Usuario usuarioActual;
+    public static Biblioteca biblioUsuarioActual;
     
     /**
      * Initializes the controller class.
@@ -64,7 +67,9 @@ public class PantallaLoginController implements Initializable {
         if(correcto!=null) {
             lista = JuegoCRUD.verListaJuegos();
             App.setRoot("PantallaStore");
-            
+            //Guardo la informacion del usuario en una variable estatica para poder utilizarlo en otro momento
+            usuarioActual= correcto;
+            biblioUsuarioActual=BibliotecaCRUD.verBiblioteca(correcto);
             //llamar carga lista
         }else{
             loginID.clear();

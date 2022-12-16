@@ -1,5 +1,7 @@
 package com.mj.cliente;
 
+import com.mj.cliente.dao.Biblioteca;
+import com.mj.cliente.dao.Usuario;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -15,6 +17,7 @@ public class App extends Application {
      * Stage Principal
      */
     private static Scene scene;
+  
 
     @Override
     public void start(Stage stage) throws IOException {
