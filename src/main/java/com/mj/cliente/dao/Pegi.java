@@ -6,31 +6,43 @@ package com.mj.cliente.dao;
 
 import java.io.Serializable;
 import java.util.List;
+import javax.persistence.Basic;
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author M3J2
+ * @author COLLS
  */
-@javax.persistence.Entity
-@javax.persistence.Table(name = "pegi", catalog = "qblzuhfb", schema = "public")
-@javax.persistence.NamedQueries({
-    @javax.persistence.NamedQuery(name = "Pegi.findAll", query = "SELECT p FROM Pegi p"),
-    @javax.persistence.NamedQuery(name = "Pegi.findByPkpegi", query = "SELECT p FROM Pegi p WHERE p.pkpegi = :pkpegi"),
-    @javax.persistence.NamedQuery(name = "Pegi.findByRangopegi", query = "SELECT p FROM Pegi p WHERE p.rangopegi = :rangopegi"),
-    @javax.persistence.NamedQuery(name = "Pegi.findByObservaciones", query = "SELECT p FROM Pegi p WHERE p.observaciones = :observaciones")})
+@Entity
+@Table(name = "pegi", catalog = "qblzuhfb", schema = "public")
+@XmlRootElement
+@NamedQueries({
+    @NamedQuery(name = "Pegi.findAll", query = "SELECT p FROM Pegi p"),
+    @NamedQuery(name = "Pegi.findByPkpegi", query = "SELECT p FROM Pegi p WHERE p.pkpegi = :pkpegi"),
+    @NamedQuery(name = "Pegi.findByRangopegi", query = "SELECT p FROM Pegi p WHERE p.rangopegi = :rangopegi"),
+    @NamedQuery(name = "Pegi.findByObservaciones", query = "SELECT p FROM Pegi p WHERE p.observaciones = :observaciones")})
 public class Pegi implements Serializable {
 
     private static final long serialVersionUID = 1L;
-    @javax.persistence.Id
-    @javax.persistence.Basic(optional = false)
-    @javax.persistence.Column(name = "pkpegi")
+    @Id
+    @Basic(optional = false)
+    @Column(name = "pkpegi")
     private Integer pkpegi;
-    @javax.persistence.Basic(optional = false)
-    @javax.persistence.Column(name = "rangopegi")
+    @Basic(optional = false)
+    @Column(name = "rangopegi")
     private String rangopegi;
-    @javax.persistence.Column(name = "observaciones")
+    @Column(name = "observaciones")
     private String observaciones;
-    @javax.persistence.OneToMany(cascade = javax.persistence.CascadeType.ALL, mappedBy = "akpegi")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "akpegi")
     private List<Juego> juegoList;
 
     public Pegi() {
@@ -69,6 +81,7 @@ public class Pegi implements Serializable {
         this.observaciones = observaciones;
     }
 
+    @XmlTransient
     public List<Juego> getJuegoList() {
         return juegoList;
     }

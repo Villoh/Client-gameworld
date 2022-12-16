@@ -7,58 +7,77 @@ package com.mj.cliente.dao;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
+import javax.persistence.Basic;
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.Lob;
+import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author M3J2
+ * @author COLLS
  */
-@javax.persistence.Entity
-@javax.persistence.Table(name = "usuario", catalog = "qblzuhfb", schema = "public")
-@javax.persistence.NamedQueries({
-    @javax.persistence.NamedQuery(name = "Usuario.findAll", query = "SELECT u FROM Usuario u"),
-    @javax.persistence.NamedQuery(name = "Usuario.findByPkusuario", query = "SELECT u FROM Usuario u WHERE u.pkusuario = :pkusuario"),
-    @javax.persistence.NamedQuery(name = "Usuario.findByAlias", query = "SELECT u FROM Usuario u WHERE u.alias = :alias"),
-    @javax.persistence.NamedQuery(name = "Usuario.findByPassword", query = "SELECT u FROM Usuario u WHERE u.password = :password"),
-    @javax.persistence.NamedQuery(name = "Usuario.findByNombre", query = "SELECT u FROM Usuario u WHERE u.nombre = :nombre"),
-    @javax.persistence.NamedQuery(name = "Usuario.findByApellidos", query = "SELECT u FROM Usuario u WHERE u.apellidos = :apellidos"),
-    @javax.persistence.NamedQuery(name = "Usuario.findByFechanace", query = "SELECT u FROM Usuario u WHERE u.fechanace = :fechanace"),
-    @javax.persistence.NamedQuery(name = "Usuario.findByEmail", query = "SELECT u FROM Usuario u WHERE u.email = :email")})
+@Entity
+@Table(name = "usuario", catalog = "qblzuhfb", schema = "public")
+@XmlRootElement
+@NamedQueries({
+    @NamedQuery(name = "Usuario.findAll", query = "SELECT u FROM Usuario u"),
+    @NamedQuery(name = "Usuario.findByPkusuario", query = "SELECT u FROM Usuario u WHERE u.pkusuario = :pkusuario"),
+    @NamedQuery(name = "Usuario.findByAlias", query = "SELECT u FROM Usuario u WHERE u.alias = :alias"),
+    @NamedQuery(name = "Usuario.findByPassword", query = "SELECT u FROM Usuario u WHERE u.password = :password"),
+    @NamedQuery(name = "Usuario.findByNombre", query = "SELECT u FROM Usuario u WHERE u.nombre = :nombre"),
+    @NamedQuery(name = "Usuario.findByApellidos", query = "SELECT u FROM Usuario u WHERE u.apellidos = :apellidos"),
+    @NamedQuery(name = "Usuario.findByFechanace", query = "SELECT u FROM Usuario u WHERE u.fechanace = :fechanace"),
+    @NamedQuery(name = "Usuario.findByEmail", query = "SELECT u FROM Usuario u WHERE u.email = :email")})
 public class Usuario implements Serializable {
 
     private static final long serialVersionUID = 1L;
-    @javax.persistence.Id
-    @javax.persistence.GeneratedValue(strategy = javax.persistence.GenerationType.IDENTITY)
-    @javax.persistence.Basic(optional = false)
-    @javax.persistence.Column(name = "pkusuario")
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Basic(optional = false)
+    @Column(name = "pkusuario")
     private Integer pkusuario;
-    @javax.persistence.Basic(optional = false)
-    @javax.persistence.Column(name = "alias")
+    @Basic(optional = false)
+    @Column(name = "alias")
     private String alias;
-    @javax.persistence.Basic(optional = false)
-    @javax.persistence.Column(name = "password")
+    @Basic(optional = false)
+    @Column(name = "password")
     private String password;
-    @javax.persistence.Basic(optional = false)
-    @javax.persistence.Column(name = "nombre")
+    @Basic(optional = false)
+    @Column(name = "nombre")
     private String nombre;
-    @javax.persistence.Basic(optional = false)
-    @javax.persistence.Column(name = "apellidos")
+    @Basic(optional = false)
+    @Column(name = "apellidos")
     private String apellidos;
-    @javax.persistence.Basic(optional = false)
-    @javax.persistence.Column(name = "fechanace")
-    @javax.persistence.Temporal(javax.persistence.TemporalType.DATE)
+    @Basic(optional = false)
+    @Column(name = "fechanace")
+    @Temporal(TemporalType.DATE)
     private Date fechanace;
-    @javax.persistence.Basic(optional = false)
-    @javax.persistence.Column(name = "email")
+    @Basic(optional = false)
+    @Column(name = "email")
     private String email;
-    @javax.persistence.Lob
-    @javax.persistence.Column(name = "avatar")
+    @Lob
+    @Column(name = "avatar")
     private byte[] avatar;
-    @javax.persistence.OneToMany(cascade = javax.persistence.CascadeType.ALL, mappedBy = "akusuario")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "akusuario")
     private List<Biblioteca> bibliotecaList;
-    @javax.persistence.JoinColumn(name = "akperfil", referencedColumnName = "pkperfil")
-    @javax.persistence.ManyToOne(optional = false)
+    @JoinColumn(name = "akperfil", referencedColumnName = "pkperfil")
+    @ManyToOne(optional = false)
     private Perfil akperfil;
-    @javax.persistence.OneToMany(cascade = javax.persistence.CascadeType.ALL, mappedBy = "akcreador")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "akcreador")
     private List<Juego> juegoList;
 
     public Usuario() {
@@ -142,6 +161,7 @@ public class Usuario implements Serializable {
         this.avatar = avatar;
     }
 
+    @XmlTransient
     public List<Biblioteca> getBibliotecaList() {
         return bibliotecaList;
     }
@@ -158,6 +178,7 @@ public class Usuario implements Serializable {
         this.akperfil = akperfil;
     }
 
+    @XmlTransient
     public List<Juego> getJuegoList() {
         return juegoList;
     }

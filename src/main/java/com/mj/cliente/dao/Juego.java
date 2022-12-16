@@ -7,61 +7,79 @@ package com.mj.cliente.dao;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
+import javax.persistence.Basic;
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author M3J2
+ * @author COLLS
  */
-@javax.persistence.Entity
-@javax.persistence.Table(name = "juego", catalog = "qblzuhfb", schema = "public")
-@javax.persistence.NamedQueries({
-    @javax.persistence.NamedQuery(name = "Juego.findAll", query = "SELECT j FROM Juego j"),
-    @javax.persistence.NamedQuery(name = "Juego.findByPkjuego", query = "SELECT j FROM Juego j WHERE j.pkjuego = :pkjuego"),
-    @javax.persistence.NamedQuery(name = "Juego.findByTitulo", query = "SELECT j FROM Juego j WHERE j.titulo = :titulo"),
-    @javax.persistence.NamedQuery(name = "Juego.findByDescripcion", query = "SELECT j FROM Juego j WHERE j.descripcion = :descripcion"),
-    @javax.persistence.NamedQuery(name = "Juego.findByImagen", query = "SELECT j FROM Juego j WHERE j.imagen = :imagen"),
-    @javax.persistence.NamedQuery(name = "Juego.findByFechacreacion", query = "SELECT j FROM Juego j WHERE j.fechacreacion = :fechacreacion"),
-    @javax.persistence.NamedQuery(name = "Juego.findByPvp", query = "SELECT j FROM Juego j WHERE j.pvp = :pvp"),
-    @javax.persistence.NamedQuery(name = "Juego.findByNumdescargas", query = "SELECT j FROM Juego j WHERE j.numdescargas = :numdescargas")})
+@Entity
+@Table(name = "juego", catalog = "qblzuhfb", schema = "public")
+@XmlRootElement
+@NamedQueries({
+    @NamedQuery(name = "Juego.findAll", query = "SELECT j FROM Juego j"),
+    @NamedQuery(name = "Juego.findByPkjuego", query = "SELECT j FROM Juego j WHERE j.pkjuego = :pkjuego"),
+    @NamedQuery(name = "Juego.findByTitulo", query = "SELECT j FROM Juego j WHERE j.titulo = :titulo"),
+    @NamedQuery(name = "Juego.findByDescripcion", query = "SELECT j FROM Juego j WHERE j.descripcion = :descripcion"),
+    @NamedQuery(name = "Juego.findByImagen", query = "SELECT j FROM Juego j WHERE j.imagen = :imagen"),
+    @NamedQuery(name = "Juego.findByFechacreacion", query = "SELECT j FROM Juego j WHERE j.fechacreacion = :fechacreacion"),
+    @NamedQuery(name = "Juego.findByPvp", query = "SELECT j FROM Juego j WHERE j.pvp = :pvp"),
+    @NamedQuery(name = "Juego.findByNumdescargas", query = "SELECT j FROM Juego j WHERE j.numdescargas = :numdescargas")})
 public class Juego implements Serializable {
 
     private static final long serialVersionUID = 1L;
-    @javax.persistence.Id
-    @javax.persistence.GeneratedValue(strategy = javax.persistence.GenerationType.IDENTITY)
-    @javax.persistence.Basic(optional = false)
-    @javax.persistence.Column(name = "pkjuego")
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Basic(optional = false)
+    @Column(name = "pkjuego")
     private Integer pkjuego;
-    @javax.persistence.Basic(optional = false)
-    @javax.persistence.Column(name = "titulo")
+    @Basic(optional = false)
+    @Column(name = "titulo")
     private String titulo;
-    @javax.persistence.Column(name = "descripcion")
+    @Column(name = "descripcion")
     private String descripcion;
-    @javax.persistence.Basic(optional = false)
-    @javax.persistence.Column(name = "imagen")
+    @Basic(optional = false)
+    @Column(name = "imagen")
     private String imagen;
-    @javax.persistence.Basic(optional = false)
-    @javax.persistence.Column(name = "fechacreacion")
-    @javax.persistence.Temporal(javax.persistence.TemporalType.DATE)
+    @Basic(optional = false)
+    @Column(name = "fechacreacion")
+    @Temporal(TemporalType.DATE)
     private Date fechacreacion;
     // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
-    @javax.persistence.Column(name = "pvp")
+    @Column(name = "pvp")
     private Float pvp;
-    @javax.persistence.Basic(optional = false)
-    @javax.persistence.Column(name = "numdescargas")
+    @Basic(optional = false)
+    @Column(name = "numdescargas")
     private int numdescargas;
-    @javax.persistence.OneToMany(cascade = javax.persistence.CascadeType.ALL, mappedBy = "akjuego")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "akjuego")
     private List<Descarga> descargaList;
-    @javax.persistence.JoinColumn(name = "akgenero", referencedColumnName = "pkgenero")
-    @javax.persistence.ManyToOne(optional = false)
+    @JoinColumn(name = "akgenero", referencedColumnName = "pkgenero")
+    @ManyToOne(optional = false)
     private Genero akgenero;
-    @javax.persistence.JoinColumn(name = "aknivel", referencedColumnName = "pknivel")
-    @javax.persistence.ManyToOne(optional = false)
+    @JoinColumn(name = "aknivel", referencedColumnName = "pknivel")
+    @ManyToOne(optional = false)
     private Nivel aknivel;
-    @javax.persistence.JoinColumn(name = "akpegi", referencedColumnName = "pkpegi")
-    @javax.persistence.ManyToOne(optional = false)
+    @JoinColumn(name = "akpegi", referencedColumnName = "pkpegi")
+    @ManyToOne(optional = false)
     private Pegi akpegi;
-    @javax.persistence.JoinColumn(name = "akcreador", referencedColumnName = "pkusuario")
-    @javax.persistence.ManyToOne(optional = false)
+    @JoinColumn(name = "akcreador", referencedColumnName = "pkusuario")
+    @ManyToOne(optional = false)
     private Usuario akcreador;
 
     public Juego() {
@@ -135,6 +153,7 @@ public class Juego implements Serializable {
         this.numdescargas = numdescargas;
     }
 
+    @XmlTransient
     public List<Descarga> getDescargaList() {
         return descargaList;
     }

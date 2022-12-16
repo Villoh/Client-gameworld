@@ -6,34 +6,49 @@ package com.mj.cliente.dao;
 
 import java.io.Serializable;
 import java.util.Date;
+import javax.persistence.Basic;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
+import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
- * @author M3J2
+ * @author COLLS
  */
-@javax.persistence.Entity
-@javax.persistence.Table(name = "descarga", catalog = "qblzuhfb", schema = "public")
-@javax.persistence.NamedQueries({
-    @javax.persistence.NamedQuery(name = "Descarga.findAll", query = "SELECT d FROM Descarga d"),
-    @javax.persistence.NamedQuery(name = "Descarga.findByPkdescarga", query = "SELECT d FROM Descarga d WHERE d.pkdescarga = :pkdescarga"),
-    @javax.persistence.NamedQuery(name = "Descarga.findByFecha", query = "SELECT d FROM Descarga d WHERE d.fecha = :fecha")})
+@Entity
+@Table(name = "descarga", catalog = "qblzuhfb", schema = "public")
+@XmlRootElement
+@NamedQueries({
+    @NamedQuery(name = "Descarga.findAll", query = "SELECT d FROM Descarga d"),
+    @NamedQuery(name = "Descarga.findByPkdescarga", query = "SELECT d FROM Descarga d WHERE d.pkdescarga = :pkdescarga"),
+    @NamedQuery(name = "Descarga.findByFecha", query = "SELECT d FROM Descarga d WHERE d.fecha = :fecha")})
 public class Descarga implements Serializable {
 
     private static final long serialVersionUID = 1L;
-    @javax.persistence.Id
-    @javax.persistence.GeneratedValue(strategy = javax.persistence.GenerationType.IDENTITY)
-    @javax.persistence.Basic(optional = false)
-    @javax.persistence.Column(name = "pkdescarga")
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Basic(optional = false)
+    @Column(name = "pkdescarga")
     private Integer pkdescarga;
-    @javax.persistence.Basic(optional = false)
-    @javax.persistence.Column(name = "fecha")
-    @javax.persistence.Temporal(javax.persistence.TemporalType.DATE)
+    @Basic(optional = false)
+    @Column(name = "fecha")
+    @Temporal(TemporalType.DATE)
     private Date fecha;
-    @javax.persistence.JoinColumn(name = "akbiblioteca", referencedColumnName = "pkbiblioteca")
-    @javax.persistence.ManyToOne(optional = false)
+    @JoinColumn(name = "akbiblioteca", referencedColumnName = "pkbiblioteca")
+    @ManyToOne(optional = false)
     private Biblioteca akbiblioteca;
-    @javax.persistence.JoinColumn(name = "akjuego", referencedColumnName = "pkjuego")
-    @javax.persistence.ManyToOne(optional = false)
+    @JoinColumn(name = "akjuego", referencedColumnName = "pkjuego")
+    @ManyToOne(optional = false)
     private Juego akjuego;
 
     public Descarga() {

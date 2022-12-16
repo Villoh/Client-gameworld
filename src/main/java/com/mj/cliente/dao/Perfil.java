@@ -6,27 +6,39 @@ package com.mj.cliente.dao;
 
 import java.io.Serializable;
 import java.util.List;
+import javax.persistence.Basic;
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author M3J2
+ * @author COLLS
  */
-@javax.persistence.Entity
-@javax.persistence.Table(name = "perfil", catalog = "qblzuhfb", schema = "public")
-@javax.persistence.NamedQueries({
-    @javax.persistence.NamedQuery(name = "Perfil.findAll", query = "SELECT p FROM Perfil p"),
-    @javax.persistence.NamedQuery(name = "Perfil.findByPkperfil", query = "SELECT p FROM Perfil p WHERE p.pkperfil = :pkperfil"),
-    @javax.persistence.NamedQuery(name = "Perfil.findByRol", query = "SELECT p FROM Perfil p WHERE p.rol = :rol")})
+@Entity
+@Table(name = "perfil", catalog = "qblzuhfb", schema = "public")
+@XmlRootElement
+@NamedQueries({
+    @NamedQuery(name = "Perfil.findAll", query = "SELECT p FROM Perfil p"),
+    @NamedQuery(name = "Perfil.findByPkperfil", query = "SELECT p FROM Perfil p WHERE p.pkperfil = :pkperfil"),
+    @NamedQuery(name = "Perfil.findByRol", query = "SELECT p FROM Perfil p WHERE p.rol = :rol")})
 public class Perfil implements Serializable {
 
     private static final long serialVersionUID = 1L;
-    @javax.persistence.Id
-    @javax.persistence.Basic(optional = false)
-    @javax.persistence.Column(name = "pkperfil")
+    @Id
+    @Basic(optional = false)
+    @Column(name = "pkperfil")
     private Integer pkperfil;
-    @javax.persistence.Column(name = "rol")
+    @Column(name = "rol")
     private String rol;
-    @javax.persistence.OneToMany(cascade = javax.persistence.CascadeType.ALL, mappedBy = "akperfil")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "akperfil")
     private List<Usuario> usuarioList;
 
     public Perfil() {
@@ -52,6 +64,7 @@ public class Perfil implements Serializable {
         this.rol = rol;
     }
 
+    @XmlTransient
     public List<Usuario> getUsuarioList() {
         return usuarioList;
     }

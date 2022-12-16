@@ -1,22 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <persistence version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
-  <persistence-unit name="com.mj_Cliente_jar_1.0-SNAPSHOTPU" transaction-type="RESOURCE_LOCAL">
+  <persistence-unit name="com.mj.cliente_Cliente_jar_1.0-SNAPSHOTPU" transaction-type="RESOURCE_LOCAL">
     <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
     <class>com.mj.cliente.dao.Coleccion</class>
-    <class>com.mj.cliente.dao.Nivel</class>
-    <class>com.mj.cliente.dao.Perfil</class>
-    <class>com.mj.cliente.dao.Pegi</class>
     <class>com.mj.cliente.dao.Biblioteca</class>
+    <class>com.mj.cliente.dao.Genero</class>
+    <class>com.mj.cliente.dao.Nivel</class>
+    <class>com.mj.cliente.dao.Pegi</class>
+    <class>com.mj.cliente.dao.Perfil</class>
     <class>com.mj.cliente.dao.Descarga</class>
     <class>com.mj.cliente.dao.Juego</class>
-    <class>com.mj.cliente.dao.Genero</class>
-    <class>com.mj.cliente.dao.PgStatStatements</class>
     <class>com.mj.cliente.dao.Usuario</class>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:postgresql://surus.db.elephantsql.com:5432/qblzuhfb"/>
       <property name="javax.persistence.jdbc.user" value="qblzuhfb"/>
       <property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver"/>
       <property name="javax.persistence.jdbc.password" value="3dnZVMLTcNViSKBfgkYqbsFbBltDks_-"/>
+      <!-- Dialecto hibernate para postgresql con el que trasnforma la HQL o JPQL query a una query SQL para la BD. -->
+      <property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQLDialect"/>
+      <!-- Para ver que consultas se ejecutan-->
+      <property name="hibernate.show_sql" value="true"/>
     </properties>
   </persistence-unit>
 </persistence>

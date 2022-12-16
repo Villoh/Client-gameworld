@@ -16,7 +16,7 @@ import javax.persistence.PersistenceException;
  */
 public class Conexion {
 
-    String unitname = "com.mj_Cliente_jar_1.0-SNAPSHOTPU";
+    String unitname = "com.mj.cliente_Cliente_jar_1.0-SNAPSHOTPU";
 
     public Conexion() {
 

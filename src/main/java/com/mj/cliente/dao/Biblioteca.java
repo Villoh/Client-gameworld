@@ -7,35 +7,53 @@ package com.mj.cliente.dao;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
+import javax.persistence.Basic;
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author M3J2
+ * @author COLLS
  */
-@javax.persistence.Entity
-@javax.persistence.Table(name = "biblioteca", catalog = "qblzuhfb", schema = "public")
-@javax.persistence.NamedQueries({
-    @javax.persistence.NamedQuery(name = "Biblioteca.findAll", query = "SELECT b FROM Biblioteca b"),
-    @javax.persistence.NamedQuery(name = "Biblioteca.findByPkbiblioteca", query = "SELECT b FROM Biblioteca b WHERE b.pkbiblioteca = :pkbiblioteca"),
-    @javax.persistence.NamedQuery(name = "Biblioteca.findByFecha", query = "SELECT b FROM Biblioteca b WHERE b.fecha = :fecha")})
+@Entity
+@Table(name = "biblioteca", catalog = "qblzuhfb", schema = "public")
+@XmlRootElement
+@NamedQueries({
+    @NamedQuery(name = "Biblioteca.findAll", query = "SELECT b FROM Biblioteca b"),
+    @NamedQuery(name = "Biblioteca.findByPkbiblioteca", query = "SELECT b FROM Biblioteca b WHERE b.pkbiblioteca = :pkbiblioteca"),
+    @NamedQuery(name = "Biblioteca.findByFecha", query = "SELECT b FROM Biblioteca b WHERE b.fecha = :fecha")})
 public class Biblioteca implements Serializable {
 
     private static final long serialVersionUID = 1L;
-    @javax.persistence.Id
-    @javax.persistence.GeneratedValue(strategy = javax.persistence.GenerationType.IDENTITY)
-    @javax.persistence.Basic(optional = false)
-    @javax.persistence.Column(name = "pkbiblioteca")
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Basic(optional = false)
+    @Column(name = "pkbiblioteca")
     private Integer pkbiblioteca;
-    @javax.persistence.Basic(optional = false)
-    @javax.persistence.Column(name = "fecha")
-    @javax.persistence.Temporal(javax.persistence.TemporalType.DATE)
+    @Basic(optional = false)
+    @Column(name = "fecha")
+    @Temporal(TemporalType.DATE)
     private Date fecha;
-    @javax.persistence.JoinColumn(name = "akusuario", referencedColumnName = "pkusuario")
-    @javax.persistence.ManyToOne(optional = false)
+    @JoinColumn(name = "akusuario", referencedColumnName = "pkusuario")
+    @ManyToOne(optional = false)
     private Usuario akusuario;
-    @javax.persistence.OneToMany(cascade = javax.persistence.CascadeType.ALL, mappedBy = "akbiblioteca")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "akbiblioteca")
     private List<Descarga> descargaList;
-    @javax.persistence.OneToMany(cascade = javax.persistence.CascadeType.ALL, mappedBy = "akbiblioteca")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "akbiblioteca")
     private List<Coleccion> coleccionList;
 
     public Biblioteca() {
@@ -74,6 +92,7 @@ public class Biblioteca implements Serializable {
         this.akusuario = akusuario;
     }
 
+    @XmlTransient
     public List<Descarga> getDescargaList() {
         return descargaList;
     }
@@ -82,6 +101,7 @@ public class Biblioteca implements Serializable {
         this.descargaList = descargaList;
     }
 
+    @XmlTransient
     public List<Coleccion> getColeccionList() {
         return coleccionList;
     }

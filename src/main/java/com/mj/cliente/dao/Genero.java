@@ -6,31 +6,43 @@ package com.mj.cliente.dao;
 
 import java.io.Serializable;
 import java.util.List;
+import javax.persistence.Basic;
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author M3J2
+ * @author COLLS
  */
-@javax.persistence.Entity
-@javax.persistence.Table(name = "genero", catalog = "qblzuhfb", schema = "public")
-@javax.persistence.NamedQueries({
-    @javax.persistence.NamedQuery(name = "Genero.findAll", query = "SELECT g FROM Genero g"),
-    @javax.persistence.NamedQuery(name = "Genero.findByPkgenero", query = "SELECT g FROM Genero g WHERE g.pkgenero = :pkgenero"),
-    @javax.persistence.NamedQuery(name = "Genero.findByNombre", query = "SELECT g FROM Genero g WHERE g.nombre = :nombre"),
-    @javax.persistence.NamedQuery(name = "Genero.findByDescripcion", query = "SELECT g FROM Genero g WHERE g.descripcion = :descripcion")})
+@Entity
+@Table(name = "genero", catalog = "qblzuhfb", schema = "public")
+@XmlRootElement
+@NamedQueries({
+    @NamedQuery(name = "Genero.findAll", query = "SELECT g FROM Genero g"),
+    @NamedQuery(name = "Genero.findByPkgenero", query = "SELECT g FROM Genero g WHERE g.pkgenero = :pkgenero"),
+    @NamedQuery(name = "Genero.findByNombre", query = "SELECT g FROM Genero g WHERE g.nombre = :nombre"),
+    @NamedQuery(name = "Genero.findByDescripcion", query = "SELECT g FROM Genero g WHERE g.descripcion = :descripcion")})
 public class Genero implements Serializable {
 
     private static final long serialVersionUID = 1L;
-    @javax.persistence.Id
-    @javax.persistence.Basic(optional = false)
-    @javax.persistence.Column(name = "pkgenero")
+    @Id
+    @Basic(optional = false)
+    @Column(name = "pkgenero")
     private String pkgenero;
-    @javax.persistence.Basic(optional = false)
-    @javax.persistence.Column(name = "nombre")
+    @Basic(optional = false)
+    @Column(name = "nombre")
     private String nombre;
-    @javax.persistence.Column(name = "descripcion")
+    @Column(name = "descripcion")
     private String descripcion;
-    @javax.persistence.OneToMany(cascade = javax.persistence.CascadeType.ALL, mappedBy = "akgenero")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "akgenero")
     private List<Juego> juegoList;
 
     public Genero() {
@@ -69,6 +81,7 @@ public class Genero implements Serializable {
         this.descripcion = descripcion;
     }
 
+    @XmlTransient
     public List<Juego> getJuegoList() {
         return juegoList;
     }

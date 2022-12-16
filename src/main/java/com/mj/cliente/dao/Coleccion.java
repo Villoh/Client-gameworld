@@ -5,33 +5,46 @@
 package com.mj.cliente.dao;
 
 import java.io.Serializable;
+import javax.persistence.Basic;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
+import javax.persistence.Table;
+import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
- * @author M3J2
+ * @author COLLS
  */
-@javax.persistence.Entity
-@javax.persistence.Table(name = "coleccion", catalog = "qblzuhfb", schema = "public")
-@javax.persistence.NamedQueries({
-    @javax.persistence.NamedQuery(name = "Coleccion.findAll", query = "SELECT c FROM Coleccion c"),
-    @javax.persistence.NamedQuery(name = "Coleccion.findByPkcoleccion", query = "SELECT c FROM Coleccion c WHERE c.pkcoleccion = :pkcoleccion"),
-    @javax.persistence.NamedQuery(name = "Coleccion.findByNombre", query = "SELECT c FROM Coleccion c WHERE c.nombre = :nombre"),
-    @javax.persistence.NamedQuery(name = "Coleccion.findByDescripcion", query = "SELECT c FROM Coleccion c WHERE c.descripcion = :descripcion")})
+@Entity
+@Table(name = "coleccion", catalog = "qblzuhfb", schema = "public")
+@XmlRootElement
+@NamedQueries({
+    @NamedQuery(name = "Coleccion.findAll", query = "SELECT c FROM Coleccion c"),
+    @NamedQuery(name = "Coleccion.findByPkcoleccion", query = "SELECT c FROM Coleccion c WHERE c.pkcoleccion = :pkcoleccion"),
+    @NamedQuery(name = "Coleccion.findByNombre", query = "SELECT c FROM Coleccion c WHERE c.nombre = :nombre"),
+    @NamedQuery(name = "Coleccion.findByDescripcion", query = "SELECT c FROM Coleccion c WHERE c.descripcion = :descripcion")})
 public class Coleccion implements Serializable {
 
     private static final long serialVersionUID = 1L;
-    @javax.persistence.Id
-    @javax.persistence.GeneratedValue(strategy = javax.persistence.GenerationType.IDENTITY)
-    @javax.persistence.Basic(optional = false)
-    @javax.persistence.Column(name = "pkcoleccion")
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Basic(optional = false)
+    @Column(name = "pkcoleccion")
     private Integer pkcoleccion;
-    @javax.persistence.Basic(optional = false)
-    @javax.persistence.Column(name = "nombre")
+    @Basic(optional = false)
+    @Column(name = "nombre")
     private String nombre;
-    @javax.persistence.Column(name = "descripcion")
+    @Column(name = "descripcion")
     private String descripcion;
-    @javax.persistence.JoinColumn(name = "akbiblioteca", referencedColumnName = "pkbiblioteca")
-    @javax.persistence.ManyToOne(optional = false)
+    @JoinColumn(name = "akbiblioteca", referencedColumnName = "pkbiblioteca")
+    @ManyToOne(optional = false)
     private Biblioteca akbiblioteca;
 
     public Coleccion() {

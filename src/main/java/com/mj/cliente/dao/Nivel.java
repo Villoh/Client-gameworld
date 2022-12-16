@@ -6,28 +6,40 @@ package com.mj.cliente.dao;
 
 import java.io.Serializable;
 import java.util.List;
+import javax.persistence.Basic;
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author M3J2
+ * @author COLLS
  */
-@javax.persistence.Entity
-@javax.persistence.Table(name = "nivel", catalog = "qblzuhfb", schema = "public")
-@javax.persistence.NamedQueries({
-    @javax.persistence.NamedQuery(name = "Nivel.findAll", query = "SELECT n FROM Nivel n"),
-    @javax.persistence.NamedQuery(name = "Nivel.findByPknivel", query = "SELECT n FROM Nivel n WHERE n.pknivel = :pknivel"),
-    @javax.persistence.NamedQuery(name = "Nivel.findByNombre", query = "SELECT n FROM Nivel n WHERE n.nombre = :nombre")})
+@Entity
+@Table(name = "nivel", catalog = "qblzuhfb", schema = "public")
+@XmlRootElement
+@NamedQueries({
+    @NamedQuery(name = "Nivel.findAll", query = "SELECT n FROM Nivel n"),
+    @NamedQuery(name = "Nivel.findByPknivel", query = "SELECT n FROM Nivel n WHERE n.pknivel = :pknivel"),
+    @NamedQuery(name = "Nivel.findByNombre", query = "SELECT n FROM Nivel n WHERE n.nombre = :nombre")})
 public class Nivel implements Serializable {
 
     private static final long serialVersionUID = 1L;
-    @javax.persistence.Id
-    @javax.persistence.Basic(optional = false)
-    @javax.persistence.Column(name = "pknivel")
+    @Id
+    @Basic(optional = false)
+    @Column(name = "pknivel")
     private String pknivel;
-    @javax.persistence.Basic(optional = false)
-    @javax.persistence.Column(name = "nombre")
+    @Basic(optional = false)
+    @Column(name = "nombre")
     private int nombre;
-    @javax.persistence.OneToMany(cascade = javax.persistence.CascadeType.ALL, mappedBy = "aknivel")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "aknivel")
     private List<Juego> juegoList;
 
     public Nivel() {
@@ -58,6 +70,7 @@ public class Nivel implements Serializable {
         this.nombre = nombre;
     }
 
+    @XmlTransient
     public List<Juego> getJuegoList() {
         return juegoList;
     }
