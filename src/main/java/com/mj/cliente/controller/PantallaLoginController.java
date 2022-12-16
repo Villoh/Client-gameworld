@@ -58,22 +58,6 @@ public class PantallaLoginController implements Initializable {
 
     @FXML
     private void userLogin(ActionEvent event) throws IOException {
-//        App.setRoot("PantallaStore");
-<<<<<<< HEAD
-        //Buscamos el usuario con ese login y pass
-//        Usuario correcto=UsuarioCRUD.verUsuario(loginID.getText(), passwordID.getText());
-//        System.out.println("asd");
-//        if(correcto!=null) {
-//            App.setRoot("PantallaStore");
-//        }else{
-//            loginID.clear();
-//            passwordID.clear();
-//            System.out.println("Incorrecto");
-//        }
-        System.out.println("hola");
-        App.setRoot("PantallaStore");
-        Consulta.listaClientes();
-=======
 //        Buscamos el usuario con ese login y pass
         Usuario correcto=UsuarioCRUD.verUsuario(loginID.getText(), passwordID.getText());
         System.out.println("Perfecto");
@@ -90,7 +74,6 @@ public class PantallaLoginController implements Initializable {
 //        System.out.println("hola");
 //        App.setRoot("PantallaStore");
 //        Consulta.listaClientes();
->>>>>>> 0481ad552b1d05809e1dd54c6b23c0f119456b48
     }
 
     @FXML

@@ -5,14 +5,11 @@
 package com.mj.cliente.controller;
 
 import com.mj.cliente.App;
-<<<<<<< HEAD
 import com.mj.cliente.crud.PerfilCRUD2;
 import com.mj.cliente.crud.UsuarioCRUD2;
-=======
 import com.mj.cliente.OtrasOperacionesBD.OperacionesEspecificas;
 import com.mj.cliente.crud.UsuarioCRUD;
 import com.mj.cliente.dao.Biblioteca;
->>>>>>> 0481ad552b1d05809e1dd54c6b23c0f119456b48
 import com.mj.cliente.dao.Perfil;
 import com.mj.cliente.dao.Usuario;
 import java.io.File;
@@ -106,26 +103,6 @@ public class PantallaCrearUsuarioController implements Initializable {
    
             //Comprobamos que las contraseñas sean iguales
             if (pass.getText().equals(confirmarpass.getText())) {
-
-<<<<<<< HEAD
-        //Si todo es correcto guardamos la info en la base de datos y volvemos al Login donde inciara sesion
-        Perfil perfil = new Perfil();
-        perfil = PerfilCRUD2.readPerfil(1);
-
-        Usuario usuario = new Usuario();
-        UsuarioCRUD2 uCrud=new UsuarioCRUD2();
-        usuario.setNombre(nombre.getText());
-        usuario.setApellidos(apellidos.getText());
-        usuario.setAlias(alias.getText());
-        usuario.setPassword(pass.getText());
-        usuario.setFechanace(java.sql.Date.valueOf(fechanac.getValue()));
-        usuario.setEmail(email.getText());
-        usuario.setAkperfil(perfil);
-        usuario.setAvatar("");
-        uCrud.createUsuario(usuario);
-        
-    }
-=======
                 //Creamos un usuario nuevo
                 Usuario usuario = new Usuario();
                 usuario.setAlias(alias.getText());
@@ -156,8 +133,6 @@ public class PantallaCrearUsuarioController implements Initializable {
                 System.out.println("Usuario Creado correctamente");
                 
                 App.setRoot("PantallaLogin");
->>>>>>> 0481ad552b1d05809e1dd54c6b23c0f119456b48
-
             } else {
                 //Limpiamos sin son diferentes
                 pass.clear();
