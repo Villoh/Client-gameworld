@@ -5,6 +5,11 @@
 package com.mj.cliente.controller;
 
 import com.mj.cliente.App;
+import com.mj.cliente.OtrasOperacionesBD.OperacionesEspecificas;
+import com.mj.cliente.crud.UsuarioCRUD;
+import com.mj.cliente.dao.Biblioteca;
+import com.mj.cliente.dao.Perfil;
+import com.mj.cliente.dao.Usuario;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -23,6 +28,11 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
+import org.apache.commons.io.FilenameUtils;
+import org.apache.commons.io.output.ByteArrayOutputStream;
+import java.awt.image.BufferedImage;
+import javax.imageio.ImageIO;
+
 //import javax.swing.JOptionPane;
 
 /**
@@ -62,7 +72,7 @@ public class PantallaCrearUsuarioController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        rol.getItems().addAll("Jugador", "Creador", "Admin");
+        rol.getItems().addAll("Desarrollador", "Jugador", "Invitado");
     }
 
     /**
@@ -87,14 +97,54 @@ public class PantallaCrearUsuarioController implements Initializable {
     }
 
     @FXML
-    private void crearCuenta(ActionEvent event) {
-        //Hacemos las comprobaciones necesarias para crear la cuenta
+    private void crearCuenta(ActionEvent event) throws IOException {
+   
+            //Comprobamos que las contraseñas sean iguales
+            if (pass.getText().equals(confirmarpass.getText())) {
 
-        //Si todo es correcto guardamos la info en la base de datos y volvemos al Login donde inciara sesion
+                //Creamos un usuario nuevo
+                Usuario usuario = new Usuario();
+                usuario.setAlias(alias.getText());
+                usuario.setPassword(pass.getText());
+                usuario.setNombre(nombre.getText());
+                usuario.setApellidos(apellidos.getText());
+                usuario.setFechanace(java.sql.Date.valueOf(fechanac.getValue()));
+                usuario.setAvatar(null);
+                usuario.setEmail(email.getText());
+                Perfil perfil = new Perfil();
+                perfil.setRol(rol.getValue().toString());
+                String rol = perfil.getRol();
+                int pkperfil =0;
+                if(rol.equalsIgnoreCase("Desarrollador")){
+                    pkperfil =1;
+                }
+                if(rol.equalsIgnoreCase("Jugador")){
+                    pkperfil =2;
+                } 
+                if(rol.equalsIgnoreCase("Invitado")){
+                    pkperfil =3;
+                }
+                perfil.setPkperfil(pkperfil);
+                
+
+                //Insertamos el usuario
+                UsuarioCRUD.nuevoUsuario(usuario,perfil);
+                System.out.println("Usuario Creado correctamente");
+                
+                App.setRoot("PantallaLogin");
+
+            } else {
+                //Limpiamos sin son diferentes
+                pass.clear();
+                confirmarpass.clear();
+                System.out.println("No coincide la contraseña");
+            }
+        
     }
-
     @FXML
     private void volverLogin(ActionEvent event) throws IOException {
         App.setRoot("PantallaLogin");
     }
 }
+
+   

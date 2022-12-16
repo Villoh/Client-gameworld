@@ -20,10 +20,10 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author COLLS
+ * @author dam107
  */
 @Entity
-@Table(name = "pegi", catalog = "qblzuhfb", schema = "public")
+@Table(name = "pegi", catalog = "gameworld", schema = "public")
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Pegi.findAll", query = "SELECT p FROM Pegi p"),

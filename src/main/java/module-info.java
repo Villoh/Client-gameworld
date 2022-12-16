@@ -7,6 +7,9 @@ module com.mj.cliente {
     requires javafx.base;
     requires javafx.graphics;
     requires java.sql;
+    requires java.desktop;
+    requires org.apache.commons.io;
+    
 
     opens com.mj.cliente to javafx.fxml;
     exports com.mj.cliente;

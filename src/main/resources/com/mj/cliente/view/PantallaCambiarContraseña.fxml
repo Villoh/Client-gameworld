@@ -25,10 +25,10 @@
    <right>
       <AnchorPane prefHeight="200.0" prefWidth="350.0" BorderPane.alignment="CENTER">
          <children>
-            <TextField fx:id="loginID3" focusTraversable="false" layoutX="100.0" layoutY="200.0" prefHeight="27.0" prefWidth="170.0" promptText="Nueva Contraseña" style="-fx-background-color: transpent; -fx-border-color: #961e30; -fx-border-width: 0px 0px 2px 0px;" />
-            <TextField fx:id="loginID" focusTraversable="false" layoutX="100.0" layoutY="132.0" prefHeight="27.0" prefWidth="170.0" promptText="Email" style="-fx-background-color: transpent; -fx-border-color: #961e30; -fx-border-width: 0px 0px 2px 0px;" />
-            <TextField fx:id="loginID1" focusTraversable="false" layoutX="100.0" layoutY="88.0" prefHeight="27.0" prefWidth="170.0" promptText="Alias" style="-fx-background-color: transpent; -fx-border-color: #961e30; -fx-border-width: 0px 0px 2px 0px;" />
-            <TextField fx:id="loginID4" focusTraversable="false" layoutX="100.0" layoutY="249.0" prefHeight="27.0" prefWidth="170.0" promptText="Repetir Nueva Contraseña" style="-fx-background-color: transpent; -fx-border-color: #961e30; -fx-border-width: 0px 0px 2px 0px;" />
+            <TextField fx:id="pass" focusTraversable="false" layoutX="100.0" layoutY="200.0" prefHeight="27.0" prefWidth="170.0" promptText="Nueva Contraseña" style="-fx-background-color: transpent; -fx-border-color: #961e30; -fx-border-width: 0px 0px 2px 0px;" />
+            <TextField fx:id="email" focusTraversable="false" layoutX="100.0" layoutY="132.0" prefHeight="27.0" prefWidth="170.0" promptText="Email" style="-fx-background-color: transpent; -fx-border-color: #961e30; -fx-border-width: 0px 0px 2px 0px;" />
+            <TextField fx:id="alias" focusTraversable="false" layoutX="100.0" layoutY="88.0" prefHeight="27.0" prefWidth="170.0" promptText="Alias" style="-fx-background-color: transpent; -fx-border-color: #961e30; -fx-border-width: 0px 0px 2px 0px;" />
+            <TextField fx:id="repepass" focusTraversable="false" layoutX="100.0" layoutY="249.0" prefHeight="27.0" prefWidth="170.0" promptText="Repetir Nueva Contraseña" style="-fx-background-color: transpent; -fx-border-color: #961e30; -fx-border-width: 0px 0px 2px 0px;" />
             <Button fx:id="login" layoutX="100.0" layoutY="309.0" mnemonicParsing="false" onAction="#cambiarContraseña" prefHeight="30.0" prefWidth="170.0" style="-fx-background-color: #961e30;" text="Cambiar Contraseña" textFill="WHITE">
                <font>
                   <Font size="14.0" />
