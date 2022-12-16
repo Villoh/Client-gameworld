@@ -5,22 +5,21 @@
 package com.mj.cliente.controller;
 
 import com.mj.cliente.App;
+import com.mj.cliente.dao.Juego;
 import java.io.IOException;
 import java.net.URL;
+import java.util.List;
 import java.util.ResourceBundle;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.geometry.Insets;
-import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.VBox;
 
 /**
  * FXML Controller class
@@ -45,9 +44,13 @@ public class PantallaStoreController implements Initializable {
     private Button btn_perfil;
     @FXML
     private GridPane gridPane;
-
+    
+    //ObservableList<Juego> listaJuegos  =(ObservableList<Juego>)PantallaLoginController.lista;
+    
     /**
      * Initializes the controller class.
+     * @param url
+     * @param rb
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -99,6 +102,19 @@ public class PantallaStoreController implements Initializable {
     @FXML
     private void cerrarSesion(ActionEvent event) throws IOException {
         App.setRoot("PantallaLogin");
+    }
+    
+    @FXML
+    private void descargar(ActionEvent event) throws IOException {
+//        List<Juego> juego =PantallaLoginController.lista;
+//        String titulo = "";
+//        Juego adescargar =null;
+//        for(Juego j: juego){
+//            if(titulo.equals(j.getTitulo())){
+//                adescargar =j;
+//            }
+//        }
+        
     }
 
 }

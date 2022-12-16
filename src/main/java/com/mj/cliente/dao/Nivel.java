@@ -20,10 +20,14 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
+<<<<<<< HEAD
  * @author dam204
+=======
+ * @author dam107
+>>>>>>> 0481ad552b1d05809e1dd54c6b23c0f119456b48
  */
 @Entity
-@Table(name = "nivel", catalog = "qblzuhfb", schema = "public")
+@Table(name = "nivel", catalog = "gameworld", schema = "public")
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Nivel.findAll", query = "SELECT n FROM Nivel n"),

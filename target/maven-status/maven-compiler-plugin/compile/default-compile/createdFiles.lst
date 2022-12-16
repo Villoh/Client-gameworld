@@ -1,14 +1,18 @@
 com\mj\cliente\dao\Pegi.class
 com\mj\cliente\dao\Coleccion.class
-com\mj\cliente\App2.class
 com\mj\cliente\dao\Perfil.class
 com\mj\cliente\controller\PantallaLoginController.class
+com\mj\cliente\crud\BibliotecaCRUD.class
+com\mj\cliente\crud\GeneroCRUD.class
 com\mj\cliente\controller\PantallaBibliotecaController$Cell.class
 com\mj\cliente\dao\Nivel.class
 module-info.class
 com\mj\cliente\controller\PantallaBibliotecaController.class
-com\mj\cliente\controller\PantallaCrearUsuarioController.class
+com\mj\cliente\crud\DescargasCRUD.class
+com\mj\cliente\crud\UsuarioCRUD.class
 com\mj\cliente\crud\Consulta.class
+com\mj\cliente\crud\JuegoCRUD.class
+com\mj\cliente\OtrasOperacionesBD\Transacciones.class
 com\mj\cliente\dao\Usuario.class
 com\mj\cliente\App.class
 com\mj\cliente\dao\Juego.class
@@ -18,4 +22,5 @@ com\mj\cliente\dao\Genero.class
 com\mj\cliente\dao\Biblioteca.class
 com\mj\cliente\controller\PantallaStoreController.class
 com\mj\cliente\controller\PantallaCambiarContraseñaController.class
+com\mj\cliente\OtrasOperacionesBD\OperacionesEspecificas.class
 com\mj\cliente\conexion\Conexion.class

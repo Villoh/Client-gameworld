@@ -5,6 +5,8 @@
 package com.mj.cliente.controller;
 
 import com.mj.cliente.App;
+import com.mj.cliente.OtrasOperacionesBD.OperacionesEspecificas;
+import com.mj.cliente.dao.Usuario;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -22,17 +24,17 @@ import javafx.scene.control.TextField;
 public class PantallaCambiarContraseñaController implements Initializable {
 
     @FXML
-    private TextField loginID3;
-    @FXML
-    private TextField loginID;
-    @FXML
-    private TextField loginID1;
-    @FXML
-    private TextField loginID4;
-    @FXML
     private Button login;
     @FXML
     private Button crearCuenta;
+    @FXML
+    private TextField pass;
+    @FXML
+    private TextField email;
+    @FXML
+    private TextField alias;
+    @FXML
+    private TextField repepass;
 
     /**
      * Initializes the controller class.
@@ -43,9 +45,19 @@ public class PantallaCambiarContraseñaController implements Initializable {
     }
 
     @FXML
-    private void cambiarContraseña(ActionEvent event) {
+    private void cambiarContraseña(ActionEvent event) throws IOException {
         //Comprobamos el alias y el email y cambiamos la contraseña
-
+        if(pass.getText().equals(repepass.getText())){
+            Boolean correcto =OperacionesEspecificas.cambiarContraseña(alias.getText(), email.getText(),pass.getText());
+            if(correcto){
+                App.setRoot("PantallaLogin");
+            }else{
+                System.out.println("No existe ese alias con ese email");
+            }
+        }else{
+            System.out.println("Las contraseñas no coinciden");
+        }
+        
     }
 
     @FXML

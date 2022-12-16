@@ -8,9 +8,13 @@ import com.mj.cliente.App;
 
 import com.mj.cliente.conexion.Conexion;
 import com.mj.cliente.crud.Consulta;
+import com.mj.cliente.crud.JuegoCRUD;
+import com.mj.cliente.crud.UsuarioCRUD;
+import com.mj.cliente.dao.Juego;
 import com.mj.cliente.dao.Usuario;
 import java.io.IOException;
 import java.net.URL;
+import java.util.List;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -41,7 +45,9 @@ public class PantallaLoginController implements Initializable {
     private Button recuperarPass;
     @FXML
     private Button login;
-
+    public static List<Juego> lista;
+    
+    
     /**
      * Initializes the controller class.
      */
@@ -53,6 +59,7 @@ public class PantallaLoginController implements Initializable {
     @FXML
     private void userLogin(ActionEvent event) throws IOException {
 //        App.setRoot("PantallaStore");
+<<<<<<< HEAD
         //Buscamos el usuario con ese login y pass
 //        Usuario correcto=UsuarioCRUD.verUsuario(loginID.getText(), passwordID.getText());
 //        System.out.println("asd");
@@ -66,6 +73,24 @@ public class PantallaLoginController implements Initializable {
         System.out.println("hola");
         App.setRoot("PantallaStore");
         Consulta.listaClientes();
+=======
+//        Buscamos el usuario con ese login y pass
+        Usuario correcto=UsuarioCRUD.verUsuario(loginID.getText(), passwordID.getText());
+        System.out.println("Perfecto");
+        if(correcto!=null) {
+            lista = JuegoCRUD.verListaJuegos();
+            App.setRoot("PantallaStore");
+            
+            //llamar carga lista
+        }else{
+            loginID.clear();
+            passwordID.clear();
+            System.out.println("Incorrecto");
+        }
+//        System.out.println("hola");
+//        App.setRoot("PantallaStore");
+//        Consulta.listaClientes();
+>>>>>>> 0481ad552b1d05809e1dd54c6b23c0f119456b48
     }
 
     @FXML
