@@ -5,7 +5,7 @@
 package com.mj.cliente.dao;
 
 import java.io.Serializable;
-import java.util.List;
+import java.util.Collection;
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -20,7 +20,7 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author COLLS
+ * @author dam204
  */
 @Entity
 @Table(name = "nivel", catalog = "qblzuhfb", schema = "public")
@@ -40,7 +40,7 @@ public class Nivel implements Serializable {
     @Column(name = "nombre")
     private int nombre;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "aknivel")
-    private List<Juego> juegoList;
+    private Collection<Juego> juegoCollection;
 
     public Nivel() {
     }
@@ -71,12 +71,12 @@ public class Nivel implements Serializable {
     }
 
     @XmlTransient
-    public List<Juego> getJuegoList() {
-        return juegoList;
+    public Collection<Juego> getJuegoCollection() {
+        return juegoCollection;
     }
 
-    public void setJuegoList(List<Juego> juegoList) {
-        this.juegoList = juegoList;
+    public void setJuegoCollection(Collection<Juego> juegoCollection) {
+        this.juegoCollection = juegoCollection;
     }
 
     @Override

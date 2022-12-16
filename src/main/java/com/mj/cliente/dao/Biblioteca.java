@@ -5,8 +5,8 @@
 package com.mj.cliente.dao;
 
 import java.io.Serializable;
+import java.util.Collection;
 import java.util.Date;
-import java.util.List;
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -27,7 +27,7 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author COLLS
+ * @author dam204
  */
 @Entity
 @Table(name = "biblioteca", catalog = "qblzuhfb", schema = "public")
@@ -52,9 +52,9 @@ public class Biblioteca implements Serializable {
     @ManyToOne(optional = false)
     private Usuario akusuario;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "akbiblioteca")
-    private List<Descarga> descargaList;
+    private Collection<Descarga> descargaCollection;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "akbiblioteca")
-    private List<Coleccion> coleccionList;
+    private Collection<Coleccion> coleccionCollection;
 
     public Biblioteca() {
     }
@@ -93,21 +93,21 @@ public class Biblioteca implements Serializable {
     }
 
     @XmlTransient
-    public List<Descarga> getDescargaList() {
-        return descargaList;
+    public Collection<Descarga> getDescargaCollection() {
+        return descargaCollection;
     }
 
-    public void setDescargaList(List<Descarga> descargaList) {
-        this.descargaList = descargaList;
+    public void setDescargaCollection(Collection<Descarga> descargaCollection) {
+        this.descargaCollection = descargaCollection;
     }
 
     @XmlTransient
-    public List<Coleccion> getColeccionList() {
-        return coleccionList;
+    public Collection<Coleccion> getColeccionCollection() {
+        return coleccionCollection;
     }
 
-    public void setColeccionList(List<Coleccion> coleccionList) {
-        this.coleccionList = coleccionList;
+    public void setColeccionCollection(Collection<Coleccion> coleccionCollection) {
+        this.coleccionCollection = coleccionCollection;
     }
 
     @Override

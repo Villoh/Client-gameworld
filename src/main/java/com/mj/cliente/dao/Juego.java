@@ -5,8 +5,8 @@
 package com.mj.cliente.dao;
 
 import java.io.Serializable;
+import java.util.Collection;
 import java.util.Date;
-import java.util.List;
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -27,7 +27,7 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author COLLS
+ * @author dam204
  */
 @Entity
 @Table(name = "juego", catalog = "qblzuhfb", schema = "public")
@@ -68,7 +68,7 @@ public class Juego implements Serializable {
     @Column(name = "numdescargas")
     private int numdescargas;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "akjuego")
-    private List<Descarga> descargaList;
+    private Collection<Descarga> descargaCollection;
     @JoinColumn(name = "akgenero", referencedColumnName = "pkgenero")
     @ManyToOne(optional = false)
     private Genero akgenero;
@@ -154,12 +154,12 @@ public class Juego implements Serializable {
     }
 
     @XmlTransient
-    public List<Descarga> getDescargaList() {
-        return descargaList;
+    public Collection<Descarga> getDescargaCollection() {
+        return descargaCollection;
     }
 
-    public void setDescargaList(List<Descarga> descargaList) {
-        this.descargaList = descargaList;
+    public void setDescargaCollection(Collection<Descarga> descargaCollection) {
+        this.descargaCollection = descargaCollection;
     }
 
     public Genero getAkgenero() {

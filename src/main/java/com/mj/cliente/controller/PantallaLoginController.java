@@ -64,13 +64,14 @@ public class PantallaLoginController implements Initializable {
 //            System.out.println("Incorrecto");
 //        }
         System.out.println("hola");
-         App.setRoot("PantallaStore");
+        App.setRoot("PantallaStore");
         Consulta.listaClientes();
     }
 
     @FXML
     private void crearCuenta(ActionEvent event) throws IOException {
         App.setRoot("PantallaCrearUsuario");
+        
 
     }
 

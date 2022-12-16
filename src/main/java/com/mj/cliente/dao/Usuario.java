@@ -5,8 +5,8 @@
 package com.mj.cliente.dao;
 
 import java.io.Serializable;
+import java.util.Collection;
 import java.util.Date;
-import java.util.List;
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -15,7 +15,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
@@ -28,7 +27,7 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author COLLS
+ * @author dam204
  */
 @Entity
 @Table(name = "usuario", catalog = "qblzuhfb", schema = "public")
@@ -41,7 +40,8 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Usuario.findByNombre", query = "SELECT u FROM Usuario u WHERE u.nombre = :nombre"),
     @NamedQuery(name = "Usuario.findByApellidos", query = "SELECT u FROM Usuario u WHERE u.apellidos = :apellidos"),
     @NamedQuery(name = "Usuario.findByFechanace", query = "SELECT u FROM Usuario u WHERE u.fechanace = :fechanace"),
-    @NamedQuery(name = "Usuario.findByEmail", query = "SELECT u FROM Usuario u WHERE u.email = :email")})
+    @NamedQuery(name = "Usuario.findByEmail", query = "SELECT u FROM Usuario u WHERE u.email = :email"),
+    @NamedQuery(name = "Usuario.findByAvatar", query = "SELECT u FROM Usuario u WHERE u.avatar = :avatar")})
 public class Usuario implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -69,16 +69,15 @@ public class Usuario implements Serializable {
     @Basic(optional = false)
     @Column(name = "email")
     private String email;
-    @Lob
     @Column(name = "avatar")
-    private byte[] avatar;
+    private String avatar;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "akusuario")
-    private List<Biblioteca> bibliotecaList;
+    private Collection<Biblioteca> bibliotecaCollection;
     @JoinColumn(name = "akperfil", referencedColumnName = "pkperfil")
     @ManyToOne(optional = false)
     private Perfil akperfil;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "akcreador")
-    private List<Juego> juegoList;
+    private Collection<Juego> juegoCollection;
 
     public Usuario() {
     }
@@ -153,21 +152,21 @@ public class Usuario implements Serializable {
         this.email = email;
     }
 
-    public byte[] getAvatar() {
+    public String getAvatar() {
         return avatar;
     }
 
-    public void setAvatar(byte[] avatar) {
+    public void setAvatar(String avatar) {
         this.avatar = avatar;
     }
 
     @XmlTransient
-    public List<Biblioteca> getBibliotecaList() {
-        return bibliotecaList;
+    public Collection<Biblioteca> getBibliotecaCollection() {
+        return bibliotecaCollection;
     }
 
-    public void setBibliotecaList(List<Biblioteca> bibliotecaList) {
-        this.bibliotecaList = bibliotecaList;
+    public void setBibliotecaCollection(Collection<Biblioteca> bibliotecaCollection) {
+        this.bibliotecaCollection = bibliotecaCollection;
     }
 
     public Perfil getAkperfil() {
@@ -179,12 +178,12 @@ public class Usuario implements Serializable {
     }
 
     @XmlTransient
-    public List<Juego> getJuegoList() {
-        return juegoList;
+    public Collection<Juego> getJuegoCollection() {
+        return juegoCollection;
     }
 
-    public void setJuegoList(List<Juego> juegoList) {
-        this.juegoList = juegoList;
+    public void setJuegoCollection(Collection<Juego> juegoCollection) {
+        this.juegoCollection = juegoCollection;
     }
 
     @Override
