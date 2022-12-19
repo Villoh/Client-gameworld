@@ -18,7 +18,7 @@ public class OperacionesEspecificas {
      */
     
     public static boolean comprobarAlias(String alias){
-        Boolean disponible = false;
+        Boolean disponible = true;
         Conexion con = new Conexion();
         EntityManager em = con.conecta();
         Usuario usuario = null;
@@ -26,11 +26,38 @@ public class OperacionesEspecificas {
             Query query = em.createQuery("SELECT u FROM Usuario u WHERE u.alias =:alias");
             query.setParameter("alias",alias);
             usuario = (Usuario) query.getSingleResult();
-            if(!usuario.getAlias().equals(alias)){
+            if(usuario.getAlias().equals(alias)){
+                System.out.println(usuario.getAlias().toString());
                 //El alias no existe
-                disponible = true;
+                disponible = false;
             }else{
-                disponible= false;
+                disponible= true;
+            }
+        } catch (NoResultException | IllegalArgumentException ex) {
+            System.err.println("Excepciones en metodo comprobarAlias" + ex.getLocalizedMessage());
+        }
+        con.desconecta(em);
+        return disponible;
+    }
+    /**
+     * 
+     * @param alias
+     * @return 
+     */
+       public static boolean comprobarEmail(String email){
+        Boolean disponible = true;
+        Conexion con = new Conexion();
+        EntityManager em = con.conecta();
+        Usuario usuario = null;
+        try {
+            Query query = em.createQuery("SELECT u FROM Usuario u WHERE u.email =:email");
+            query.setParameter("email",email);
+            usuario = (Usuario) query.getSingleResult();
+            if(usuario.getEmail().equals(email)){
+                //El email no esta disponible
+                disponible = false;
+            }else{
+                disponible= true;
             }
         } catch (NoResultException | IllegalArgumentException ex) {
             System.err.println("Excepciones en metodo comprobarAlias" + ex.getLocalizedMessage());

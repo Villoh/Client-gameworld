@@ -9,23 +9,12 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mj.cliente.controller.PantallaLoginController">
-   <left>
-      <AnchorPane prefHeight="400.0" prefWidth="250.0" style="-fx-background-color: #961e30;" BorderPane.alignment="CENTER">
-         <children>
-            <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="50.0" layoutY="125.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../images/Logo%20M3J2%20-%20Transparente%20-%202.png" />
-               </image>
-            </ImageView>
-         </children>
-      </AnchorPane>
-   </left>
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="350.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mj.cliente.controller.PantallaLoginController">
    <center>
-      <AnchorPane prefHeight="400.0" prefWidth="300.0" style="-fx-background-color: white;" BorderPane.alignment="CENTER">
+      <AnchorPane prefHeight="400.0" prefWidth="319.0" style="-fx-background-color: white;" BorderPane.alignment="CENTER">
          <children>
-            <TextField fx:id="loginID" focusTraversable="false" layoutX="100.0" layoutY="150.0" prefHeight="27.0" prefWidth="170.0" promptText="Alias" style="-fx-background-color: transpent; -fx-border-color: #961e30; -fx-border-width: 0px 0px 2px 0px;" />
-            <PasswordField fx:id="passwordID" focusTraversable="false" layoutX="100.0" layoutY="200.0" prefHeight="27.0" prefWidth="170.0" promptText="Password" style="-fx-background-color: transparent; -fx-border-color: #961e30; -fx-border-width: 0px 0px 2px 0px;" />
+            <TextField fx:id="loginID" focusTraversable="false" layoutX="100.0" layoutY="150.0" prefHeight="27.0" prefWidth="170.0" promptText="Alias" style="-fx-background-color: transpent; -fx-border-color: #000000; -fx-border-width: 0px 0px 2px 0px;" />
+            <PasswordField fx:id="passwordID" focusTraversable="false" layoutX="100.0" layoutY="200.0" prefHeight="27.0" prefWidth="170.0" promptText="Contraseña" style="-fx-background-color: transparent; -fx-border-color: #000000; -fx-border-width: 0px 0px 2px 0px;" />
             <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="40.0" layoutY="150.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../images/persona.png" />
@@ -36,7 +25,7 @@
                   <Image url="@../images/alfiler.png" />
                </image>
             </ImageView>
-            <Button fx:id="login" layoutX="140.0" layoutY="264.0" mnemonicParsing="false" onAction="#userLogin" prefHeight="30.0" prefWidth="75.0" style="-fx-background-color: #961e30;" text="Login" textFill="WHITE">
+            <Button fx:id="login" layoutX="139.0" layoutY="259.0" mnemonicParsing="false" onAction="#userLogin" prefHeight="30.0" prefWidth="75.0" style="-fx-background-color: #000000;" text="Entrar" textFill="WHITE">
                <font>
                   <Font size="14.0" />
                </font>
@@ -46,12 +35,29 @@
                   <Font name="System Bold" size="12.0" />
                </font>
             </Button>
-            <Button fx:id="recuperarPass" layoutX="14.0" layoutY="360.0" mnemonicParsing="false" onAction="#recuperarPass" prefHeight="27.0" prefWidth="146.0" style="-fx-background-color: transparent; -fx-border-color: transparent;" text="Recuperar contraseña" textFill="#009fff">
+            <Button fx:id="recuperarPass" layoutX="14.0" layoutY="360.0" mnemonicParsing="false" onAction="#recuperarPass" prefHeight="27.0" prefWidth="146.0" style="-fx-background-color: transparent; -fx-border-color: transparent;" text="Olvide mi contraseña" textFill="#009fff">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font>
             </Button>
+            <ImageView fitHeight="250.0" fitWidth="250.0" layoutX="52.0" layoutY="-23.0">
+               <image>
+                  <Image url="@../images/Logo%20Texto%20Abajo.png" />
+               </image>
+            </ImageView>
          </children>
       </AnchorPane>
    </center>
+   <top>
+      <AnchorPane prefHeight="5.0" prefWidth="200.0" style="-fx-background-color: #000000;" BorderPane.alignment="CENTER" />
+   </top>
+   <left>
+      <AnchorPane prefHeight="10.0" prefWidth="5.0" style="-fx-background-color: #000000;" BorderPane.alignment="CENTER" />
+   </left>
+   <right>
+      <AnchorPane prefHeight="10.0" prefWidth="5.0" style="-fx-background-color: #000000;" BorderPane.alignment="CENTER" />
+   </right>
+   <bottom>
+      <AnchorPane prefHeight="5.0" prefWidth="200.0" style="-fx-background-color: #000000;" BorderPane.alignment="CENTER" />
+   </bottom>
 </BorderPane>

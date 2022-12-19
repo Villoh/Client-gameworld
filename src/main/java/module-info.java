@@ -9,6 +9,7 @@ module com.mj.cliente {
     requires java.sql;
     requires java.desktop;
     requires org.apache.commons.io;
+    requires java.base;
     
 
     opens com.mj.cliente to javafx.fxml;

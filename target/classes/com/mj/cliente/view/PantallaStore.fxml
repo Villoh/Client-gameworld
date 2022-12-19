@@ -1,85 +1,117 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="480.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mj.cliente.controller.PantallaStoreController">
+<AnchorPane id="AnchorPane" prefHeight="537.0" prefWidth="899.0" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mj.cliente.controller.PantallaStoreController">
    <children>
-      <AnchorPane prefHeight="480.0" prefWidth="80.0" style="-fx-background-color: #961e30;">
-         <children>
-            <ImageView fitHeight="81.0" fitWidth="81.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../images/LogoApp.png" />
-               </image>
-            </ImageView>
-            <Button fx:id="btn_Tienda" layoutX="20.0" layoutY="100.0" mnemonicParsing="false" onAction="#abrirTienda" prefHeight="33.0" prefWidth="31.0" style="-fx-background-color: #961e30;">
-               <graphic>
-                  <ImageView fx:id="btn_Store" fitHeight="33.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../images/store.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-            </Button>
-            <Button fx:id="btn_Biblioteca" layoutX="20.0" layoutY="175.0" mnemonicParsing="false" onAction="#abrirBiblioteca" prefHeight="33.0" prefWidth="31.0" style="-fx-background-color: #961e30;">
-               <graphic>
-                  <ImageView fx:id="btn_Library" fitHeight="33.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../images/library.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-            </Button>
-            <Button fx:id="btn_perfil" layoutX="20.0" layoutY="250.0" mnemonicParsing="false" onAction="#abrirPerfil" prefHeight="33.0" prefWidth="31.0" style="-fx-background-color: #961e30;">
-               <graphic>
-                  <ImageView fx:id="btn_UserProfile" fitHeight="33.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../images/profile-user.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-            </Button>
-            <Button fx:id="btn_Exit" layoutX="20.0" layoutY="325.0" mnemonicParsing="false" onAction="#cerrarSesion" prefHeight="33.0" prefWidth="31.0" style="-fx-background-color: #961e30;">
-               <graphic>
-                  <ImageView fitHeight="33.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../images/logout.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-            </Button>
-         </children>
-      </AnchorPane>
-      <AnchorPane layoutX="81.0" prefHeight="480.0" prefWidth="560.0" style="-fx-background-color: #54A9FA;">
-         <children>
-            <TextField focusTraversable="false" layoutX="178.0" layoutY="14.0" promptText="Search" style="-fx-background-color: transaparetn; -fx-border-color: #961e30; -fx-border-width: 0px 0px 2px 0px;" />
-            <ImageView fitHeight="20.0" fitWidth="19.0" layoutX="159.0" layoutY="18.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../images/search.png" />
-               </image>
-            </ImageView>
-            <ImageView fitHeight="38.0" fitWidth="81.0" layoutX="23.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../images/empresa.png" />
-               </image>
-            </ImageView>
-            <GridPane fx:id="gridPane" layoutX="6.0" layoutY="57.0" prefHeight="343.0" prefWidth="508.0">
-              <columnConstraints>
-                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-              </columnConstraints>
-              <rowConstraints>
-                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-              </rowConstraints>
-            </GridPane>
-         </children></AnchorPane>
-   </children>
+      <BorderPane prefHeight="537.0" prefWidth="937.0">
+         <top>
+            <AnchorPane prefHeight="5.0" prefWidth="200.0" style="-fx-background-color: #2A2A2A;" BorderPane.alignment="CENTER">
+               <children>
+                  <GridPane alignment="CENTER" prefHeight="68.0" prefWidth="937.0">
+                    <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                     <children>
+                        <Button fx:id="btn_perfil" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#abrirPerfil" prefHeight="25.0" prefWidth="188.0" style="-fx-background-color: #2A2A2A;" text="Cuenta" textFill="WHITE" GridPane.halignment="CENTER">
+                           <GridPane.margin>
+                              <Insets />
+                           </GridPane.margin>
+                           <font>
+                              <Font name="Corbel" size="20.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="btn_Biblioteca" mnemonicParsing="false" onAction="#abrirBiblioteca" prefHeight="25.0" prefWidth="188.0" style="-fx-background-color: #2A2A2A;" text="Biblioteca" textFill="WHITE" GridPane.columnIndex="1" GridPane.halignment="CENTER">
+                           <GridPane.margin>
+                              <Insets />
+                           </GridPane.margin>
+                           <font>
+                              <Font name="Corbel" size="20.0" />
+                           </font>
+                        </Button>
+                        <ImageView fitHeight="128.0" fitWidth="140.0" GridPane.columnIndex="2" GridPane.halignment="CENTER">
+                           <image>
+                              <Image url="@../images/Logo%20sin%20texto.png" />
+                           </image>
+                           <GridPane.margin>
+                              <Insets />
+                           </GridPane.margin>
+                        </ImageView>
+                        <Button fx:id="btn_Tienda" mnemonicParsing="false" onAction="#abrirTienda" prefHeight="25.0" prefWidth="187.0" style="-fx-background-color: #2A2A2A;" text="Tienda" textFill="WHITE" GridPane.columnIndex="3" GridPane.halignment="CENTER">
+                           <GridPane.margin>
+                              <Insets />
+                           </GridPane.margin>
+                           <font>
+                              <Font name="Corbel" size="20.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="btn_Exit" mnemonicParsing="false" onAction="#cerrarSesion" prefHeight="25.0" prefWidth="187.0" style="-fx-background-color: #2A2A2A;" text="Salir" textFill="WHITE" GridPane.columnIndex="4" GridPane.halignment="CENTER">
+                           <GridPane.margin>
+                              <Insets />
+                           </GridPane.margin>
+                           <font>
+                              <Font name="Corbel" size="20.0" />
+                           </font>
+                        </Button>
+                     </children>
+                  </GridPane>
+               </children>
+            </AnchorPane>
+         </top>
+         <left>
+            <AnchorPane prefHeight="200.0" prefWidth="5.0" style="-fx-background-color: #2A2A2A;" BorderPane.alignment="CENTER" />
+         </left>
+         <right>
+            <AnchorPane prefHeight="200.0" prefWidth="5.0" style="-fx-background-color: #2A2A2A;" BorderPane.alignment="CENTER" />
+         </right>
+         <bottom>
+            <AnchorPane prefHeight="5.0" prefWidth="200.0" style="-fx-background-color: #2A2A2A;" BorderPane.alignment="CENTER" />
+         </bottom>
+         <center>
+            <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+               <children>
+                  <ScrollPane prefHeight="239.0" prefWidth="928.0">
+                     <content>
+                        <GridPane fx:id="gridBiblioteca">
+                          <rowConstraints>
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                          </rowConstraints>
+                        </GridPane>
+                     </content>
+                  </ScrollPane>
+                  <ScrollPane layoutX="3.0" layoutY="287.0" prefHeight="177.0" prefWidth="925.0">
+                     <content>
+                        <GridPane fx:id="gridStore">
+                          <rowConstraints>
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                          </rowConstraints>
+                        </GridPane>
+                     </content>
+                  </ScrollPane>
+               </children>
+            </AnchorPane>
+         </center>
+      </BorderPane>
+   </children> 
 </AnchorPane>

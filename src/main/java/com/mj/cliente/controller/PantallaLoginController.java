@@ -26,6 +26,7 @@ import javafx.stage.Stage;
 import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
 import javax.persistence.Query;
+import javax.swing.JOptionPane;
 
 /**
  * FXML Controller class
@@ -58,22 +59,18 @@ public class PantallaLoginController implements Initializable {
 
     @FXML
     private void userLogin(ActionEvent event) throws IOException {
-//        Buscamos el usuario con ese login y pass
+//      Buscamos el usuario con ese login y pass
         Usuario correcto=UsuarioCRUD.verUsuario(loginID.getText(), passwordID.getText());
         System.out.println("Perfecto");
         if(correcto!=null) {
             lista = JuegoCRUD.verListaJuegos();
             App.setRoot("PantallaStore");
-            
-            //llamar carga lista
         }else{
             loginID.clear();
             passwordID.clear();
-            System.out.println("Incorrecto");
+            JOptionPane.showMessageDialog(null, "Los datos no son correctos", "Error!", 2);
         }
-//        System.out.println("hola");
-//        App.setRoot("PantallaStore");
-//        Consulta.listaClientes();
+
     }
 
     @FXML
@@ -86,23 +83,6 @@ public class PantallaLoginController implements Initializable {
     @FXML
     private void recuperarPass(ActionEvent event) throws IOException {
         App.setRoot("PantallaCambiarContraseña");
-    }
-
-    public static void verUsuarios(int pk) {
-        Usuario usuario = new Usuario();
-        Conexion con = new Conexion();
-        EntityManager em = con.conecta();
-        try {
-            Query query = em.createNamedQuery("Usuario.findByPkusuario");
-            query.setParameter("pkusuario", pk);
-            usuario = (Usuario) query.getSingleResult();
-            System.out.println("User_ " + usuario.getNombre());
-        } catch (NoResultException ex) {
-            System.out.println(">>> No encuentro el carrito - " + ex.getMessage());
-        } catch (IllegalArgumentException ex) {
-            System.out.println(">>> Error de argumento - " + ex.getMessage());
-        }
-        con.desconecta(em);
     }
 
 }

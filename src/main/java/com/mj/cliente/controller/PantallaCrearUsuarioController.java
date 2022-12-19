@@ -5,8 +5,6 @@
 package com.mj.cliente.controller;
 
 import com.mj.cliente.App;
-import com.mj.cliente.crud.PerfilCRUD2;
-import com.mj.cliente.crud.UsuarioCRUD2;
 import com.mj.cliente.OtrasOperacionesBD.OperacionesEspecificas;
 import com.mj.cliente.crud.UsuarioCRUD;
 import com.mj.cliente.dao.Biblioteca;
@@ -33,10 +31,11 @@ import javafx.stage.Stage;
 import org.apache.commons.io.FilenameUtils;
 import org.apache.commons.io.output.ByteArrayOutputStream;
 import java.awt.image.BufferedImage;
+import java.util.regex.Pattern;
 import javax.imageio.ImageIO;
+import javax.swing.JOptionPane;
 
 //import javax.swing.JOptionPane;
-
 /**
  * FXML Controller class
  *
@@ -65,9 +64,11 @@ public class PantallaCrearUsuarioController implements Initializable {
     @FXML
     private Button botonAvatar;
     @FXML
-    private Button crearCuenta;
-    @FXML
     private ComboBox rol;
+    @FXML
+    private Button VolverBoton;
+
+    public static String imagenURL;
 
     /**
      * Initializes the controller class.
@@ -92,59 +93,94 @@ public class PantallaCrearUsuarioController implements Initializable {
             avatar.setTitle("¡Escoge tu avatar!");
             Image image = new Image(new FileInputStream(file));
             imagen.setImage(image);
+            imagenURL = file.getAbsolutePath();
+            System.out.println(imagenURL);
         } else {
-            //JOptionPane.showMessageDialog(null, "Los formatos validos son: JPG y PNG", "No es un archivo valido", 2);
+            JOptionPane.showMessageDialog(null, "Los formatos validos son: JPG y PNG", "No es un archivo valido", 2);
         }
 
     }
 
     @FXML
     private void crearCuenta(ActionEvent event) throws IOException {
-   
-            //Comprobamos que las contraseñas sean iguales
-            if (pass.getText().equals(confirmarpass.getText())) {
-                //Creamos un usuario nuevo
-                Usuario usuario = new Usuario();
-                usuario.setAlias(alias.getText());
-                usuario.setPassword(pass.getText());
-                usuario.setNombre(nombre.getText());
-                usuario.setApellidos(apellidos.getText());
-                usuario.setFechanace(java.sql.Date.valueOf(fechanac.getValue()));
-                usuario.setAvatar(null);
-                usuario.setEmail(email.getText());
-                Perfil perfil = new Perfil();
-                perfil.setRol(rol.getValue().toString());
-                String rol = perfil.getRol();
-                int pkperfil =0;
-                if(rol.equalsIgnoreCase("Desarrollador")){
-                    pkperfil =1;
-                }
-                if(rol.equalsIgnoreCase("Jugador")){
-                    pkperfil =2;
-                } 
-                if(rol.equalsIgnoreCase("Invitado")){
-                    pkperfil =3;
-                }
-                perfil.setPkperfil(pkperfil);
-                
+        Boolean aliasDisponible = OperacionesEspecificas.comprobarAlias(alias.getText());
+        Boolean emailDisponible = OperacionesEspecificas.comprobarEmail(email.getText());
 
-                //Insertamos el usuario
-                UsuarioCRUD.nuevoUsuario(usuario,perfil);
-                System.out.println("Usuario Creado correctamente");
-                
-                App.setRoot("PantallaLogin");
+        if (alias.getText().isEmpty() || pass.getText().isEmpty() || confirmarpass.getText().isEmpty() || nombre.getText().isEmpty() || apellidos.getText().isEmpty() || fechanac.getValue() != null) {
+            JOptionPane.showMessageDialog(null, "Te faltan datos!", "Error!", 2);
+        } else {
+            if (isValid(email.getText())) {
+                if (aliasDisponible && emailDisponible) {
+                    //Comprobamos que las contraseñas sean iguales
+                    if (pass.getText().equals(confirmarpass.getText())) {
+                        //Creamos un usuario nuevo
+                        Usuario usuario = new Usuario();
+                        usuario.setAlias(alias.getText());
+                        usuario.setPassword(pass.getText());
+                        usuario.setNombre(nombre.getText());
+                        usuario.setApellidos(apellidos.getText());
+                        usuario.setFechanace(java.sql.Date.valueOf(fechanac.getValue()));
+                        usuario.setAvatar(imagenURL);
+                        usuario.setEmail(email.getText());
+                        Perfil perfil = new Perfil();
+                        perfil.setRol(rol.getValue().toString());
+                        String rol = perfil.getRol();
+                        int pkperfil = 0;
+                        if (rol.equalsIgnoreCase("Desarrollador")) {
+                            pkperfil = 1;
+                        }
+                        if (rol.equalsIgnoreCase("Jugador")) {
+                            pkperfil = 2;
+                        }
+                        if (rol.equalsIgnoreCase("Invitado")) {
+                            pkperfil = 3;
+                        }
+                        perfil.setPkperfil(pkperfil);
+
+                        //Insertamos el usuario
+                        UsuarioCRUD.nuevoUsuario(usuario, perfil);
+                        System.out.println("Usuario Creado correctamente");
+
+                        App.setRoot("PantallaStore");
+                    } else {
+                        //Limpiamos sin son diferentes
+                        pass.clear();
+                        confirmarpass.clear();
+                        JOptionPane.showMessageDialog(null, "Las contraseñas no coinciden", "Error!", 2);
+                    }
+                } else {
+                    email.clear();
+                    JOptionPane.showMessageDialog(null, "El email no es valido", "Error!", 2);
+                }
             } else {
-                //Limpiamos sin son diferentes
-                pass.clear();
-                confirmarpass.clear();
-                System.out.println("No coincide la contraseña");
+                alias.clear();
+                JOptionPane.showMessageDialog(null, "El alias o el email no esta disponible", "Error!", 2);
             }
-        
+        }
+
     }
+
     @FXML
-    private void volverLogin(ActionEvent event) throws IOException {
+    private void Volver(ActionEvent event) throws IOException {
         App.setRoot("PantallaLogin");
     }
-}
 
-   
+    /**
+     * Metodo para comprobar la validadez de un email
+     *
+     * @param email a comprobar
+     * @return devuelver verdadero o falso si pasa el regex
+     */
+    public static boolean isValid(String email) {
+        String emailRegex = "^[a-zA-Z0-9_+&*-]+(?:\\."
+                + "[a-zA-Z0-9_+&*-]+)*@"
+                + "(?:[a-zA-Z0-9-]+\\.)+[a-z"
+                + "A-Z]{2,7}$";
+
+        Pattern pat = Pattern.compile(emailRegex);
+        if (email == null) {
+            return false;
+        }
+        return pat.matcher(email).matches();
+    }
+}

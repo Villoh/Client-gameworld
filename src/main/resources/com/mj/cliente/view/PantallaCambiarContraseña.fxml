@@ -9,52 +9,57 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mj.cliente.controller.PantallaCambiarContraseñaController">
-   <left>
-      <AnchorPane prefHeight="200.0" prefWidth="250.0" style="-fx-background-color: #961e30;" BorderPane.alignment="CENTER">
-         <children>
-            <ImageView fitHeight="116.0" fitWidth="175.0" layoutX="38.0" layoutY="125.0" pickOnBounds="true" preserveRatio="true" />
-            <ImageView fitHeight="150.0" fitWidth="231.0" layoutX="50.0" layoutY="125.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../images/Logo%20M3J2%20-%20Transparente%20-%202.png" />
-               </image>
-            </ImageView>
-         </children>
-      </AnchorPane>
-   </left>
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="594.0" prefWidth="350.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mj.cliente.controller.PantallaCambiarContraseñaController">
    <right>
-      <AnchorPane prefHeight="200.0" prefWidth="350.0" BorderPane.alignment="CENTER">
+      <AnchorPane prefHeight="474.0" prefWidth="5.0" style="-fx-background-color: #000000;" BorderPane.alignment="CENTER" />
+   </right>
+   <top>
+      <AnchorPane prefHeight="5.0" prefWidth="347.0" style="-fx-background-color: #000000;" BorderPane.alignment="CENTER" />
+   </top>
+   <left>
+      <AnchorPane prefHeight="200.0" prefWidth="5.0" style="-fx-background-color: #000000;" BorderPane.alignment="CENTER" />
+   </left>
+   <center>
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
-            <TextField fx:id="pass" focusTraversable="false" layoutX="100.0" layoutY="200.0" prefHeight="27.0" prefWidth="170.0" promptText="Nueva Contraseña" style="-fx-background-color: transpent; -fx-border-color: #961e30; -fx-border-width: 0px 0px 2px 0px;" />
-            <TextField fx:id="email" focusTraversable="false" layoutX="100.0" layoutY="132.0" prefHeight="27.0" prefWidth="170.0" promptText="Email" style="-fx-background-color: transpent; -fx-border-color: #961e30; -fx-border-width: 0px 0px 2px 0px;" />
-            <TextField fx:id="alias" focusTraversable="false" layoutX="100.0" layoutY="88.0" prefHeight="27.0" prefWidth="170.0" promptText="Alias" style="-fx-background-color: transpent; -fx-border-color: #961e30; -fx-border-width: 0px 0px 2px 0px;" />
-            <TextField fx:id="repepass" focusTraversable="false" layoutX="100.0" layoutY="249.0" prefHeight="27.0" prefWidth="170.0" promptText="Repetir Nueva Contraseña" style="-fx-background-color: transpent; -fx-border-color: #961e30; -fx-border-width: 0px 0px 2px 0px;" />
-            <Button fx:id="login" layoutX="100.0" layoutY="309.0" mnemonicParsing="false" onAction="#cambiarContraseña" prefHeight="30.0" prefWidth="170.0" style="-fx-background-color: #961e30;" text="Cambiar Contraseña" textFill="WHITE">
+            <TextField fx:id="pass" focusTraversable="false" layoutX="81.0" layoutY="324.0" prefHeight="27.0" prefWidth="170.0" promptText="Nueva Contraseña" style="-fx-background-color: transpent; -fx-border-color: #000000; -fx-border-width: 0px 0px 2px 0px;" />
+            <TextField fx:id="email" focusTraversable="false" layoutX="86.0" layoutY="206.0" prefHeight="27.0" prefWidth="170.0" promptText="Correo" style="-fx-background-color: transpent; -fx-border-color: #000000; -fx-border-width: 0px 0px 2px 0px;" />
+            <TextField fx:id="alias" focusTraversable="false" layoutX="86.0" layoutY="155.0" prefHeight="27.0" prefWidth="170.0" promptText="Alias" style="-fx-background-color: transpent; -fx-border-color: #000000; -fx-border-width: 0px 0px 2px 0px;" />
+            <TextField fx:id="repepass" focusTraversable="false" layoutX="81.0" layoutY="382.0" prefHeight="27.0" prefWidth="170.0" promptText="Repetir Nueva Contraseña" style="-fx-background-color: transpent; -fx-border-color: #000000; -fx-border-width: 0px 0px 2px 0px;" />
+            <Button fx:id="login" layoutX="79.0" layoutY="460.0" mnemonicParsing="false" onAction="#cambiarContraseña" prefHeight="30.0" prefWidth="170.0" style="-fx-background-color: #000000;" text="Cambiar Contraseña" textFill="WHITE">
                <font>
                   <Font size="14.0" />
                </font>
             </Button>
-            <Label layoutX="100.0" layoutY="58.0" text="Dime tu alias y correo">
+            <Label layoutX="99.0" layoutY="114.0" text="Dime tu alias y correo">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>
             </Label>
-            <Label layoutX="100.0" layoutY="173.0" text="Dime la contraseña nueva">
+            <Label layoutX="79.0" layoutY="287.0" text="Dime la contraseña nueva">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>
             </Label>
-            <Button fx:id="crearCuenta" layoutX="244.0" layoutY="360.0" mnemonicParsing="false" onAction="#volverCrearCuenta" prefHeight="27.0" prefWidth="101.0" style="-fx-background-color: transparent; -fx-border-color: transparent;" text="Crear cuenta" textFill="#009fff">
+            <Button fx:id="crearCuenta" layoutX="216.0" layoutY="524.0" mnemonicParsing="false" onAction="#volverCrearCuenta" prefHeight="27.0" prefWidth="101.0" style="-fx-background-color: transparent; -fx-border-color: transparent;" text="Crear cuenta" textFill="#009fff">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font>
             </Button>
-            <Button fx:id="login" layoutX="14.0" layoutY="360.0" mnemonicParsing="false" onAction="#volverInicio" prefHeight="27.0" prefWidth="101.0" style="-fx-background-color: transparent; -fx-border-color: transparent;" text="Iniciar Sesión" textFill="#009fff">
+            <Button fx:id="login" layoutX="29.0" layoutY="524.0" mnemonicParsing="false" onAction="#volverInicio" prefHeight="27.0" prefWidth="101.0" style="-fx-background-color: transparent; -fx-border-color: transparent;" text="Iniciar Sesión" textFill="#009fff">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font>
             </Button>
+            <ImageView fitHeight="125.0" fitWidth="125.0" layoutX="101.0">
+               <image>
+                  <Image url="@../images/Logo%20sin%20texto.png" />
+               </image>
+            </ImageView>
          </children>
       </AnchorPane>
-   </right>
+   </center>
+   <bottom>
+      <AnchorPane prefHeight="5.0" prefWidth="200.0" style="-fx-background-color: #000000;" BorderPane.alignment="CENTER" />
+   </bottom>
 </BorderPane>
