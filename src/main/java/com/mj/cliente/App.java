@@ -17,7 +17,7 @@ public class App extends Application {
      * Stage Principal
      */
     private static Scene scene;
-     public static Stage st;
+    public static Stage st;
     @Override
     public void start(Stage stage) throws IOException {
         scene = new Scene(loadFXML("PantallaLogin"));
@@ -50,6 +50,8 @@ public class App extends Application {
     }
 
     public static void main(String[] args) {
+        //Descomentar para crear los directorios de la app..
+        //DirectorioApp.crearDirectorio();
         launch();
     }
 
