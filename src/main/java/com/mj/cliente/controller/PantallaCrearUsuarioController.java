@@ -68,6 +68,7 @@ public class PantallaCrearUsuarioController implements Initializable {
     @FXML
     private Button VolverBoton;
 
+    public static Usuario correcto = null;
     public static String imagenURL;
 
     /**
@@ -136,10 +137,11 @@ public class PantallaCrearUsuarioController implements Initializable {
                             pkperfil = 3;
                         }
                         perfil.setPkperfil(pkperfil);
-
                         //Insertamos el usuario
                         UsuarioCRUD.nuevoUsuario(usuario, perfil);
                         System.out.println("Usuario Creado correctamente");
+                        correcto = usuario;//Guardamos el usuario para utilizarlo en otros sitios
+                        PantallaPerfilController.loginOcreado=2;
 
                         App.setRoot("PantallaStore");
                     } else {

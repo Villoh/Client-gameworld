@@ -47,7 +47,7 @@ public class PantallaLoginController implements Initializable {
     @FXML
     private Button login;
     public static List<Juego> lista;
-    public static Usuario correcto;
+    public static Usuario correcto = null;
     
     /**
      * Initializes the controller class.
@@ -64,6 +64,8 @@ public class PantallaLoginController implements Initializable {
         if(correcto!=null) {
             System.out.println("Perfecto");
             lista = JuegoCRUD.verListaJuegos();
+            PantallaPerfilController.loginOcreado=1;
+
             App.setRoot("PantallaStore");
         }else{
             loginID.clear();

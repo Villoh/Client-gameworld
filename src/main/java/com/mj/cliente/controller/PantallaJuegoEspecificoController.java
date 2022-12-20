@@ -74,7 +74,10 @@ public class PantallaJuegoEspecificoController implements Initializable {
         System.out.println(juego.getTitulo());
         //Image image = new Image(getClass().getResourceAsStream(juego.getImagen()));
         //Image image = new Image("D:\\Users\\DAM107\\Desktop\\Git\\cliente\\src\\main\\resources\\com\\mj\\cliente\\images\\persona.png");
-        //imagen.setImage(image);
+        
+        Image image = new Image("C:\\Users\\Usuario\\Downloads\\cliente\\src\\main\\resources\\com\\mj\\cliente\\images\\persona.png");
+        imagen.setImage(image);
+        
         titulo.setText(juego.getTitulo());
         descripcion.setText(juego.getDescripcion());
         genero.setText(juego.getAkgenero().getNombre());

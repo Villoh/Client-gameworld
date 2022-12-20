@@ -20,6 +20,7 @@ import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
 
@@ -107,6 +108,9 @@ public class PantallaStoreController implements Initializable {
 
     @FXML
     private void abrirPerfil(ActionEvent event) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("view/PantallaPerfil.fxml"));
+        AnchorPane box = fxmlLoader.load();
+        PantallaPerfilController controlador = fxmlLoader.getController();
         App.setRoot("PantallaPerfil");
 
     }
