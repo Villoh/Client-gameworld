@@ -7,6 +7,7 @@ package com.mj.cliente.controller;
 import com.mj.cliente.App;
 import com.mj.cliente.crud.JuegoCRUD;
 import com.mj.cliente.dao.Juego;
+import com.mj.cliente.dao.Usuario;
 import java.io.IOException;
 import java.net.URL;
 import java.util.List;
@@ -18,7 +19,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
 import javafx.scene.control.Button;
-import javafx.scene.image.Image;
+import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
 
@@ -42,6 +43,10 @@ public class PantallaStoreController implements Initializable {
     private GridPane gridBiblioteca;
     @FXML
     private GridPane gridStore;
+    @FXML
+    private GridPane panelMenu;
+    @FXML
+    private Button btn_subir;
 
     //ObservableList<Juego> listaJuegos  =(ObservableList<Juego>)PantallaLoginController.lista;
     /**
@@ -53,20 +58,18 @@ public class PantallaStoreController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         int columns = 0;
-        int columns2=0;
+        int columns2 = 0;
         int row = 1;
         List<Juego> listaJuegos = JuegoCRUD.verListaJuegos();
         try {
             for (int x = 0; x < listaJuegos.size(); x++) {
-                Button button = new Button();
                 FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("view/PantallaJuego.fxml"));
                 VBox box = fxmlLoader.load();
                 PantallaJuegoController controlador = fxmlLoader.getController();
                 controlador.setData(listaJuegos.get(x));
                 gridBiblioteca.add(box, columns++, 1);
                 GridPane.setMargin(box, new Insets(10));
-                controlador.juegoEspecifico= listaJuegos.get(x);
-
+                PantallaJuegoController.juegoEspecifico = listaJuegos.get(x);
             }
         } catch (IOException ex) {
 
@@ -74,7 +77,6 @@ public class PantallaStoreController implements Initializable {
         /*
         try {
             for (int x = 0; x <= 20; x++) {
-                Button button = new Button();
 
                 FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("view/PantallaJuego.fxml"));
                 VBox box = fxmlLoader.load();
@@ -87,7 +89,8 @@ public class PantallaStoreController implements Initializable {
         } catch (IOException ex) {
 
         }
-*/
+         */
+        addboton(PantallaLoginController.correcto);
     }
 
     @FXML
@@ -112,6 +115,19 @@ public class PantallaStoreController implements Initializable {
     private void cerrarSesion(ActionEvent event) throws IOException {
         App.setRoot("PantallaLogin");
     }
-
     
+    public void addboton(Usuario user){
+        if(user.getAkperfil().getRol().equalsIgnoreCase("Desarrollador")){
+           
+            btn_subir.setVisible(true);
+        }else{
+            btn_subir.setVisible(false);
+        }
+    }
+
+    @FXML
+    private void abrirSubirJuego(ActionEvent event) throws IOException {
+           App.setRoot("PantallaSubirJuego");
+    }
+
 }

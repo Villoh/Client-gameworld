@@ -47,7 +47,7 @@ public class PantallaLoginController implements Initializable {
     @FXML
     private Button login;
     public static List<Juego> lista;
-    
+    public static Usuario correcto;
     
     /**
      * Initializes the controller class.
@@ -60,7 +60,7 @@ public class PantallaLoginController implements Initializable {
     @FXML
     private void userLogin(ActionEvent event) throws IOException {
 //      Buscamos el usuario con ese login y pass
-        Usuario correcto=UsuarioCRUD.verUsuario(loginID.getText(), passwordID.getText());
+        correcto=UsuarioCRUD.verUsuario(loginID.getText(), passwordID.getText());
         System.out.println("Perfecto");
         if(correcto!=null) {
             lista = JuegoCRUD.verListaJuegos();

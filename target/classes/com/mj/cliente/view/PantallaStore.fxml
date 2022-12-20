@@ -18,12 +18,13 @@
          <top>
             <AnchorPane prefHeight="5.0" prefWidth="200.0" style="-fx-background-color: #2A2A2A;" BorderPane.alignment="CENTER">
                <children>
-                  <GridPane alignment="CENTER" prefHeight="68.0" prefWidth="937.0">
+                  <GridPane fx:id="panelMenu" alignment="CENTER" prefHeight="68.0" prefWidth="937.0">
                     <columnConstraints>
                         <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                         <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                         <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                       <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                       <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                     </columnConstraints>
                     <rowConstraints>
@@ -62,10 +63,15 @@
                               <Font name="Corbel" size="20.0" />
                            </font>
                         </Button>
-                        <Button fx:id="btn_Exit" mnemonicParsing="false" onAction="#cerrarSesion" prefHeight="25.0" prefWidth="187.0" style="-fx-background-color: #2A2A2A;" text="Salir" textFill="WHITE" GridPane.columnIndex="4" GridPane.halignment="CENTER">
+                        <Button fx:id="btn_Exit" mnemonicParsing="false" onAction="#cerrarSesion" prefHeight="25.0" prefWidth="187.0" style="-fx-background-color: #2A2A2A;" text="Salir" textFill="WHITE" GridPane.columnIndex="5" GridPane.halignment="CENTER">
                            <GridPane.margin>
                               <Insets />
                            </GridPane.margin>
+                           <font>
+                              <Font name="Corbel" size="20.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="btn_subir" mnemonicParsing="false" onAction="#abrirSubirJuego" prefHeight="25.0" prefWidth="187.0" style="-fx-background-color: #2A2A2A;" text="Subir" textFill="WHITE" GridPane.columnIndex="4">
                            <font>
                               <Font name="Corbel" size="20.0" />
                            </font>
@@ -98,7 +104,7 @@
                         </GridPane>
                      </content>
                   </ScrollPane>
-                  <ScrollPane layoutX="3.0" layoutY="287.0" prefHeight="177.0" prefWidth="925.0">
+                  <ScrollPane layoutX="3.0" layoutY="237.0" prefHeight="227.0" prefWidth="925.0">
                      <content>
                         <GridPane fx:id="gridStore">
                           <rowConstraints>

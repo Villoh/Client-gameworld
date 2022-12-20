@@ -12,7 +12,7 @@
     <class>com.mj.cliente.dao.Juego</class>
     <class>com.mj.cliente.dao.Usuario</class>
     <properties>
-        
+        <!--
         <property name="javax.persistence.jdbc.url" value="jdbc:postgresql://192.168.34.137:5432/gameworld"/>
         <property name="javax.persistence.jdbc.user" value="m3j2"/>
         <property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver"/>
@@ -20,7 +20,7 @@
         <property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQLDialect"/>
         <property name= "hibernate.show_sql" value="true" />
         <property name= "hibernate.format_sql" value="true" />
-        <!--
+        -->
         <property name="javax.persistence.jdbc.url" value="jdbc:postgresql://surus.db.elephantsql.com:5432/qblzuhfb"/>
         <property name="javax.persistence.jdbc.user" value="qblzuhfb"/>
         <property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver"/>
@@ -28,7 +28,6 @@
         <property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQLDialect"/>
         <property name= "hibernate.show_sql" value="true" />
         <property name= "hibernate.format_sql" value="true" />
-        -->
     </properties>
   </persistence-unit>
 </persistence>

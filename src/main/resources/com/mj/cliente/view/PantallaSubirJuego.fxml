@@ -47,13 +47,13 @@
             </ImageView>
             <ComboBox fx:id="comboGenero" layoutX="129.0" layoutY="280.0" prefWidth="150.0" />
             <TextField alignment="CENTER" layoutX="60.0" layoutY="194.0" prefHeight="62.0" prefWidth="213.0" promptText="Descripción" />
-            <Label layoutX="43.0" layoutY="284.0" text="Genero" />
+            <Label layoutX="44.0" layoutY="284.0" text="Genero" />
             <Label layoutX="44.0" layoutY="316.0" text="Dificultad" />
-            <Label layoutX="44.0" layoutY="345.0" text="Clasificación" />
+            <Label layoutX="44.0" layoutY="348.0" text="Clasificación" />
             <DatePicker fx:id="fechaJuego" layoutX="77.0" layoutY="403.0" />
             <Label layoutX="101.0" layoutY="380.0" text="Fecha de Creación" />
-            <ComboBox fx:id="comboDificultad" layoutX="129.0" layoutY="312.0" prefWidth="150.0" />
-            <ComboBox fx:id="comboClasificacion" layoutX="129.0" layoutY="341.0" prefWidth="150.0" />
+            <ComboBox fx:id="comboDificultad" layoutX="129.0" layoutY="316.0" prefWidth="150.0" />
+            <ComboBox fx:id="comboClasificacion" layoutX="129.0" layoutY="348.0" prefWidth="150.0" />
             <Button fx:id="btn_cambiarImg" layoutX="113.0" layoutY="91.0" mnemonicParsing="false" style="-fx-background-color: #000000;" text="Cambiar  Imagen">
                <textFill>
                   <LinearGradient endX="1.0" endY="1.0">
