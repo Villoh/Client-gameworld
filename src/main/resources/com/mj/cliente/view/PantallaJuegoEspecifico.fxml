@@ -5,10 +5,17 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane id="AnchorPane" fx:id="root" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mj.cliente.controller.PantallaJuegoEspecificoController">
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mj.cliente.controller.PantallaJuegoEspecificoController">
    <children>
       <Button fx:id="volver" layoutX="510.0" layoutY="348.0" mnemonicParsing="false" onAction="#abrirStore" text="volver" />
-      <ImageView fx:id="imagen" fitHeight="150.0" fitWidth="200.0" layoutX="58.0" layoutY="68.0" pickOnBounds="true" preserveRatio="true" />
-      <Label fx:id="titulo" layoutX="397.0" layoutY="210.0" text="Label" />
+      <ImageView fx:id="imagen" fitHeight="150.0" fitWidth="200.0" layoutX="29.0" layoutY="39.0" pickOnBounds="true" preserveRatio="true" />
+      <Label fx:id="titulo" layoutX="286.0" layoutY="66.0" prefHeight="17.0" prefWidth="28.0" text="Label" wrapText="true" />
+      <Label fx:id="genero" layoutX="286.0" layoutY="123.0" text="Label" wrapText="true" />
+      <Label fx:id="nivel" layoutX="286.0" layoutY="159.0" text="Label" wrapText="true" />
+      <Label fx:id="pegi" layoutX="286.0" layoutY="192.0" text="Label" wrapText="true" />
+      <Label fx:id="descripcion" layoutX="286.0" layoutY="97.0" text="Label" wrapText="true" />
+      <Label fx:id="creador" layoutX="376.0" layoutY="75.0" text="Label" wrapText="true" />
+      <Label fx:id="fechacreacion" layoutX="383.0" layoutY="123.0" text="Label" wrapText="true" />
+      <Label fx:id="pvp" layoutX="390.0" layoutY="181.0" text="Label" wrapText="true" />
    </children>
 </AnchorPane>

@@ -61,8 +61,8 @@ public class PantallaLoginController implements Initializable {
     private void userLogin(ActionEvent event) throws IOException {
 //      Buscamos el usuario con ese login y pass
         correcto=UsuarioCRUD.verUsuario(loginID.getText(), passwordID.getText());
-        System.out.println("Perfecto");
         if(correcto!=null) {
+            System.out.println("Perfecto");
             lista = JuegoCRUD.verListaJuegos();
             App.setRoot("PantallaStore");
         }else{

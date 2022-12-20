@@ -66,10 +66,10 @@ public class PantallaJuegoController extends VBox implements Initializable {
 
     public void setData(Juego juego) {
         //Image image = new Image(getClass().getResourceAsStream(juego.getImagen()));
-        Image image = new Image("D:\\Users\\DAM107\\Desktop\\Git\\cliente\\src\\main\\resources\\com\\mj\\cliente\\images\\persona.png");
+        //Image image = new Image("D:\\Users\\DAM107\\Desktop\\Git\\cliente\\src\\main\\resources\\com\\mj\\cliente\\images\\persona.png");
 //        imagen.setFitHeight(100);
 //        imagen.setFitWidth(100);
-        imagen.setImage(image);
+        //imagen.setImage(image);
         titulo.setText(juego.getTitulo());
     }
 
@@ -79,7 +79,6 @@ public class PantallaJuegoController extends VBox implements Initializable {
             AnchorPane box = fxmlLoader.load();
             PantallaJuegoEspecificoController controlador = fxmlLoader.getController();
             //Juego j = JuegoCRUD.verJuego(titulo.getText());
-            controlador.setData(juegoEspecifico);
             App.setRoot("PantallaJuegoEspecifico"); 
     }
 
