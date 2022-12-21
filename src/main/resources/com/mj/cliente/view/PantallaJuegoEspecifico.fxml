@@ -4,18 +4,74 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mj.cliente.controller.PantallaJuegoEspecificoController">
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mj.cliente.controller.PantallaJuegoEspecificoController">
    <children>
-      <Button fx:id="volver" layoutX="510.0" layoutY="348.0" mnemonicParsing="false" onAction="#abrirStore" text="volver" />
-      <ImageView fx:id="imagen" fitHeight="150.0" fitWidth="200.0" layoutX="29.0" layoutY="39.0" pickOnBounds="true" preserveRatio="true" />
-      <Label fx:id="titulo" layoutX="286.0" layoutY="66.0" prefHeight="17.0" prefWidth="28.0" text="Label" wrapText="true" />
-      <Label fx:id="genero" layoutX="286.0" layoutY="123.0" text="Label" wrapText="true" />
-      <Label fx:id="nivel" layoutX="286.0" layoutY="159.0" text="Label" wrapText="true" />
-      <Label fx:id="pegi" layoutX="286.0" layoutY="192.0" text="Label" wrapText="true" />
-      <Label fx:id="descripcion" layoutX="286.0" layoutY="97.0" text="Label" wrapText="true" />
-      <Label fx:id="creador" layoutX="376.0" layoutY="75.0" text="Label" wrapText="true" />
-      <Label fx:id="fechacreacion" layoutX="383.0" layoutY="123.0" text="Label" wrapText="true" />
-      <Label fx:id="pvp" layoutX="390.0" layoutY="181.0" text="Label" wrapText="true" />
+      <Label fx:id="genero" layoutX="318.0" layoutY="66.0" text="Label" wrapText="true">
+         <font>
+            <Font name="Corbel" size="12.0" />
+         </font></Label>
+      <Label fx:id="nivel" layoutX="318.0" layoutY="181.0" text="Label" wrapText="true">
+         <font>
+            <Font name="Corbel" size="12.0" />
+         </font></Label>
+      <Label fx:id="pegi" layoutX="318.0" layoutY="214.0" text="Label" wrapText="true">
+         <font>
+            <Font name="Corbel" size="12.0" />
+         </font></Label>
+      <Label fx:id="descripcion" layoutX="318.0" layoutY="109.0" text="Label" wrapText="true">
+         <font>
+            <Font name="Corbel" size="12.0" />
+         </font></Label>
+      <Label fx:id="creador" layoutX="157.0" layoutY="289.0" text="Label" wrapText="true">
+         <font>
+            <Font name="Corbel" size="12.0" />
+         </font></Label>
+      <Label fx:id="fechacreacion" layoutX="157.0" layoutY="325.0" text="Label" wrapText="true">
+         <font>
+            <Font name="Corbel" size="12.0" />
+         </font></Label>
+      <Label fx:id="pvp" layoutX="318.0" layoutY="245.0" text="Label" wrapText="true">
+         <font>
+            <Font name="Corbel" size="12.0" />
+         </font></Label>
+      <Pane layoutX="598.0" layoutY="-1.0" prefHeight="403.0" prefWidth="5.0" style="-fx-background-color: #000000;" />
+      <Pane layoutY="-1.0" prefHeight="403.0" prefWidth="5.0" style="-fx-background-color: #000000;" />
+      <Pane prefHeight="50.0" prefWidth="603.0" style="-fx-background-color: #000000;">
+         <children>
+            <Label fx:id="titulo" layoutX="27.0" layoutY="-1.0" text="Label" textFill="WHITE" wrapText="true">
+               <font>
+                  <Font size="36.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+      <Pane layoutY="398.0" prefHeight="50.0" prefWidth="603.0" style="-fx-background-color: #000000;">
+         <children>
+            <Button layoutX="466.0" layoutY="7.0" mnemonicParsing="false" onAction="#volveStore" prefHeight="17.0" prefWidth="123.0" style="-fx-background-color: #2A2A2A;" text="Volver" textFill="WHITE">
+               <font>
+                  <Font name="Corbel" size="20.0" />
+               </font>
+            </Button>
+            <Button layoutX="343.0" layoutY="7.0" mnemonicParsing="false" onAction="#descargarJuego" prefHeight="17.0" prefWidth="123.0" style="-fx-background-color: #2A2A2A;" text="Descarga" textFill="WHITE">
+               <font>
+                  <Font name="Corbel" size="20.0" />
+               </font>
+            </Button>
+         </children></Pane>
+      <Pane layoutX="14.0" layoutY="66.0" prefHeight="200.0" prefWidth="200.0" style="-fx-border-color: #000000;">
+         <children>
+            <ImageView fx:id="imagen" fitHeight="200.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
+         </children>
+      </Pane>
+      <Label layoutX="227.0" layoutY="65.0" text="Genero:" />
+      <Label layoutX="227.0" layoutY="108.0" prefHeight="17.0" prefWidth="68.0" text="Descripción:" />
+      <Label layoutX="227.0" layoutY="180.0" prefHeight="17.0" prefWidth="39.0" text="Nivel:" />
+      <Label layoutX="227.0" layoutY="213.0" text="Pegi:" />
+      <Label layoutX="228.0" layoutY="244.0" text="PVP:" />
+      <Label layoutX="14.0" layoutY="288.0" text="Creador: " />
+      <Label layoutX="14.0" layoutY="324.0" text="Fecha de Publicación: " />
    </children>
 </AnchorPane>

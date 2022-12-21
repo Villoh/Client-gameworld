@@ -2,6 +2,7 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -91,9 +92,9 @@
             <AnchorPane prefHeight="5.0" prefWidth="200.0" style="-fx-background-color: #2A2A2A;" BorderPane.alignment="CENTER" />
          </bottom>
          <center>
-            <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+            <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: white;" BorderPane.alignment="CENTER">
                <children>
-                  <ScrollPane prefHeight="239.0" prefWidth="928.0">
+                  <ScrollPane layoutX="21.0" layoutY="47.0" prefHeight="160.0" prefWidth="890.0">
                      <content>
                         <GridPane fx:id="gridBiblioteca">
                           <rowConstraints>
@@ -104,7 +105,7 @@
                         </GridPane>
                      </content>
                   </ScrollPane>
-                  <ScrollPane layoutX="3.0" layoutY="237.0" prefHeight="227.0" prefWidth="925.0">
+                  <ScrollPane layoutX="21.0" layoutY="255.0" prefHeight="160.0" prefWidth="890.0">
                      <content>
                         <GridPane fx:id="gridStore">
                           <rowConstraints>
@@ -115,6 +116,16 @@
                         </GridPane>
                      </content>
                   </ScrollPane>
+                  <Label layoutX="21.0" layoutY="14.0" text="Juegos Disponibles:">
+                     <font>
+                        <Font name="Corbel" size="18.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="21.0" layoutY="224.0" text="Tus Juegos:">
+                     <font>
+                        <Font name="Corbel" size="18.0" />
+                     </font>
+                  </Label>
                </children>
             </AnchorPane>
          </center>

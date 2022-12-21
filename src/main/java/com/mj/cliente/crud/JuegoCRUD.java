@@ -86,6 +86,7 @@ public class JuegoCRUD {
             j.setTitulo(nuevo.getTitulo());
             j.setDescripcion(nuevo.getDescripcion());
             j.setImagen(nuevo.getImagen());
+            j.setZipjuego(nuevo.getZipjuego());
             j.setAkgenero(nuevo.getAkgenero());
             j.setAknivel(nuevo.getAknivel());
             j.setAkpegi(nuevo.getAkpegi());

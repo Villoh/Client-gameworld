@@ -9,10 +9,11 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="537.0" prefWidth="899.0" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mj.cliente.controller.PantallaPerfilController">
+<AnchorPane id="AnchorPane" fx:id="root" prefHeight="537.0" prefWidth="899.0" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mj.cliente.controller.PantallaPerfilController">
    <children>
       <BorderPane prefHeight="537.0" prefWidth="937.0">
          <top>
@@ -85,7 +86,27 @@
             <AnchorPane prefHeight="5.0" prefWidth="200.0" style="-fx-background-color: #2A2A2A;" BorderPane.alignment="CENTER" />
          </bottom>
          <center>
-            <Label text="cuenta" BorderPane.alignment="CENTER" />
+            <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #ffffff;" BorderPane.alignment="CENTER">
+               <children>
+                  <Label fx:id="nombre_apellidos" layoutX="346.0" layoutY="42.0" text="Label">
+                     <font>
+                        <Font name="Corbel" size="36.0" />
+                     </font></Label>
+                  <Label fx:id="fechanace" layoutX="515.0" layoutY="168.0" text="Label">
+                     <font>
+                        <Font name="Corbel" size="24.0" />
+                     </font></Label>
+                  <Label fx:id="email" layoutX="514.0" layoutY="211.0" text="Label">
+                     <font>
+                        <Font name="Corbel" size="24.0" />
+                     </font></Label>
+                  <Pane layoutX="241.0" layoutY="121.0" prefHeight="200.0" prefWidth="200.0" style="-fx-border-color: #000000;">
+                     <children>
+                        <ImageView fx:id="avatar" fitHeight="205.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
+                     </children>
+                  </Pane>
+               </children>
+            </AnchorPane>
          </center>
       </BorderPane>
    </children> 

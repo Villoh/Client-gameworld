@@ -27,11 +27,11 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
-<<<<<<< HEAD
- * @author dam204
-=======
- * @author dam107
->>>>>>> 0481ad552b1d05809e1dd54c6b23c0f119456b48
+ * <<<<<<< HEAD @a
+ *
+ *
+ * uthor dam204 =======
+ * @author dam107 >>>>>>> 0481ad552b1d05809e1dd54c6b23c0f119456b48
  */
 @Entity
 @Table(name = "juego", catalog = "gameworld", schema = "public")
@@ -61,6 +61,9 @@ public class Juego implements Serializable {
     @Basic(optional = false)
     @Column(name = "imagen")
     private String imagen;
+    @Basic(optional = false)
+    @Column(name = "zipjuego")
+    private String zipjuego;
     @Basic(optional = false)
     @Column(name = "fechacreacion")
     @Temporal(TemporalType.DATE)
@@ -93,10 +96,11 @@ public class Juego implements Serializable {
         this.pkjuego = pkjuego;
     }
 
-    public Juego(Integer pkjuego, String titulo, String imagen, Date fechacreacion, int numdescargas) {
+    public Juego(Integer pkjuego, String titulo, String imagen, String zipjuego, Date fechacreacion, int numdescargas) {
         this.pkjuego = pkjuego;
         this.titulo = titulo;
         this.imagen = imagen;
+        this.zipjuego = zipjuego;
         this.fechacreacion = fechacreacion;
         this.numdescargas = numdescargas;
     }
@@ -131,6 +135,14 @@ public class Juego implements Serializable {
 
     public void setImagen(String imagen) {
         this.imagen = imagen;
+    }
+
+    public String getZipjuego() {
+        return zipjuego;
+    }
+
+    public void setZipjuego(String zipjuego) {
+        this.zipjuego = zipjuego;
     }
 
     public Date getFechacreacion() {
@@ -222,5 +234,5 @@ public class Juego implements Serializable {
     public String toString() {
         return "com.mj.cliente.dao.Juego[ pkjuego=" + pkjuego + " ]";
     }
-    
+
 }
