@@ -9,7 +9,7 @@ El objetivo es desarrollar una plataforma para videojuegos que permita iniciar s
 * [Servidor.](https://gitlab.com/iesaglinformatica/curso_22_23/reto_dam2/equipo1/cliente_servidor/servidor)
 
 ## Base de datos.
-* [Postgres sql.](https://gitlab.com/iesaglinformatica/curso_22_23/reto_dam2/equipo1/cliente_servidor/cliente/-/blob/main/Sql/Postgresql_bd_mysteam.sql)
+* [PostgreSQL.](https://gitlab.com/iesaglinformatica/curso_22_23/reto_dam2/equipo1/cliente_servidor/cliente/-/blob/main/Sql/Postgresql_bd_mysteam.sql)
 * Hibernate.
 
 ## Interfaz gráfica.
