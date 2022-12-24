@@ -1,6 +1,6 @@
 # Aplicación Cliente.
 
-## Obejetivo de la aplicación.
+## Objetivo de la aplicación.
 
 El objetivo es desarrollar una plataforma para videojuegos que permita iniciar sesión, cargar y descargar juegos, así como gestionar los juegos de cada usuario. También será necesario desarrollar un videojuego inicial para dicha plataforma.
 
