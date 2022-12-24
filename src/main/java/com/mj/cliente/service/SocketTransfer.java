@@ -23,7 +23,7 @@ import java.util.concurrent.Callable;
  */
 public class SocketTransfer implements Callable<String> {
 
-    final String HOST = "localhost";
+    final String HOST = "192.168.34.129";
     final int PUERTO = 5000;
     int codigo;
     Socket sc;

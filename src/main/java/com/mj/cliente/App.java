@@ -1,6 +1,7 @@
 
 package com.mj.cliente;
 
+import com.mj.cliente.service.DirectorioApp;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -35,7 +36,8 @@ public class App extends Application {
 
     /**
      * Metodo para cambiar la escena actual por otra escena
-     * @param fxml
+     * @param fxml Solo pasamo el nombre del fichero ya que en el metodo
+     * loadFXML se define la ruta y la extension
      * @throws IOException 
      */
     public static void setRoot(String fxml) throws IOException {
@@ -44,14 +46,20 @@ public class App extends Application {
         st.centerOnScreen();
     }
 
+    /**
+     * Metodo para cargar un fxml
+     * @param fxml Solo pasamo el nombre del fichero ya que dentro se define la ruta y la extension
+     * @return
+     * @throws IOException 
+     */
     private static Parent loadFXML(String fxml) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("view/" + fxml + ".fxml"));
         return fxmlLoader.load();
     }
 
     public static void main(String[] args) {
-        //Descomentar para crear los directorios de la app..
-        //DirectorioApp.crearDirectorio();
+        //Al iniciar la aplicacion, crea las carpetas correspondientes donde almacenaremos los datos en local
+        DirectorioApp.crearDirectorio();
         launch();
     }
 

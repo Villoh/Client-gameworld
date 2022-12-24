@@ -7,14 +7,16 @@ import javax.persistence.*;
 import java.util.List;
 
 public class BibliotecaCRUD {
+
     /**
+     * Devuelve una lista de todas las bibliotecas de la base de datos
      *
      * @return
      */
-    public static List<Biblioteca> verListaBiblioteca(){
+    public static List<Biblioteca> verListaBiblioteca() {
         Conexion con = new Conexion();
         EntityManager em = con.conecta();
-        List<Biblioteca> lista =null;
+        List<Biblioteca> lista = null;
         try {
             lista = em.createNamedQuery("Biblioteca.findAll").getResultList();
 
@@ -26,6 +28,7 @@ public class BibliotecaCRUD {
     }
 
     /**
+     * Busca una biblioteca segun su pk
      *
      * @param pkbiblioteca
      * @return
@@ -46,12 +49,13 @@ public class BibliotecaCRUD {
     }
 
     /**
+     * Crea una nueva bliblioteca
      *
      * @param biblioteca
      * @return
      */
-    public static int nuevaBiblioteca(Biblioteca biblioteca){
-        int resultado =0;
+    public static int nuevaBiblioteca(Biblioteca biblioteca) {
+        int resultado = 0;
         Conexion con = new Conexion();
         EntityManager em = con.conecta();
         EntityTransaction tx = em.getTransaction();
@@ -61,7 +65,7 @@ public class BibliotecaCRUD {
             em.flush();
             em.refresh(biblioteca);
             tx.commit();
-            resultado =1;
+            resultado = 1;
         } catch (IllegalArgumentException | PersistenceException ex) {
             System.err.println("Excepciones en metodo nuevaBiblioteca " + ex.getLocalizedMessage());
             tx.rollback();
@@ -72,12 +76,13 @@ public class BibliotecaCRUD {
     }
 
     /**
+     * Acualiza los datos de una biblioteca
      *
      * @param viejo
      * @param nuevo
      * @return
      */
-    public static int actualizarBiblioteca(Biblioteca viejo, Biblioteca nuevo){
+    public static int actualizarBiblioteca(Biblioteca viejo, Biblioteca nuevo) {
         int resultado = 0;
         Conexion con = new Conexion();
         EntityManager em = con.conecta();
@@ -89,7 +94,7 @@ public class BibliotecaCRUD {
             b.setFecha(nuevo.getFecha());
             em.persist(b);
             tx.commit();
-            resultado =1;
+            resultado = 1;
         } catch (IllegalArgumentException | PersistenceException ex) {
             System.err.println("Excepciones en metodo actualizarBiblioteca" + ex.getLocalizedMessage());
             tx.rollback();
@@ -100,6 +105,7 @@ public class BibliotecaCRUD {
     }
 
     /**
+     * Borra una biblioteca
      *
      * @param biblioteca
      * @return

@@ -7,14 +7,15 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.shape.Circle?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="350.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mj.cliente.controller.PantallaLoginController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onKeyPressed="#Intro" prefHeight="400.0" prefWidth="350.0" stylesheets="@../../../../com.mj.cliente.css/HojaEstilo.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mj.cliente.controller.PantallaLoginController">
    <center>
       <AnchorPane prefHeight="400.0" prefWidth="319.0" style="-fx-background-color: white;" BorderPane.alignment="CENTER">
          <children>
-            <TextField fx:id="loginID" focusTraversable="false" layoutX="100.0" layoutY="150.0" prefHeight="27.0" prefWidth="170.0" promptText="Alias" style="-fx-background-color: transpent; -fx-border-color: #000000; -fx-border-width: 0px 0px 2px 0px;" />
-            <PasswordField fx:id="passwordID" focusTraversable="false" layoutX="100.0" layoutY="200.0" prefHeight="27.0" prefWidth="170.0" promptText="Contraseña" style="-fx-background-color: transparent; -fx-border-color: #000000; -fx-border-width: 0px 0px 2px 0px;" />
+            <TextField fx:id="loginID" focusTraversable="false" layoutX="100.0" layoutY="150.0" prefHeight="27.0" prefWidth="170.0" promptText="Alias" styleClass="textfield" />
+            <PasswordField fx:id="passwordID" focusTraversable="false" layoutX="100.0" layoutY="200.0" prefHeight="27.0" prefWidth="170.0" promptText="Contraseña" styleClass="textfield" />
             <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="40.0" layoutY="150.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../images/persona.png" />
@@ -25,22 +26,14 @@
                   <Image url="@../images/alfiler.png" />
                </image>
             </ImageView>
-            <Button fx:id="login" layoutX="139.0" layoutY="259.0" mnemonicParsing="false" onAction="#userLogin" prefHeight="30.0" prefWidth="75.0" style="-fx-background-color: #000000;" text="Entrar" textFill="WHITE">
+            <Button fx:id="login" layoutX="131.0" layoutY="250.0" mnemonicParsing="false" onAction="#userLogin" prefHeight="30.0" prefWidth="75.0" text="Entrar">
                <font>
-                  <Font size="14.0" />
+                  <Font name="Corbel" size="14.0" />
                </font>
             </Button>
-            <Button fx:id="crearCuenta" layoutX="235.0" layoutY="360.0" mnemonicParsing="false" onAction="#crearCuenta" prefHeight="27.0" prefWidth="101.0" style="-fx-background-color: transparent; -fx-border-color: transparent;" text="Crear cuenta" textFill="#009fff">
-               <font>
-                  <Font name="System Bold" size="12.0" />
-               </font>
-            </Button>
-            <Button fx:id="recuperarPass" layoutX="14.0" layoutY="360.0" mnemonicParsing="false" onAction="#recuperarPass" prefHeight="27.0" prefWidth="146.0" style="-fx-background-color: transparent; -fx-border-color: transparent;" text="Olvide mi contraseña" textFill="#009fff">
-               <font>
-                  <Font name="System Bold" size="12.0" />
-               </font>
-            </Button>
-            <ImageView fitHeight="250.0" fitWidth="250.0" layoutX="52.0" layoutY="-23.0">
+            <Button fx:id="crearCuenta" layoutX="185.0" layoutY="331.0" mnemonicParsing="false" onAction="#crearCuenta" prefHeight="30.0" prefWidth="145.0" text="Crear cuenta" />
+            <Button fx:id="recuperarPass" layoutX="14.0" layoutY="331.0" mnemonicParsing="false" onAction="#recuperarPass" prefHeight="30.0" prefWidth="145.0" text="Olvide mi contraseña" />
+            <ImageView fitHeight="250.0" fitWidth="250.0" layoutX="43.0" layoutY="-23.0">
                <image>
                   <Image url="@../images/Logo%20Texto%20Abajo.png" />
                </image>
@@ -49,15 +42,27 @@
       </AnchorPane>
    </center>
    <top>
-      <AnchorPane prefHeight="5.0" prefWidth="200.0" style="-fx-background-color: #000000;" BorderPane.alignment="CENTER" />
+      <AnchorPane fx:id="parent" onMouseDragged="#Draged" onMousePressed="#Presed" prefHeight="26.0" prefWidth="350.0" styleClass="border" BorderPane.alignment="CENTER">
+         <children>
+            <Button layoutX="316.0" layoutY="1.0" mnemonicParsing="false" onAction="#Close_app" prefHeight="0.0" prefWidth="34.0" styleClass="close_button">
+               <graphic>
+                  <Circle fill="RED" radius="5.0" stroke="BLACK" strokeType="INSIDE" />
+               </graphic>
+            </Button>
+            <Button layoutX="282.0" layoutY="1.0" mnemonicParsing="false" onAction="#minStage" prefHeight="0.0" prefWidth="34.0" styleClass="close_button">
+               <graphic>
+                  <Circle fill="#00a5ff" radius="5.0" stroke="BLACK" strokeType="INSIDE" />
+               </graphic>
+            </Button>
+         </children></AnchorPane>
    </top>
    <left>
-      <AnchorPane prefHeight="10.0" prefWidth="5.0" style="-fx-background-color: #000000;" BorderPane.alignment="CENTER" />
+      <AnchorPane prefHeight="10.0" prefWidth="5.0" styleClass="border" BorderPane.alignment="CENTER" />
    </left>
    <right>
-      <AnchorPane prefHeight="10.0" prefWidth="5.0" style="-fx-background-color: #000000;" BorderPane.alignment="CENTER" />
+      <AnchorPane prefHeight="10.0" prefWidth="5.0" styleClass="border" BorderPane.alignment="CENTER" />
    </right>
    <bottom>
-      <AnchorPane prefHeight="5.0" prefWidth="200.0" style="-fx-background-color: #000000;" BorderPane.alignment="CENTER" />
+      <AnchorPane prefHeight="5.0" prefWidth="200.0" styleClass="border" BorderPane.alignment="CENTER" />
    </bottom>
 </BorderPane>

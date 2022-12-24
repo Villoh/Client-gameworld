@@ -22,6 +22,10 @@ public class Conexion {
 
     }
 
+    /**
+     * Metodo para crear la conexion con la base de datos
+     * @return entitymanager
+     */
     public EntityManager conecta() {
         EntityManager entitymanager = null;
         try {
@@ -33,6 +37,10 @@ public class Conexion {
         return entitymanager;
     }
     
+    /**
+     * Metodo que cierra la conexion con la base de datos
+     * @param em 
+     */
     public void desconecta(EntityManager em){
         if (em!=null){
             em.close();

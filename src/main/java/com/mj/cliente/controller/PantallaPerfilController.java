@@ -12,19 +12,14 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.GridPane;
-import javafx.scene.layout.VBox;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
@@ -38,40 +33,42 @@ public class PantallaPerfilController implements Initializable {
     @FXML
     private Button btn_Tienda;
     @FXML
-    private Button btn_Biblioteca;
-    @FXML
     private Button btn_perfil;
     @FXML
     private Button btn_Exit;
     private ImageView imagenPerfil;
-    @FXML
-    private ImageView avatar;
     @FXML
     private Label nombre_apellidos;
     @FXML
     private Label fechanace;
     @FXML
     private Label email;
-    
-    public  static int loginOcreado=0;
+
+    public static int loginOcreado = 0;
     @FXML
     private AnchorPane root;
+    @FXML
+    private AnchorPane parent;
+    @FXML
+    private ImageView avatar;
 
     /**
      * Initializes the controller class.
+     *
      * @param url
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        if(loginOcreado==1){
-        setData(PantallaLoginController.correcto);
+        makeStageDragable();
+        if (loginOcreado == 1) {
+            setData(PantallaLoginController.correcto);
         }
-        if(loginOcreado==2){
-        setData(PantallaCrearUsuarioController.correcto);    
+        if (loginOcreado == 2) {
+            setData(PantallaCrearUsuarioController.correcto);
         }
+
     }
 
-    @FXML
     private void abrirBiblioteca(ActionEvent event) throws IOException {
         App.setRoot("PantallaBiblioteca");
 
@@ -93,20 +90,31 @@ public class PantallaPerfilController implements Initializable {
     private void cerrarSesion(ActionEvent event) throws IOException {
         App.setRoot("PantallaLogin");
     }
-    
+
+    /**
+     * Establecemos los datos del usuario para ser mostrados en la ventana de
+     * Perfil
+     *
+     * @param user
+     */
     public void setData(Usuario user) {
-       //Image image = new Image(user.getAvatar());
+        //Image image = new Image(user.getAvatar());
         //Image image = new Image("C:\\Users\\Usuario\\Downloads\\cliente\\src\\main\\resources\\com\\mj\\cliente\\images\\persona.png");
 //        imagen.setFitWidth(100);
         //avatar.setImage(image);
-      
-        this.nombre_apellidos.setText(user.getNombre()+" "+user.getApellidos());
+
+        this.nombre_apellidos.setText(user.getNombre() + " " + user.getApellidos());
         this.fechanace.setText(user.getFechanace().toString());
         this.email.setText(user.getEmail());
-        
-        
+
     }
 
+    /**
+     * Metodo para cambiar el avatar del usuario
+     *
+     * @param event
+     * @throws FileNotFoundException
+     */
     private void editarFoto(ActionEvent event) throws FileNotFoundException {
 
         FileChooser avatar = new FileChooser();
@@ -118,6 +126,65 @@ public class PantallaPerfilController implements Initializable {
         } else {
             //JOptionPane.showMessageDialog(null, "Los formatos validos son: JPG y PNG", "No es un archivo valido", 2);
         }
+    }
+
+    private double xOffSet = 0;
+    private double yOffSet = 0;
+
+    /**
+     * Hace la interfaz arrastable
+     */
+    private void makeStageDragable() {
+
+        parent.setOnMousePressed((event) -> {
+
+            xOffSet = event.getSceneX();
+            yOffSet = event.getSceneY();
+
+        });
+
+        parent.setOnMouseDragged((event) -> {
+
+            App.st.setX(event.getScreenX() - xOffSet);
+            App.st.setY(event.getScreenY() - yOffSet);
+            App.st.setOpacity(0.8f);
+
+        });
+
+        parent.setOnDragDone((event) -> {
+
+            App.st.setOpacity(1.0f);
+
+        });
+
+        parent.setOnMouseReleased((event) -> {
+
+            App.st.setOpacity(1.0f);
+
+        });
+
+    }
+
+    private void min_stage(ActionEvent event) {
+
+        App.st.setIconified(true);
+
+    }
+
+    @FXML
+    private void Close_app(ActionEvent event) {
+
+        System.exit(0);
+
+    }
+
+    @FXML
+    private void abrirSubirJuego(ActionEvent event) {
+    }
+
+    @FXML
+    private void minStage(ActionEvent event) {
+        App.st.setIconified(true);
     }
 
 }

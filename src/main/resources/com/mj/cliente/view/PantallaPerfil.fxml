@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.String?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
@@ -11,16 +12,61 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.shape.Circle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" fx:id="root" prefHeight="537.0" prefWidth="899.0" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mj.cliente.controller.PantallaPerfilController">
+<AnchorPane fx:id="root" prefHeight="537.0" prefWidth="899.0" stylesheets="@../../../../com.mj.cliente.css/HojaEstilo.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mj.cliente.controller.PantallaPerfilController">
    <children>
       <BorderPane prefHeight="537.0" prefWidth="937.0">
          <top>
-            <AnchorPane prefHeight="5.0" prefWidth="200.0" style="-fx-background-color: #2A2A2A;" BorderPane.alignment="CENTER">
+            <AnchorPane fx:id="parent" prefHeight="36.0" prefWidth="200.0" styleClass="border" BorderPane.alignment="CENTER">
                <children>
+                  <Button layoutX="907.0" layoutY="6.0" mnemonicParsing="false" onAction="#Close_app" styleClass="close_button">
+                     <graphic>
+                        <Circle fill="RED" radius="5.0" stroke="BLACK" strokeType="INSIDE" />
+                     </graphic>
+                  </Button>
+                  <Button layoutX="864.0" layoutY="6.0" mnemonicParsing="false" onAction="#minStage" styleClass="close_button">
+                     <graphic>
+                        <Circle fill="DODGERBLUE" radius="5.0" stroke="BLACK" strokeType="INSIDE" />
+                     </graphic>
+                  </Button>
+               </children>
+            </AnchorPane>
+         </top>
+         <left>
+            <AnchorPane prefHeight="200.0" prefWidth="5.0" styleClass="border" BorderPane.alignment="CENTER" />
+         </left>
+         <right>
+            <AnchorPane prefHeight="200.0" prefWidth="5.0" styleClass="border" BorderPane.alignment="CENTER" />
+         </right>
+         <bottom>
+            <AnchorPane prefHeight="5.0" prefWidth="200.0" styleClass="border" BorderPane.alignment="CENTER" />
+         </bottom>
+         <center>
+            <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #ffffff;" BorderPane.alignment="CENTER">
+               <children>
+                  <Label fx:id="nombre_apellidos" layoutX="346.0" layoutY="114.0" text="Label">
+                     <font>
+                        <Font name="Corbel" size="36.0" />
+                     </font></Label>
+                  <Label fx:id="fechanace" layoutX="515.0" layoutY="209.0" text="Label">
+                     <font>
+                        <Font name="Corbel" size="24.0" />
+                     </font></Label>
+                  <Label fx:id="email" layoutX="515.0" layoutY="282.0" text="Label">
+                     <font>
+                        <Font name="Corbel" size="24.0" />
+                     </font></Label>
+                  <Pane layoutX="246.0" layoutY="182.0" prefHeight="200.0" prefWidth="200.0" style="-fx-border-color: #000000;">
+                     <children>
+                        <ImageView fx:id="avatar" fitHeight="205.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" styleClass="pasarela" />
+                     </children>
+                  </Pane>
                   <GridPane alignment="CENTER" prefHeight="68.0" prefWidth="937.0">
                     <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                         <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                         <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                         <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -31,7 +77,19 @@
                       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                     </rowConstraints>
                      <children>
-                        <Button fx:id="btn_perfil" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#abrirPerfil" prefHeight="25.0" prefWidth="188.0" style="-fx-background-color: #2A2A2A;" text="Cuenta" textFill="WHITE" GridPane.halignment="CENTER">
+                        <Button fx:id="btn_perfil" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#abrirPerfil" prefHeight="85.0" prefWidth="188.0" text="Cuenta" textFill="WHITE" GridPane.halignment="CENTER">
+                           <GridPane.margin>
+                              <Insets />
+                           </GridPane.margin>
+                           <font>
+                              <Font name="Corbel" size="20.0" />
+                           </font>
+                           <styleClass>
+                              <String fx:value="buttonM" />
+                              <String fx:value="butto_select" />
+                           </styleClass>
+                        </Button>
+                        <Button fx:id="btn_Tienda" mnemonicParsing="false" onAction="#abrirTienda" prefHeight="111.0" prefWidth="187.0" styleClass="buttonM" text="Tienda" textFill="WHITE" GridPane.columnIndex="1" GridPane.halignment="CENTER">
                            <GridPane.margin>
                               <Insets />
                            </GridPane.margin>
@@ -39,7 +97,7 @@
                               <Font name="Corbel" size="20.0" />
                            </font>
                         </Button>
-                        <Button fx:id="btn_Biblioteca" mnemonicParsing="false" onAction="#abrirBiblioteca" prefHeight="25.0" prefWidth="188.0" style="-fx-background-color: #2A2A2A;" text="Biblioteca" textFill="WHITE" GridPane.columnIndex="1" GridPane.halignment="CENTER">
+                        <Button fx:id="btn_Exit" mnemonicParsing="false" onAction="#cerrarSesion" prefHeight="111.0" prefWidth="187.0" styleClass="buttonM" text="Salir" textFill="WHITE" GridPane.columnIndex="6" GridPane.halignment="CENTER">
                            <GridPane.margin>
                               <Insets />
                            </GridPane.margin>
@@ -47,64 +105,21 @@
                               <Font name="Corbel" size="20.0" />
                            </font>
                         </Button>
-                        <ImageView fitHeight="128.0" fitWidth="140.0" GridPane.columnIndex="2" GridPane.halignment="CENTER">
+                        <Label prefHeight="68.0" prefWidth="140.0" styleClass="labelMenu" GridPane.columnIndex="2" GridPane.halignment="CENTER" />
+                        <Label prefHeight="68.0" prefWidth="175.0" styleClass="labelMenu" GridPane.columnIndex="4" GridPane.halignment="CENTER" />
+                        <Label prefHeight="102.0" prefWidth="134.0" styleClass="labelMenu" GridPane.columnIndex="3" GridPane.halignment="CENTER" />
+                        <ImageView fitHeight="100.0" fitWidth="100.0" GridPane.columnIndex="3" GridPane.halignment="CENTER">
                            <image>
                               <Image url="@../images/Logo%20sin%20texto.png" />
                            </image>
-                           <GridPane.margin>
-                              <Insets />
-                           </GridPane.margin>
                         </ImageView>
-                        <Button fx:id="btn_Tienda" mnemonicParsing="false" onAction="#abrirTienda" prefHeight="25.0" prefWidth="187.0" style="-fx-background-color: #2A2A2A;" text="Tienda" textFill="WHITE" GridPane.columnIndex="3" GridPane.halignment="CENTER">
-                           <GridPane.margin>
-                              <Insets />
-                           </GridPane.margin>
-                           <font>
-                              <Font name="Corbel" size="20.0" />
-                           </font>
-                        </Button>
-                        <Button fx:id="btn_Exit" mnemonicParsing="false" onAction="#cerrarSesion" prefHeight="25.0" prefWidth="187.0" style="-fx-background-color: #2A2A2A;" text="Salir" textFill="WHITE" GridPane.columnIndex="4" GridPane.halignment="CENTER">
-                           <GridPane.margin>
-                              <Insets />
-                           </GridPane.margin>
+                        <Button mnemonicParsing="false" onAction="#abrirSubirJuego" prefHeight="111.0" prefWidth="187.0" styleClass="buttonM" text="Subir" textFill="WHITE" GridPane.columnIndex="5">
                            <font>
                               <Font name="Corbel" size="20.0" />
                            </font>
                         </Button>
                      </children>
                   </GridPane>
-               </children>
-            </AnchorPane>
-         </top>
-         <left>
-            <AnchorPane prefHeight="200.0" prefWidth="5.0" style="-fx-background-color: #2A2A2A;" BorderPane.alignment="CENTER" />
-         </left>
-         <right>
-            <AnchorPane prefHeight="200.0" prefWidth="5.0" style="-fx-background-color: #2A2A2A;" BorderPane.alignment="CENTER" />
-         </right>
-         <bottom>
-            <AnchorPane prefHeight="5.0" prefWidth="200.0" style="-fx-background-color: #2A2A2A;" BorderPane.alignment="CENTER" />
-         </bottom>
-         <center>
-            <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #ffffff;" BorderPane.alignment="CENTER">
-               <children>
-                  <Label fx:id="nombre_apellidos" layoutX="346.0" layoutY="42.0" text="Label">
-                     <font>
-                        <Font name="Corbel" size="36.0" />
-                     </font></Label>
-                  <Label fx:id="fechanace" layoutX="515.0" layoutY="168.0" text="Label">
-                     <font>
-                        <Font name="Corbel" size="24.0" />
-                     </font></Label>
-                  <Label fx:id="email" layoutX="514.0" layoutY="211.0" text="Label">
-                     <font>
-                        <Font name="Corbel" size="24.0" />
-                     </font></Label>
-                  <Pane layoutX="241.0" layoutY="121.0" prefHeight="200.0" prefWidth="200.0" style="-fx-border-color: #000000;">
-                     <children>
-                        <ImageView fx:id="avatar" fitHeight="205.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
-                     </children>
-                  </Pane>
                </children>
             </AnchorPane>
          </center>

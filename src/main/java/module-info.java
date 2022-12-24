@@ -8,7 +8,7 @@ module com.mj.cliente {
     requires javafx.graphics;
     requires java.sql;
     requires java.desktop;
-    requires org.apache.commons.io;
+//    requires org.apache.commons.io;
     requires java.base;
     
 

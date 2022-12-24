@@ -17,7 +17,6 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
-
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -40,12 +39,7 @@ public class PantallaStoreController implements Initializable {
     @FXML
     private Button btn_Tienda;
     @FXML
-    private Button btn_Biblioteca;
-    @FXML
     private Button btn_perfil;
-    private GridPane juegosGrid;
-    @FXML
-    private GridPane gridBiblioteca;
     @FXML
     private GridPane gridStore;
     @FXML
@@ -55,9 +49,15 @@ public class PantallaStoreController implements Initializable {
 
     public static boolean actualizarStore = true;
     public static boolean actualizarBiblioteca = true;
-    static List<Juego> listaJuegos = new ArrayList();
-    static List<Juego> listaJuegosUsuario= new ArrayList();;
-    //ObservableList<Juego> listaJuegos  =(ObservableList<Juego>)PantallaLoginController.lista;
+    static List<Juego> listaJuegosStore = new ArrayList();
+    static List<Juego> listaJuegosUsuario = new ArrayList();
+    ;
+    @FXML
+    private AnchorPane parent;
+    @FXML
+    private GridPane gridBibliotecaPersonal;
+
+  
     /**
      * Initializes the controller class.
      *
@@ -66,53 +66,57 @@ public class PantallaStoreController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        makeStageDragable();
         int columns = 0;
         int columns2 = 0;
-        int row = 1;
+       
         //Juegos de la app
-
-        if (actualizarStore) {
-            listaJuegos = JuegoCRUD.verListaJuegos();
-            actualizarStore = false;
-        }
+        //Cargamos la lista de juegos Disponibles en la tienda
+        listaJuegosStore = JuegoCRUD.verListaJuegos();
 
         try {
-            for (int x = 0; x < listaJuegos.size(); x++) {
+            for (int x = 0; x < listaJuegosStore.size(); x++) {
+                //Cargamos la plantilla xml
                 FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("view/PantallaJuego.fxml"));
                 VBox box = fxmlLoader.load();
                 PantallaJuegoController controlador = fxmlLoader.getController();
-                controlador.setData(listaJuegos.get(x));
-                controlador.juegoGuardado = listaJuegos.get(x);
-                gridBiblioteca.add(box, columns++, 1);
+                //Pasamos el objeto juego a la ventana del juego(PantallaJuego.fxml)
+                controlador.setData(listaJuegosStore.get(x));
+                controlador.juegoGuardado = listaJuegosStore.get(x);
+                //Agregamos una ventana por juego al Grid
+                gridStore.add(box, columns++, 1);
                 GridPane.setMargin(box, new Insets(10));
-                PantallaJuegoController.juegoEspecifico = listaJuegos.get(x);
+                PantallaJuegoController.juegoEspecifico = listaJuegosStore.get(x);
             }
         } catch (IOException ex) {
 
         }
 
-        if (actualizarBiblioteca) {
-            Usuario usuario = PantallaLoginController.correcto;
-            Biblioteca biblioteca = BibliotecaCRUD.verBiblioteca(usuario.getPkusuario());
-            List<Descarga> listaDescargas = DescargasCRUD.verListaDescargas();
-            
-            for (Descarga d : listaDescargas) {
-                if (d.getAkbiblioteca().equals(biblioteca)) {
-                    if(!listaJuegosUsuario.contains(d.getAkjuego()))
+        //>>>>>>>>  Juegos Biblioteca Personal Jugador <<<<<<<<<<<<
+        /*Obtenemos los juegos espeficios del usuario, los almacenamos en uns lista y luego
+        mostramos los juegos por pantalla*/
+        Usuario usuario = PantallaLoginController.correcto;
+        Biblioteca biblioteca = BibliotecaCRUD.verBiblioteca(usuario.getPkusuario());
+        List<Descarga> listaDescargas = DescargasCRUD.verListaDescargas();
+
+        for (Descarga d : listaDescargas) {
+            if (d.getAkbiblioteca().equals(biblioteca)) {
+                if (!listaJuegosUsuario.contains(d.getAkjuego())) {
                     listaJuegosUsuario.add(d.getAkjuego());
                 }
             }
-            actualizarBiblioteca=false;
         }
 
         try {
             for (int x = 0; x < listaJuegosUsuario.size(); x++) {
+                //Cargamos la plantilla xml
                 FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("view/PantallaJuego.fxml"));
                 VBox box = fxmlLoader.load();
                 PantallaJuegoController controlador = fxmlLoader.getController();
                 controlador.setData(listaJuegosUsuario.get(x));
                 controlador.juegoGuardado = listaJuegosUsuario.get(x);
-                gridStore.add(box, columns++, 1);
+                 //Agregamos una ventana por juego al Grid
+                gridBibliotecaPersonal.add(box, columns++, 1);
                 GridPane.setMargin(box, new Insets(10));
                 PantallaJuegoController.juegoEspecifico = listaJuegosUsuario.get(x);
             }
@@ -123,7 +127,6 @@ public class PantallaStoreController implements Initializable {
         addboton(PantallaLoginController.correcto);
     }
 
-    @FXML
     private void abrirBiblioteca(ActionEvent event) throws IOException {
         App.setRoot("PantallaBiblioteca");
 
@@ -149,6 +152,11 @@ public class PantallaStoreController implements Initializable {
         App.setRoot("PantallaLogin");
     }
 
+    /**
+     * Con este metodo habilitamos el boton subir juego si el perfil de login 
+     * es desarrollador
+     * @param user 
+     */
     public void addboton(Usuario user) {
         if (user.getAkperfil().getRol().equalsIgnoreCase("Desarrollador")) {
 
@@ -161,6 +169,61 @@ public class PantallaStoreController implements Initializable {
     @FXML
     private void abrirSubirJuego(ActionEvent event) throws IOException {
         App.setRoot("PantallaSubirJuego");
+    }
+
+    private double xOffSet = 0;
+    private double yOffSet = 0;
+
+    /**
+     * Hace la interfaz arrastable
+     */
+    private void makeStageDragable() {
+
+        parent.setOnMousePressed((event) -> {
+
+            xOffSet = event.getSceneX();
+            yOffSet = event.getSceneY();
+
+        });
+
+        parent.setOnMouseDragged((event) -> {
+
+            App.st.setX(event.getScreenX() - xOffSet);
+            App.st.setY(event.getScreenY() - yOffSet);
+            App.st.setOpacity(0.8f);
+
+        });
+
+        parent.setOnDragDone((event) -> {
+
+            App.st.setOpacity(1.0f);
+
+        });
+
+        parent.setOnMouseReleased((event) -> {
+
+            App.st.setOpacity(1.0f);
+
+        });
+
+    }
+
+    private void min_stage(ActionEvent event) {
+
+        App.st.setIconified(true);
+
+    }
+
+    @FXML
+    private void Close_app(ActionEvent event) {
+
+        System.exit(0);
+
+    }
+
+    @FXML
+    private void minStage(ActionEvent event) {
+        App.st.setIconified(true);
     }
 
 }

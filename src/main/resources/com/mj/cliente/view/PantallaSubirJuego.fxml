@@ -12,24 +12,37 @@
 <?import javafx.scene.paint.Color?>
 <?import javafx.scene.paint.LinearGradient?>
 <?import javafx.scene.paint.Stop?>
+<?import javafx.scene.shape.Circle?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="594.0" prefWidth="350.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mj.cliente.controller.PantallaSubirJuegoController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="594.0" prefWidth="350.0" stylesheets="@../../../../com.mj.cliente.css/HojaEstilo.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mj.cliente.controller.PantallaSubirJuegoController">
    <right>
       <AnchorPane prefHeight="474.0" prefWidth="5.0" style="-fx-background-color: #000000;" BorderPane.alignment="CENTER" />
    </right>
    <top>
-      <AnchorPane prefHeight="5.0" prefWidth="347.0" style="-fx-background-color: #000000;" BorderPane.alignment="CENTER" />
+      <AnchorPane fx:id="parent" prefHeight="26.0" prefWidth="347.0" style="-fx-background-color: #000000;" BorderPane.alignment="CENTER">
+         <children>
+            <Button layoutX="316.0" layoutY="1.0" mnemonicParsing="false" onAction="#Close_app" styleClass="close_button">
+               <graphic>
+                  <Circle fill="RED" radius="5.0" stroke="BLACK" strokeType="INSIDE" />
+               </graphic>
+            </Button>
+            <Button layoutX="290.0" layoutY="1.0" mnemonicParsing="false" onAction="#minStage" styleClass="close_button">
+               <graphic>
+                  <Circle fill="#00a5ff" radius="5.0" stroke="BLACK" strokeType="INSIDE" />
+               </graphic>
+            </Button>
+         </children></AnchorPane>
    </top>
    <left>
       <AnchorPane prefHeight="200.0" prefWidth="5.0" style="-fx-background-color: #000000;" BorderPane.alignment="CENTER" />
    </left>
    <center>
-      <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" styleClass="fondo" BorderPane.alignment="CENTER">
          <children>
             <TextField fx:id="txt_NombreJuego" alignment="CENTER" focusTraversable="false" layoutX="86.0" layoutY="155.0" prefHeight="27.0" prefWidth="170.0" promptText="Nombre del Juego" style="-fx-background-color: transpent; -fx-border-color: #000000; -fx-border-width: 0px 0px 2px 0px;" />
             <TextField fx:id="txt_precio" alignment="CENTER_RIGHT" focusTraversable="false" layoutX="80.0" layoutY="458.0" prefHeight="27.0" prefWidth="170.0" promptText="Precio" style="-fx-background-color: transpent; -fx-border-color: #000000; -fx-border-width: 0px 0px 2px 0px;" />
-            <Button layoutX="79.0" layoutY="501.0" mnemonicParsing="false" onAction="#subirJuego" prefHeight="30.0" prefWidth="170.0" style="-fx-background-color: #000000;" text="Subir" textFill="WHITE">
+            <Button layoutX="175.0" layoutY="509.0" mnemonicParsing="false" onAction="#subirJuego" prefHeight="30.0" prefWidth="150.0" text="Subir" textFill="WHITE">
                <font>
                   <Font size="14.0" />
                </font>
@@ -53,7 +66,7 @@
             <Label layoutX="116.0" layoutY="404.0" text="Fecha de Creación" />
             <ComboBox fx:id="comboDificultad" layoutX="129.0" layoutY="302.0" prefWidth="150.0" />
             <ComboBox fx:id="comboClasificacion" layoutX="129.0" layoutY="334.0" prefWidth="150.0" />
-            <Button layoutX="113.0" layoutY="91.0" mnemonicParsing="false" onAction="#escogerPortada" style="-fx-background-color: #000000;" text="Cambiar  Imagen">
+            <Button layoutX="113.0" layoutY="91.0" mnemonicParsing="false" onAction="#escogerPortada" text="Cambiar  Imagen">
                <textFill>
                   <LinearGradient endX="1.0" endY="1.0">
                      <stops>
@@ -83,6 +96,11 @@
                   <Font name="System Bold" size="14.0" />
                </font>
             </Label>
+            <Button layoutX="11.0" layoutY="509.0" mnemonicParsing="false" onAction="#volver" prefHeight="30.0" prefWidth="150.0" text="Volver" textFill="WHITE">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Button>
          </children>
       </AnchorPane>
    </center>

@@ -2,21 +2,21 @@ package com.mj.cliente.crud;
 
 import com.mj.cliente.conexion.Conexion;
 import com.mj.cliente.dao.Descarga;
-import com.mj.cliente.dao.Juego;
-import com.mj.cliente.dao.Usuario;
 
 import javax.persistence.*;
 import java.util.List;
 
 public class DescargasCRUD {
+
     /**
+     * Devuelve una lista de todas las descargas de la base de datos
      *
      * @return
      */
-    public static List<Descarga> verListaDescargas(){
+    public static List<Descarga> verListaDescargas() {
         Conexion con = new Conexion();
         EntityManager em = con.conecta();
-        List<Descarga> lista =null;
+        List<Descarga> lista = null;
         try {
             lista = em.createNamedQuery("Descarga.findAll").getResultList();
 
@@ -28,6 +28,7 @@ public class DescargasCRUD {
     }
 
     /**
+     * Busca una descarga segun su pk
      *
      * @param pkdescarga
      * @return
@@ -48,12 +49,13 @@ public class DescargasCRUD {
     }
 
     /**
+     * Crea una nueva descarga
      *
      * @param descarga
      * @return
      */
-    public static int nuevaDescarga(Descarga descarga){
-        int resultado =0;
+    public static int nuevaDescarga(Descarga descarga) {
+        int resultado = 0;
         Conexion con = new Conexion();
         EntityManager em = con.conecta();
         EntityTransaction tx = em.getTransaction();
@@ -61,7 +63,7 @@ public class DescargasCRUD {
             tx.begin();
             em.persist(descarga);
             tx.commit();
-            resultado =1;
+            resultado = 1;
         } catch (IllegalArgumentException | PersistenceException ex) {
             System.err.println("Excepciones en metodo nuevaDescarga " + ex.getLocalizedMessage());
             tx.rollback();
@@ -72,12 +74,13 @@ public class DescargasCRUD {
     }
 
     /**
+     * Acualiza los datos de una Descarga
      *
      * @param viejo
      * @param nuevo
      * @return
      */
-    public static int actualizardescarga(Descarga viejo, Descarga nuevo){
+    public static int actualizardescarga(Descarga viejo, Descarga nuevo) {
         int resultado = 0;
         Conexion con = new Conexion();
         EntityManager em = con.conecta();
@@ -90,7 +93,7 @@ public class DescargasCRUD {
             d.setFecha(nuevo.getFecha());
             em.persist(d);
             tx.commit();
-            resultado =1;
+            resultado = 1;
         } catch (IllegalArgumentException | PersistenceException ex) {
             System.err.println("Excepciones en metodo actualizardescarga " + ex.getLocalizedMessage());
             tx.rollback();
@@ -101,6 +104,7 @@ public class DescargasCRUD {
     }
 
     /**
+     * Borra una descarga
      *
      * @param descarga
      * @return

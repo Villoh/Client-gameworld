@@ -13,13 +13,14 @@ import java.util.List;
 public class UsuarioCRUD {
 
     /**
+     * Devuelve una lista de todos los usuarios de la base de datos
      *
      * @return
      */
-    public static List<Usuario> verListaUsuarios(){
+    public static List<Usuario> verListaUsuarios() {
         Conexion con = new Conexion();
         EntityManager em = con.conecta();
-        List<Usuario> lista =null;
+        List<Usuario> lista = null;
         try {
             lista = em.createNamedQuery("Usuario.findAll").getResultList();
 
@@ -31,19 +32,20 @@ public class UsuarioCRUD {
     }
 
     /**
-     * Metodo que te busca un usuario usando su alias y password
+     * Metodo que busca un usuario usando su alias y password
+     *
      * @param alias
      * @param password
      * @return Devuelve el usuario encontrado
      */
-    public static Usuario verUsuario(String alias,String password) {
+    public static Usuario verUsuario(String alias, String password) {
         Conexion con = new Conexion();
         EntityManager em = con.conecta();
         Usuario usuario = null;
         try {
             Query query = em.createQuery("SELECT u FROM Usuario u WHERE u.alias =:alias and u.password=:password");
-            query.setParameter("alias",alias);
-            query.setParameter("password",password);
+            query.setParameter("alias", alias);
+            query.setParameter("password", password);
             usuario = (Usuario) query.getSingleResult();
         } catch (NoResultException | IllegalArgumentException ex) {
             System.err.println("Excepciones en metodo verUsuario" + ex.getLocalizedMessage());
@@ -53,19 +55,20 @@ public class UsuarioCRUD {
     }
 
     /**
+     * Crea un nuevo Usuario
      *
      * @param usuario
      * @param perfil
      * @return
      */
-    public static int nuevoUsuario(Usuario usuario, Perfil perfil){
-        int resultado =0;
+    public static int nuevoUsuario(Usuario usuario, Perfil perfil) {
+        int resultado = 0;
         Conexion con = new Conexion();
         EntityManager em = con.conecta();
         Biblioteca biblio = new Biblioteca();
         EntityTransaction tx = em.getTransaction();
-        System.out.println("Usuario: "+usuario.getAlias()+usuario.getPassword());
-        System.out.println("Pefil: "+perfil.toString());
+        System.out.println("Usuario: " + usuario.getAlias() + usuario.getPassword());
+        System.out.println("Pefil: " + perfil.toString());
         usuario.setAkperfil(perfil);
         try {
             tx.begin();
@@ -78,7 +81,7 @@ public class UsuarioCRUD {
             em.flush();
             em.refresh(biblio);
             tx.commit();
-            resultado =1;
+            resultado = 1;
         } catch (IllegalArgumentException | PersistenceException ex) {
             System.err.println("Excepciones en metodo nuevoUsuario " + ex);
             tx.rollback();
@@ -89,12 +92,13 @@ public class UsuarioCRUD {
     }
 
     /**
+     * Actualiza un usuario
      *
      * @param viejo
      * @param nuevo
      * @return
      */
-    public static int actualizarUsuario(Usuario viejo, Usuario nuevo){
+    public static int actualizarUsuario(Usuario viejo, Usuario nuevo) {
         int resultado = 0;
         Conexion con = new Conexion();
         EntityManager em = con.conecta();
@@ -112,7 +116,7 @@ public class UsuarioCRUD {
             u.setAvatar(nuevo.getAvatar());
             em.persist(u);
             tx.commit();
-            resultado =1;
+            resultado = 1;
         } catch (IllegalArgumentException | PersistenceException ex) {
             System.err.println("Excepciones en metodo actualizarUsuario " + ex.getLocalizedMessage());
             tx.rollback();
@@ -123,6 +127,7 @@ public class UsuarioCRUD {
     }
 
     /**
+     * Borra un usuario
      *
      * @param juego
      * @return

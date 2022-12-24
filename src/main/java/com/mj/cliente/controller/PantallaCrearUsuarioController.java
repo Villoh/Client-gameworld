@@ -7,7 +7,6 @@ package com.mj.cliente.controller;
 import com.mj.cliente.App;
 import com.mj.cliente.OtrasOperacionesBD.OperacionesEspecificas;
 import com.mj.cliente.crud.UsuarioCRUD;
-import com.mj.cliente.dao.Biblioteca;
 import com.mj.cliente.dao.Perfil;
 import com.mj.cliente.dao.Usuario;
 import java.io.File;
@@ -28,11 +27,8 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
-import org.apache.commons.io.FilenameUtils;
-import org.apache.commons.io.output.ByteArrayOutputStream;
-import java.awt.image.BufferedImage;
 import java.util.regex.Pattern;
-import javax.imageio.ImageIO;
+import javafx.scene.layout.AnchorPane;
 import javax.swing.JOptionPane;
 
 //import javax.swing.JOptionPane;
@@ -70,17 +66,20 @@ public class PantallaCrearUsuarioController implements Initializable {
 
     public static Usuario correcto = null;
     public static String imagenURL;
+    @FXML
+    private AnchorPane parent;
 
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        makeStageDragable();
         rol.getItems().addAll("Desarrollador", "Jugador", "Invitado");
     }
 
     /**
-     * Metodo que te pide una imagen y la pinta en pantall
+     * Metodo para seleccionar el avatar del usuario
      *
      * @param event
      * @throws FileNotFoundException
@@ -102,12 +101,18 @@ public class PantallaCrearUsuarioController implements Initializable {
 
     }
 
+    /**
+     * Metodo para crear un nuevo Usuario en la base de datos
+     *
+     * @param event
+     * @throws IOException
+     */
     @FXML
     private void crearCuenta(ActionEvent event) throws IOException {
         Boolean aliasDisponible = OperacionesEspecificas.comprobarAlias(alias.getText());
         Boolean emailDisponible = OperacionesEspecificas.comprobarEmail(email.getText());
 
-        if (alias.getText().isEmpty() || pass.getText().isEmpty() || confirmarpass.getText().isEmpty() || nombre.getText().isEmpty() || apellidos.getText().isEmpty() || fechanac.getValue() != null) {
+        if (alias.getText().isEmpty() || pass.getText().isEmpty() || confirmarpass.getText().isEmpty() || nombre.getText().isEmpty() || apellidos.getText().isEmpty() || fechanac.getValue() == null) {
             JOptionPane.showMessageDialog(null, "Te faltan datos!", "Error!", 2);
         } else {
             if (isValid(email.getText())) {
@@ -141,9 +146,9 @@ public class PantallaCrearUsuarioController implements Initializable {
                         UsuarioCRUD.nuevoUsuario(usuario, perfil);
                         System.out.println("Usuario Creado correctamente");
                         correcto = usuario;//Guardamos el usuario para utilizarlo en otros sitios
-                        PantallaPerfilController.loginOcreado=2;
+                        PantallaPerfilController.loginOcreado = 2;
 
-                        App.setRoot("PantallaStore");
+                        App.setRoot("PantallaLogin");
                     } else {
                         //Limpiamos sin son diferentes
                         pass.clear();
@@ -184,5 +189,60 @@ public class PantallaCrearUsuarioController implements Initializable {
             return false;
         }
         return pat.matcher(email).matches();
+    }
+
+    private double xOffSet = 0;
+    private double yOffSet = 0;
+
+    /**
+     * Hace la interfaz arrastable
+     */
+    private void makeStageDragable() {
+
+        parent.setOnMousePressed((event) -> {
+
+            xOffSet = event.getSceneX();
+            yOffSet = event.getSceneY();
+
+        });
+
+        parent.setOnMouseDragged((event) -> {
+
+            App.st.setX(event.getScreenX() - xOffSet);
+            App.st.setY(event.getScreenY() - yOffSet);
+            App.st.setOpacity(0.8f);
+
+        });
+
+        parent.setOnDragDone((event) -> {
+
+            App.st.setOpacity(1.0f);
+
+        });
+
+        parent.setOnMouseReleased((event) -> {
+
+            App.st.setOpacity(1.0f);
+
+        });
+
+    }
+
+    private void min_stage(ActionEvent event) {
+
+        App.st.setIconified(true);
+
+    }
+
+    @FXML
+    private void Close_app(ActionEvent event) {
+
+        System.exit(0);
+
+    }
+
+    @FXML
+    private void minStage(ActionEvent event) {
+        App.st.setIconified(true);
     }
 }

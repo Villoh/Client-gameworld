@@ -37,9 +37,7 @@ public class PantallaJuegoController extends VBox implements Initializable {
     public ImageView imagen;
     @FXML
     private Label titulo;
-
     public static Juego juegoEspecifico;
-
     Juego juegoGuardado;
 
     public ImageView getImagen() {
@@ -58,6 +56,12 @@ public class PantallaJuegoController extends VBox implements Initializable {
 
     }
 
+    /**
+     * Establecemos los datos de la ventana XML correspondiente con cada juego(PantallaJuego.fxml).
+     * Estos datos son representados al momento de abrir la ventana Store, nos muestra
+     * los juegos disponibles con la imagen y titulo correspondientes
+     * @param juego 
+     */
     public void setData(Juego juego) {
         String rutaImagen = "C:\\GameWorld\\Img\\ImgJuegos\\";
         String nombreImagen = juego.getImagen();
@@ -77,6 +81,11 @@ public class PantallaJuegoController extends VBox implements Initializable {
         titulo.setText(juego.getTitulo());
     }
 
+    /**
+     * Metodo que abre una nueva ventana con la informacion del juego seleccionado
+     * @param event
+     * @throws IOException 
+     */
     @FXML
     private void abrirVentanaJuego(MouseEvent event) throws IOException {
         Juego j = JuegoCRUD.verJuego(titulo.getText());

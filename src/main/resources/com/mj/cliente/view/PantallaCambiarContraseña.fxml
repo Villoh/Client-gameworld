@@ -7,26 +7,39 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.shape.Circle?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="594.0" prefWidth="350.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mj.cliente.controller.PantallaCambiarContraseñaController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="594.0" prefWidth="350.0" stylesheets="@../../../../com.mj.cliente.css/HojaEstilo.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mj.cliente.controller.PantallaCambiarContraseñaController">
    <right>
       <AnchorPane prefHeight="474.0" prefWidth="5.0" style="-fx-background-color: #000000;" BorderPane.alignment="CENTER" />
    </right>
    <top>
-      <AnchorPane prefHeight="5.0" prefWidth="347.0" style="-fx-background-color: #000000;" BorderPane.alignment="CENTER" />
+      <AnchorPane fx:id="parent" prefHeight="32.0" prefWidth="350.0" style="-fx-background-color: #000000;" BorderPane.alignment="CENTER">
+         <children>
+            <Button layoutX="273.0" layoutY="2.0" mnemonicParsing="false" onAction="#minStage" prefHeight="10.0" prefWidth="16.0" styleClass="close_button">
+               <graphic>
+                  <Circle fill="DODGERBLUE" radius="5.0" stroke="BLACK" strokeType="INSIDE" />
+               </graphic>
+            </Button>
+            <Button layoutX="310.0" layoutY="2.0" mnemonicParsing="false" onAction="#Close_app" prefHeight="10.0" prefWidth="16.0" styleClass="close_button">
+               <graphic>
+                  <Circle fill="RED" radius="5.0" stroke="BLACK" strokeType="INSIDE" />
+               </graphic>
+            </Button>
+         </children></AnchorPane>
    </top>
    <left>
       <AnchorPane prefHeight="200.0" prefWidth="5.0" style="-fx-background-color: #000000;" BorderPane.alignment="CENTER" />
    </left>
    <center>
-      <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" styleClass="fondo" BorderPane.alignment="CENTER">
          <children>
-            <TextField fx:id="pass" focusTraversable="false" layoutX="81.0" layoutY="324.0" prefHeight="27.0" prefWidth="170.0" promptText="Nueva Contraseña" style="-fx-background-color: transpent; -fx-border-color: #000000; -fx-border-width: 0px 0px 2px 0px;" />
-            <TextField fx:id="email" focusTraversable="false" layoutX="86.0" layoutY="206.0" prefHeight="27.0" prefWidth="170.0" promptText="Correo" style="-fx-background-color: transpent; -fx-border-color: #000000; -fx-border-width: 0px 0px 2px 0px;" />
-            <TextField fx:id="alias" focusTraversable="false" layoutX="86.0" layoutY="155.0" prefHeight="27.0" prefWidth="170.0" promptText="Alias" style="-fx-background-color: transpent; -fx-border-color: #000000; -fx-border-width: 0px 0px 2px 0px;" />
-            <TextField fx:id="repepass" focusTraversable="false" layoutX="81.0" layoutY="382.0" prefHeight="27.0" prefWidth="170.0" promptText="Repetir Nueva Contraseña" style="-fx-background-color: transpent; -fx-border-color: #000000; -fx-border-width: 0px 0px 2px 0px;" />
-            <Button fx:id="login" layoutX="79.0" layoutY="460.0" mnemonicParsing="false" onAction="#cambiarContraseña" prefHeight="30.0" prefWidth="170.0" style="-fx-background-color: #000000;" text="Cambiar Contraseña" textFill="WHITE">
+            <TextField fx:id="pass" focusTraversable="false" layoutX="81.0" layoutY="324.0" prefHeight="27.0" prefWidth="170.0" promptText="Nueva Contraseña" styleClass="textfield" />
+            <TextField fx:id="email" focusTraversable="false" layoutX="86.0" layoutY="206.0" prefHeight="27.0" prefWidth="170.0" promptText="Correo" styleClass="textfield" />
+            <TextField fx:id="alias" focusTraversable="false" layoutX="86.0" layoutY="155.0" prefHeight="27.0" prefWidth="170.0" promptText="Alias" styleClass="textfield" />
+            <TextField fx:id="repepass" focusTraversable="false" layoutX="81.0" layoutY="382.0" prefHeight="27.0" prefWidth="170.0" promptText="Repetir Nueva Contraseña" styleClass="textfield" />
+            <Button fx:id="login" layoutX="79.0" layoutY="460.0" mnemonicParsing="false" onAction="#cambiarContraseña" prefHeight="30.0" prefWidth="170.0" text="Cambiar Contraseña" textFill="WHITE">
                <font>
                   <Font size="14.0" />
                </font>
@@ -41,14 +54,14 @@
                   <Font name="System Bold" size="14.0" />
                </font>
             </Label>
-            <Button fx:id="crearCuenta" layoutX="216.0" layoutY="524.0" mnemonicParsing="false" onAction="#volverCrearCuenta" prefHeight="27.0" prefWidth="101.0" style="-fx-background-color: transparent; -fx-border-color: transparent;" text="Crear cuenta" textFill="#009fff">
+            <Button fx:id="crearCuenta" layoutX="217.0" layoutY="513.0" mnemonicParsing="false" onAction="#volverCrearCuenta" prefHeight="27.0" prefWidth="101.0" text="Crear cuenta" textFill="WHITE">
                <font>
-                  <Font name="System Bold" size="12.0" />
+                  <Font size="14.0" />
                </font>
             </Button>
-            <Button fx:id="login" layoutX="29.0" layoutY="524.0" mnemonicParsing="false" onAction="#volverInicio" prefHeight="27.0" prefWidth="101.0" style="-fx-background-color: transparent; -fx-border-color: transparent;" text="Iniciar Sesión" textFill="#009fff">
+            <Button fx:id="login" layoutX="29.0" layoutY="513.0" mnemonicParsing="false" onAction="#volverInicio" prefHeight="27.0" prefWidth="101.0" text="Iniciar Sesión" textFill="WHITE">
                <font>
-                  <Font name="System Bold" size="12.0" />
+                  <Font size="14.0" />
                </font>
             </Button>
             <ImageView fitHeight="125.0" fitWidth="125.0" layoutX="101.0">

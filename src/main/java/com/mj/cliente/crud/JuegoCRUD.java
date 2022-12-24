@@ -7,14 +7,16 @@ import javax.persistence.*;
 import java.util.List;
 
 public class JuegoCRUD {
+
     /**
+     * Devuelve una lista de todas las bibliotecas de la base de datos
      *
      * @return
      */
-    public static List<Juego> verListaJuegos(){
+    public static List<Juego> verListaJuegos() {
         Conexion con = new Conexion();
         EntityManager em = con.conecta();
-        List<Juego> lista =null;
+        List<Juego> lista = null;
         try {
             lista = em.createNamedQuery("Juego.findAll").getResultList();
 
@@ -26,6 +28,7 @@ public class JuegoCRUD {
     }
 
     /**
+     * Busca una juego segun su titulo
      *
      * @param titulo
      * @return
@@ -36,7 +39,7 @@ public class JuegoCRUD {
         Juego juego = null;
         try {
             Query query = em.createNamedQuery("Juego.findByTitulo");
-            query.setParameter("titulo",titulo);
+            query.setParameter("titulo", titulo);
             juego = (Juego) query.getSingleResult();
         } catch (NoResultException | IllegalArgumentException ex) {
             System.err.println("Excepciones en metodo verJuego  " + ex.getLocalizedMessage());
@@ -46,12 +49,13 @@ public class JuegoCRUD {
     }
 
     /**
+     * Crea un nuevo juego
      *
      * @param juego
      * @return
      */
-    public static int nuevoJuego(Juego juego){
-        int resultado =0;
+    public static int nuevoJuego(Juego juego) {
+        int resultado = 0;
         Conexion con = new Conexion();
         EntityManager em = con.conecta();
         EntityTransaction tx = em.getTransaction();
@@ -59,7 +63,7 @@ public class JuegoCRUD {
             tx.begin();
             em.persist(juego);
             tx.commit();
-            resultado =1;
+            resultado = 1;
         } catch (IllegalArgumentException | PersistenceException ex) {
             System.err.println("Excepciones en metodo nuevoJuego" + ex.getLocalizedMessage());
             tx.rollback();
@@ -70,12 +74,13 @@ public class JuegoCRUD {
     }
 
     /**
+     * Actualiza los datos de un juego
      *
      * @param viejo
      * @param nuevo
      * @return
      */
-    public static int actualizarJuego(Juego viejo, Juego nuevo){
+    public static int actualizarJuego(Juego viejo, Juego nuevo) {
         int resultado = 0;
         Conexion con = new Conexion();
         EntityManager em = con.conecta();
@@ -96,7 +101,7 @@ public class JuegoCRUD {
             j.setNumdescargas(nuevo.getNumdescargas());
             em.persist(j);
             tx.commit();
-            resultado =1;
+            resultado = 1;
         } catch (IllegalArgumentException | PersistenceException ex) {
             System.err.println("Excepciones en metodo actualizarJuego " + ex.getLocalizedMessage());
             tx.rollback();
@@ -107,6 +112,7 @@ public class JuegoCRUD {
     }
 
     /**
+     * Borra un juego
      *
      * @param juego
      * @return

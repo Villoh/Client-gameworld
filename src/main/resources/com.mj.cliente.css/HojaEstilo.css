@@ -1,0 +1,168 @@
+/*
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to edit this template
+*/
+/* 
+    Created on : 21 dic. 2022, 4:34:12 p. m.
+    Author     : jesuf
+*/
+
+/*bordes*/
+
+.border{
+    
+    -fx-background-color:black;
+    
+}
+
+.fondo {
+    
+    -fx-background-color:color;
+    
+}
+
+.button {
+    
+    -fx-background-color:black;
+    -fx-text-fill:white;
+    -fx-font:"Corbel";
+    -fx-background-radius:0;
+    
+}
+
+.button:hover{
+    
+    -fx-background-color:white;
+    -fx-text-fill:black;
+    -fx-border-color:black;
+    -fx-background-radius:0;
+    
+}
+
+.textfield {
+    
+    -fx-background-color:transparent;
+    -fx-border-color:black;
+    -fx-border-width:1 1 1 1;
+    
+}
+
+.textfield:hover {
+    
+    -fx-background-color:transparent;
+    -fx-border-color:black;
+    -fx-border-width:1.5 1.5 1.5 1.5;
+    
+}
+
+/*menu*/
+
+.buttonM{
+    
+    -fx-background-color:white;
+    -fx-text-fill:black;
+    -fx-border-color:black;
+    -fx-border-width:5 0 0 0;
+    -fx-background-radius:0;
+    
+}
+
+.buttonM:hover {
+    
+    -fx-background-color:white;
+    -fx-text-fill:black;
+    -fx-border-color:black;
+    -fx-border-width:5 0 2 0;
+    -fx-background-radius:0;
+    
+}
+
+.buttonIzqMenu {
+    
+    -fx-border-width:5 0 0 5;
+    
+}
+
+.buttonDerMenu {
+    
+    -fx-border-width:5 5 0 0;
+    
+}
+
+.labelMenu {
+    
+    -fx-background-color:white;
+    -fx-text-fill:black;
+    -fx-border-color:black;
+    -fx-border-width:5 0 0 0;
+    
+}
+
+.LogoMenu {
+    
+    -fx-background-color:transparent;
+    
+}
+
+.pasarela {
+    
+    -fx-border-color:black;
+    -fx-border-width:2 2 2 2;
+    -fx-background-color:white;
+    
+}
+
+.pasarela:hover {
+    
+    -fx-border-width:3 3 3 3;
+    -fx-border-color:black;
+    -fx-background-color:white;
+    
+}
+
+.close_button {
+    
+    -fx-background-color:transparent;
+    -fx-border-radius:0;
+    -fx-border-style: none;
+    
+}
+
+.close_button:hover {
+    
+    -fx-background-color:white;
+    -fx-background-radius:0;
+    -fx-border-style: none;
+    
+}
+
+.butto_select {
+    
+    -fx-border-width:5 0 2 0;
+    
+}
+
+.list-view .scroll-bar:horizontal {
+    -fx-background-color:black;
+}
+
+.list-view .scroll-bar {
+    -fx-background-color:white;
+    -fx-border-color:black;
+}
+
+.list-view .increment-button ,.list-view .decrement-button {
+    -fx-background-color:transparent;
+    -fx-border-color:transparent;
+    -fx-color:black;
+}
+
+.list-view .scroll-bar:horizontal .thumb {
+    -fx-background-color:white;
+    -fx-background-radius: 5em;
+    
+}
+
+.scroll-bar:horizontal, .scroll-bar:vertical{
+    -fx-background-color:transparent;
+}

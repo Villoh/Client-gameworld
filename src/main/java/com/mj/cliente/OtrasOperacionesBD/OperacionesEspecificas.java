@@ -40,7 +40,7 @@ public class OperacionesEspecificas {
         return disponible;
     }
     /**
-     * 
+     * Metodo para comrobar que el email no esta repetido
      * @param alias
      * @return 
      */

@@ -23,11 +23,10 @@ import java.util.logging.Logger;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 import javax.persistence.NoResultException;
@@ -61,12 +60,15 @@ public class PantallaJuegoEspecificoController implements Initializable {
     private Label pvp;
 
     static Juego juego = new Juego();
+    @FXML
+    private AnchorPane parent;
 
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        makeStageDragable();
         try {
             setData(PantallaJuegoEspecificoController.juego);
         } catch (IOException ex) {
@@ -87,6 +89,13 @@ public class PantallaJuegoEspecificoController implements Initializable {
         this.titulo = titulo;
     }
 
+    /**
+     * Establecemos los datos que se muestran en la ventana de información de
+     * cada juego
+     *
+     * @param juego
+     * @throws IOException
+     */
     public void setData(Juego juego) throws IOException {
         String rutaImagen = "C:\\GameWorld\\Img\\ImgJuegos\\";
         String nombreImagen = juego.getImagen();
@@ -105,13 +114,21 @@ public class PantallaJuegoEspecificoController implements Initializable {
 
     }
 
+    /**
+     * Metodo para descargar un juego desde la ventana de JuegoEspecifico
+     *
+     * @param event
+     * @throws IOException
+     */
     @FXML
     private void descargarJuego(ActionEvent event) throws IOException {
         int update = 0;
+        //Obtenemos el objeto juego para buscar sus propiedades de imagen y zip.
         Juego juego = PantallaJuegoEspecificoController.juego;
+        //Obtenemos el nuevo numero, para actualizar el numero de descargas del juego.
         int nuevoNumeroDescargas = juego.getNumdescargas() + 1;
-        System.out.println("Viejonumero " + juego.getNumdescargas());
-        System.out.println("Nuevo numero " + nuevoNumeroDescargas);
+        // Realizamos la petiicion al servidor de archivos pasando el nombre de la imagen
+        // y el nombre del archivo.zip que queremos descargar.
         ExecutorService executor = Executors.newSingleThreadExecutor();
         SocketTransfer zipFile = new SocketTransfer(1, "", juego.getZipjuego());
         SocketTransfer image = new SocketTransfer(3, "", juego.getImagen());
@@ -119,8 +136,8 @@ public class PantallaJuegoEspecificoController implements Initializable {
         executor.submit(image);
         executor.shutdown();
         System.out.println("Descaga del servidor finalizada");
-        //Realizar update juego
-
+        System.out.println("Descargado>>>>>>>>>>>>>>>>");
+        //Realizamos la transaccion correspondiente con la base de datos
         Conexion con = new Conexion();
         EntityManager em = con.conecta();
         EntityTransaction tx = em.getTransaction();
@@ -141,7 +158,7 @@ public class PantallaJuegoEspecificoController implements Initializable {
             descarga.setFecha(java.sql.Date.valueOf(LocalDate.now()));
             em.persist(descarga);
             tx.commit();
-            PantallaStoreController.actualizarBiblioteca=true;
+            PantallaStoreController.actualizarBiblioteca = true;
             update = 1;
             //
         } catch (NoResultException ex) {
@@ -155,11 +172,75 @@ public class PantallaJuegoEspecificoController implements Initializable {
         }
         con.desconecta(em);
 
+        System.out.println("Juego Descomprimido");
+        App.setRoot("PantallaStore");
+
     }
 
     @FXML
     private void volveStore(ActionEvent event) throws IOException {
+
         App.setRoot("PantallaStore");
+    }
+
+    private double xOffSet = 0;
+    private double yOffSet = 0;
+
+    
+    /**
+     * Hace la interfaz arrastable
+     */
+    private void makeStageDragable() {
+
+        parent.setOnMousePressed((event) -> {
+
+            xOffSet = event.getSceneX();
+            yOffSet = event.getSceneY();
+
+        });
+
+        parent.setOnMouseDragged((event) -> {
+
+            App.st.setX(event.getScreenX() - xOffSet);
+            App.st.setY(event.getScreenY() - yOffSet);
+            App.st.setOpacity(0.8f);
+
+        });
+
+        parent.setOnDragDone((event) -> {
+
+            App.st.setOpacity(1.0f);
+
+        });
+
+        parent.setOnMouseReleased((event) -> {
+
+            App.st.setOpacity(1.0f);
+
+        });
+
+    }
+
+    private void min_stage(ActionEvent event) {
+
+        App.st.setIconified(true);
+
+    }
+
+    @FXML
+    private void Close_app(ActionEvent event) {
+
+        System.exit(0);
+
+    }
+
+    @FXML
+    private void lanzarJuego(ActionEvent event) {
+    }
+
+    @FXML
+    private void minStage(ActionEvent event) {
+        App.st.setIconified(true);
     }
 
 }

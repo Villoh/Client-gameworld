@@ -21,17 +21,16 @@ import java.net.URL;
 import java.util.ResourceBundle;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
-import java.util.concurrent.Future;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javax.persistence.EntityManager;
@@ -69,27 +68,37 @@ public class PantallaSubirJuegoController implements Initializable {
     public static String rutaZipJuego;
     public static String nombreImagen;
     public static String nombreZipJuego;
+    @FXML
+    private AnchorPane parent;
 
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        //rol.getItems().addAll("Desarrollador", "Jugador", "Invitado");
+        makeStageDragable();
         comboGenero.getItems().addAll("Accion", "Arcade", "Aventura", "Clicker", "Plataformas");
         comboDificultad.getItems().addAll("Alta", "Media", "Baja");
         comboClasificacion.getItems().addAll("PEGI 3", "PEGI 7", "PEGI 12", "PEGI 16", "PEGI 18");
 
     }
 
+    /**
+     * Metodo para subir los juegos desde la app al servidor. Realizamos la
+     * inserción de los datos en la BBDD, si se ha relizado la transaccion
+     * prodecemos a enviar los archivos al servidor de juegos.
+     *
+     * @param event
+     * @throws IOException
+     */
     @FXML
     private void subirJuego(ActionEvent event) throws IOException {
         JuegoCRUD jCrud = new JuegoCRUD();
-//|| fechaJuego.getValue() != null|| comboGenero.getValue().toString().isEmpty()
-        // || comboDificultad.getValue().toString().isEmpty() || comboClasificacion.getValue().toString().isEmpty()
-        if (txt_NombreJuego.getText().isEmpty()) {
+        if (txt_NombreJuego.getText().isEmpty() || fechaJuego.getValue() == null || comboGenero.getValue().toString().isEmpty()
+                || comboDificultad.getValue().toString().isEmpty() || comboClasificacion.getValue().toString().isEmpty()) {
             JOptionPane.showMessageDialog(null, "Te faltan datos!", "Error!", 2);
         } else {
+            //Creamos el objeto Juego para realizar la persistencia
             Juego juego = new Juego();
             Genero genero = new Genero();
             Nivel nivel = new Nivel();
@@ -136,9 +145,10 @@ public class PantallaSubirJuegoController implements Initializable {
             System.out.println("Juego Creado");
             //Subir juego al servidor
             if (resultado == 1) {
+                //Haciendo uso de la clase SocketTransfer(Hilo), realizamos la subida de los archivos
                 ExecutorService executor = Executors.newSingleThreadExecutor();
-                System.out.println("De nuevi " + rutaZipJuego);
-                System.out.println("De nuevi " + rutaImagen);
+//                System.out.println("De nuevi " + rutaZipJuego);
+//                System.out.println("De nuevi " + rutaImagen);
                 SocketTransfer zipFile = new SocketTransfer(2, rutaZipJuego, nombreZipJuego);
                 SocketTransfer image = new SocketTransfer(4, rutaImagen, nombreImagen);
                 executor.submit(zipFile);
@@ -150,12 +160,19 @@ public class PantallaSubirJuegoController implements Initializable {
             }
             PantallaStoreController.actualizarStore = true;
             //Volvemos a la pantalla anterior.
-            App.setRoot("PantallaStore");
+            //App.setRoot("PantallaStore");
 
         }
 
     }
 
+    /**
+     * Metodo que genera un FileChosser para seleccionar la portada del juego.
+     * Sólo permite imagenes en el formato indicado
+     *
+     * @param event
+     * @throws FileNotFoundException
+     */
     @FXML
     private void escogerPortada(ActionEvent event) throws FileNotFoundException {
 
@@ -174,6 +191,13 @@ public class PantallaSubirJuegoController implements Initializable {
         }
     }
 
+    /**
+     * Metodo que genera un FileChosser para seleccionar el zip del juego. Sólo
+     * permite archivos en formato zip
+     *
+     * @param event
+     * @throws FileNotFoundException
+     */
     @FXML
     private void escogerZip(ActionEvent event) throws FileNotFoundException {
 
@@ -195,6 +219,57 @@ public class PantallaSubirJuegoController implements Initializable {
     @FXML
     private void volver(ActionEvent event) throws IOException {
         App.setRoot("PantallaStore");
+    }
+
+    private double xOffSet = 0;
+    private double yOffSet = 0;
+
+    /**
+     * Hace la interfaz arrastable
+     */
+    private void makeStageDragable() {
+
+        parent.setOnMousePressed((event) -> {
+            xOffSet = event.getSceneX();
+            yOffSet = event.getSceneY();
+
+        });
+
+        parent.setOnMouseDragged((event) -> {
+            App.st.setX(event.getScreenX() - xOffSet);
+            App.st.setY(event.getScreenY() - yOffSet);
+            App.st.setOpacity(0.8f);
+
+        });
+        parent.setOnDragDone((event) -> {
+            App.st.setOpacity(1.0f);
+
+        });
+
+        parent.setOnMouseReleased((event) -> {
+            App.st.setOpacity(1.0f);
+        });
+
+    }
+
+    /**
+     * Capacidad de minimizar la ventana
+     * @param event 
+     */
+    private void min_stage(ActionEvent event) {
+        App.st.setIconified(true);
+
+    }
+
+    @FXML
+    private void Close_app(ActionEvent event) {
+        System.exit(0);
+
+    }
+
+    @FXML
+    private void minStage(ActionEvent event) {
+        App.st.setIconified(true);
     }
 
 }
