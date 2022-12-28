@@ -108,10 +108,13 @@
                         <Label prefHeight="68.0" prefWidth="140.0" styleClass="labelMenu" GridPane.columnIndex="2" GridPane.halignment="CENTER" />
                         <Label prefHeight="68.0" prefWidth="175.0" styleClass="labelMenu" GridPane.columnIndex="4" GridPane.halignment="CENTER" />
                         <Label prefHeight="102.0" prefWidth="134.0" styleClass="labelMenu" GridPane.columnIndex="3" GridPane.halignment="CENTER" />
-                        <ImageView fitHeight="100.0" fitWidth="100.0" GridPane.columnIndex="3" GridPane.halignment="CENTER">
+                        <ImageView fitHeight="75.0" fitWidth="75.0" GridPane.columnIndex="3" GridPane.halignment="CENTER">
                            <image>
-                              <Image url="@../images/Logo%20sin%20texto.png" />
+                              <Image url="@../images/Logo%20Aplicacion%20Animado%20Pequeño.gif" />
                            </image>
+                           <GridPane.margin>
+                              <Insets top="16.0" />
+                           </GridPane.margin>
                         </ImageView>
                         <Button mnemonicParsing="false" onAction="#abrirSubirJuego" prefHeight="111.0" prefWidth="187.0" styleClass="buttonM" text="Subir" textFill="WHITE" GridPane.columnIndex="5">
                            <font>

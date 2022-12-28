@@ -35,6 +35,11 @@
    <center>
       <AnchorPane prefHeight="200.0" prefWidth="200.0" styleClass="fondo" BorderPane.alignment="CENTER">
          <children>
+            <ImageView fitHeight="125.0" fitWidth="125.0" layoutX="109.0">
+               <image>
+                  <Image url="@../images/Logo%20Aplicacion%20Animado%20Pequeño.gif" />
+               </image>
+            </ImageView>
             <TextField fx:id="pass" focusTraversable="false" layoutX="81.0" layoutY="324.0" prefHeight="27.0" prefWidth="170.0" promptText="Nueva Contraseña" styleClass="textfield" />
             <TextField fx:id="email" focusTraversable="false" layoutX="86.0" layoutY="206.0" prefHeight="27.0" prefWidth="170.0" promptText="Correo" styleClass="textfield" />
             <TextField fx:id="alias" focusTraversable="false" layoutX="86.0" layoutY="155.0" prefHeight="27.0" prefWidth="170.0" promptText="Alias" styleClass="textfield" />
@@ -64,11 +69,6 @@
                   <Font size="14.0" />
                </font>
             </Button>
-            <ImageView fitHeight="125.0" fitWidth="125.0" layoutX="101.0">
-               <image>
-                  <Image url="@../images/Logo%20sin%20texto.png" />
-               </image>
-            </ImageView>
          </children>
       </AnchorPane>
    </center>

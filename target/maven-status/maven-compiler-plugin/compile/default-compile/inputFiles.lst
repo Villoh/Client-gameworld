@@ -1,31 +1,29 @@
-C:\Users\Asus\Desktop\ProyectoFinal\cliente\src\main\java\com\mj\cliente\OtrasOperacionesBD\OperacionesEspecificas.java
-C:\Users\Asus\Desktop\ProyectoFinal\cliente\src\main\java\module-info.java
-C:\Users\Asus\Desktop\ProyectoFinal\cliente\src\main\java\com\mj\cliente\crud\BibliotecaCRUD.java
-C:\Users\Asus\Desktop\ProyectoFinal\cliente\src\main\java\com\mj\cliente\App.java
-C:\Users\Asus\Desktop\ProyectoFinal\cliente\src\main\java\com\mj\cliente\conexion\Conexion.java
-C:\Users\Asus\Desktop\ProyectoFinal\cliente\src\main\java\com\mj\cliente\controller\PantallaLoginController.java
-C:\Users\Asus\Desktop\ProyectoFinal\cliente\src\main\java\com\mj\cliente\controller\PantallaCambiarContraseñaController.java
-C:\Users\Asus\Desktop\ProyectoFinal\cliente\src\main\java\com\mj\cliente\controller\PantallaSubirJuegoController.java
-C:\Users\Asus\Desktop\ProyectoFinal\cliente\src\main\java\com\mj\cliente\dao\Pegi.java
-C:\Users\Asus\Desktop\ProyectoFinal\cliente\src\main\java\com\mj\cliente\Main.java
-C:\Users\Asus\Desktop\ProyectoFinal\cliente\src\main\java\com\mj\cliente\dao\Juego.java
-C:\Users\Asus\Desktop\ProyectoFinal\cliente\src\main\java\com\mj\cliente\controller\PantallaJuegoController.java
-C:\Users\Asus\Desktop\ProyectoFinal\cliente\src\main\java\com\mj\cliente\controller\PantallaBibliotecaController.java
-C:\Users\Asus\Desktop\ProyectoFinal\cliente\src\main\java\com\mj\cliente\controller\PantallaPerfilController.java
-C:\Users\Asus\Desktop\ProyectoFinal\cliente\src\main\java\com\mj\cliente\controller\PantallaJuegoEspecificoController.java
-C:\Users\Asus\Desktop\ProyectoFinal\cliente\src\main\java\com\mj\cliente\dao\Perfil.java
-C:\Users\Asus\Desktop\ProyectoFinal\cliente\src\main\java\com\mj\cliente\service\DirectorioApp.java
-C:\Users\Asus\Desktop\ProyectoFinal\cliente\src\main\java\com\mj\cliente\crud\UsuarioCRUD.java
-C:\Users\Asus\Desktop\ProyectoFinal\cliente\src\main\java\com\mj\cliente\dao\Biblioteca.java
-C:\Users\Asus\Desktop\ProyectoFinal\cliente\src\main\java\com\mj\cliente\controller\PantallaStoreController.java
-C:\Users\Asus\Desktop\ProyectoFinal\cliente\src\main\java\com\mj\cliente\crud\Consulta.java
-C:\Users\Asus\Desktop\ProyectoFinal\cliente\src\main\java\com\mj\cliente\crud\JuegoCRUD.java
-C:\Users\Asus\Desktop\ProyectoFinal\cliente\src\main\java\com\mj\cliente\dao\Genero.java
-C:\Users\Asus\Desktop\ProyectoFinal\cliente\src\main\java\com\mj\cliente\crud\DescargasCRUD.java
-C:\Users\Asus\Desktop\ProyectoFinal\cliente\src\main\java\com\mj\cliente\dao\Descarga.java
-C:\Users\Asus\Desktop\ProyectoFinal\cliente\src\main\java\com\mj\cliente\dao\Coleccion.java
-C:\Users\Asus\Desktop\ProyectoFinal\cliente\src\main\java\com\mj\cliente\controller\PantallaCrearUsuarioController.java
-C:\Users\Asus\Desktop\ProyectoFinal\cliente\src\main\java\com\mj\cliente\service\SocketTransfer.java
-C:\Users\Asus\Desktop\ProyectoFinal\cliente\src\main\java\com\mj\cliente\crud\GeneroCRUD.java
-C:\Users\Asus\Desktop\ProyectoFinal\cliente\src\main\java\com\mj\cliente\dao\Nivel.java
-C:\Users\Asus\Desktop\ProyectoFinal\cliente\src\main\java\com\mj\cliente\dao\Usuario.java
+E:\Desarrollo de Aplicaciones Multiplataforma\2o año\RETAGL - M3J2\Aplicación\Aplicación Cliente\src\main\java\com\mj\cliente\controller\PantallaLoginController.java
+E:\Desarrollo de Aplicaciones Multiplataforma\2o año\RETAGL - M3J2\Aplicación\Aplicación Cliente\src\main\java\com\mj\cliente\dao\Perfil.java
+E:\Desarrollo de Aplicaciones Multiplataforma\2o año\RETAGL - M3J2\Aplicación\Aplicación Cliente\src\main\java\com\mj\cliente\OtrasOperacionesBD\OperacionesEspecificas.java
+E:\Desarrollo de Aplicaciones Multiplataforma\2o año\RETAGL - M3J2\Aplicación\Aplicación Cliente\src\main\java\com\mj\cliente\controller\PantallaPerfilController.java
+E:\Desarrollo de Aplicaciones Multiplataforma\2o año\RETAGL - M3J2\Aplicación\Aplicación Cliente\src\main\java\com\mj\cliente\service\DirectorioApp.java
+E:\Desarrollo de Aplicaciones Multiplataforma\2o año\RETAGL - M3J2\Aplicación\Aplicación Cliente\src\main\java\com\mj\cliente\controller\PantallaJuegoEspecificoController.java
+E:\Desarrollo de Aplicaciones Multiplataforma\2o año\RETAGL - M3J2\Aplicación\Aplicación Cliente\src\main\java\com\mj\cliente\controller\PantallaCrearUsuarioController.java
+E:\Desarrollo de Aplicaciones Multiplataforma\2o año\RETAGL - M3J2\Aplicación\Aplicación Cliente\src\main\java\com\mj\cliente\Main.java
+E:\Desarrollo de Aplicaciones Multiplataforma\2o año\RETAGL - M3J2\Aplicación\Aplicación Cliente\src\main\java\com\mj\cliente\dao\Pegi.java
+E:\Desarrollo de Aplicaciones Multiplataforma\2o año\RETAGL - M3J2\Aplicación\Aplicación Cliente\src\main\java\com\mj\cliente\controller\PantallaJuegoController.java
+E:\Desarrollo de Aplicaciones Multiplataforma\2o año\RETAGL - M3J2\Aplicación\Aplicación Cliente\src\main\java\com\mj\cliente\dao\Usuario.java
+E:\Desarrollo de Aplicaciones Multiplataforma\2o año\RETAGL - M3J2\Aplicación\Aplicación Cliente\src\main\java\module-info.java
+E:\Desarrollo de Aplicaciones Multiplataforma\2o año\RETAGL - M3J2\Aplicación\Aplicación Cliente\src\main\java\com\mj\cliente\dao\Nivel.java
+E:\Desarrollo de Aplicaciones Multiplataforma\2o año\RETAGL - M3J2\Aplicación\Aplicación Cliente\src\main\java\com\mj\cliente\crud\JuegoCRUD.java
+E:\Desarrollo de Aplicaciones Multiplataforma\2o año\RETAGL - M3J2\Aplicación\Aplicación Cliente\src\main\java\com\mj\cliente\controller\PantallaStoreController.java
+E:\Desarrollo de Aplicaciones Multiplataforma\2o año\RETAGL - M3J2\Aplicación\Aplicación Cliente\src\main\java\com\mj\cliente\App.java
+E:\Desarrollo de Aplicaciones Multiplataforma\2o año\RETAGL - M3J2\Aplicación\Aplicación Cliente\src\main\java\com\mj\cliente\crud\GeneroCRUD.java
+E:\Desarrollo de Aplicaciones Multiplataforma\2o año\RETAGL - M3J2\Aplicación\Aplicación Cliente\src\main\java\com\mj\cliente\crud\DescargasCRUD.java
+E:\Desarrollo de Aplicaciones Multiplataforma\2o año\RETAGL - M3J2\Aplicación\Aplicación Cliente\src\main\java\com\mj\cliente\crud\BibliotecaCRUD.java
+E:\Desarrollo de Aplicaciones Multiplataforma\2o año\RETAGL - M3J2\Aplicación\Aplicación Cliente\src\main\java\com\mj\cliente\dao\Biblioteca.java
+E:\Desarrollo de Aplicaciones Multiplataforma\2o año\RETAGL - M3J2\Aplicación\Aplicación Cliente\src\main\java\com\mj\cliente\controller\PantallaSubirJuegoController.java
+E:\Desarrollo de Aplicaciones Multiplataforma\2o año\RETAGL - M3J2\Aplicación\Aplicación Cliente\src\main\java\com\mj\cliente\dao\Juego.java
+E:\Desarrollo de Aplicaciones Multiplataforma\2o año\RETAGL - M3J2\Aplicación\Aplicación Cliente\src\main\java\com\mj\cliente\dao\Coleccion.java
+E:\Desarrollo de Aplicaciones Multiplataforma\2o año\RETAGL - M3J2\Aplicación\Aplicación Cliente\src\main\java\com\mj\cliente\crud\UsuarioCRUD.java
+E:\Desarrollo de Aplicaciones Multiplataforma\2o año\RETAGL - M3J2\Aplicación\Aplicación Cliente\src\main\java\com\mj\cliente\controller\PantallaCambiarContraseñaController.java
+E:\Desarrollo de Aplicaciones Multiplataforma\2o año\RETAGL - M3J2\Aplicación\Aplicación Cliente\src\main\java\com\mj\cliente\dao\Descarga.java
+E:\Desarrollo de Aplicaciones Multiplataforma\2o año\RETAGL - M3J2\Aplicación\Aplicación Cliente\src\main\java\com\mj\cliente\conexion\Conexion.java
+E:\Desarrollo de Aplicaciones Multiplataforma\2o año\RETAGL - M3J2\Aplicación\Aplicación Cliente\src\main\java\com\mj\cliente\dao\Genero.java
+E:\Desarrollo de Aplicaciones Multiplataforma\2o año\RETAGL - M3J2\Aplicación\Aplicación Cliente\src\main\java\com\mj\cliente\service\SocketTransfer.java

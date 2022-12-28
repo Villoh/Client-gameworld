@@ -47,9 +47,9 @@
                </font>
             </Button>
             <ComboBox fx:id="rol" layoutX="182.0" layoutY="259.0" prefHeight="25.0" prefWidth="140.0" promptText="Rol" styleClass="textfield" />
-            <ImageView fitHeight="200.0" fitWidth="200.0" layoutX="66.0" layoutY="-38.0">
+            <ImageView fitHeight="100.0" fitWidth="100.0" layoutX="120.0">
                <image>
-                  <Image url="@../images/Logo%20sin%20texto.png" />
+                  <Image url="@../images/Logo%20Aplicacion%20Animado%20Pequeño.gif" />
                </image>
             </ImageView>
             <Button fx:id="VolverBoton" layoutX="14.0" layoutY="494.0" mnemonicParsing="false" onAction="#Volver" prefHeight="30.0" prefWidth="140.0" text="Volver al Login" textFill="WHITE">

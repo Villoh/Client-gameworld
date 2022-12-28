@@ -52,9 +52,9 @@
                   <Font name="System Bold" size="14.0" />
                </font>
             </Label>
-            <ImageView fx:id="img_Logo" fitHeight="125.0" fitWidth="125.0" layoutX="102.0">
+            <ImageView fx:id="img_Logo" fitHeight="75.0" fitWidth="75.0" layoutX="128.0" layoutY="14.0">
                <image>
-                  <Image url="@../images/Logo%20sin%20texto.png" />
+                  <Image url="@../images/Logo%20Aplicacion%20Animado%20Pequeño.gif" />
                </image>
             </ImageView>
             <ComboBox fx:id="comboGenero" layoutX="129.0" layoutY="266.0" prefWidth="150.0" />

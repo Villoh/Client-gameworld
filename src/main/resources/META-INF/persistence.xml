@@ -13,7 +13,7 @@
     <class>com.mj.cliente.dao.Usuario</class>
     <properties>
         
-        <property name="javax.persistence.jdbc.url" value="jdbc:postgresql://192.168.34.137:5432/gameworld"/>
+        <property name="javax.persistence.jdbc.url" value="jdbc:postgresql://192.168.1.248:5432/gameworld"/>
         <property name="javax.persistence.jdbc.user" value="m3j2"/>
         <property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver"/>
         <property name="javax.persistence.jdbc.password" value="m3j2_admin_1234"/>

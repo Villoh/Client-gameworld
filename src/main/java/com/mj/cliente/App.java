@@ -24,7 +24,7 @@ public class App extends Application {
         scene = new Scene(loadFXML("PantallaLogin"));
         st = stage;
         st.setTitle("M3J2");
-        st.getIcons().add(new Image("com/mj/cliente/images/LogoApp.png"));
+        st.getIcons().add(new Image("com/mj/cliente/images/Logo sin texto.png"));
         st.setResizable(false);
         st.setIconified(false);
         st.initStyle(StageStyle.UNDECORATED);
